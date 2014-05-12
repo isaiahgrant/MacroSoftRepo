@@ -5,3 +5,13 @@ Global resource?
 *Don't exactly understand folder structure of iterations/current working. Do we just 
 set aside an iteration when it is finished into the FullyFunctionalVersions? If so,
 why do we have a Trivia_Maze_v1.0 folder inside the current directory?
+
+
+
+*iterations did not belong under that folder so I moved it. That restores the original intent of being able to copy Trivia_Maze_v1.0 to fullyFunctionalVersions once ready. 
+*I included the eclipse folder in v1.0 folder and cleaned up directories.
+
+**if you have any files in currentWorkingDirectory please make sure one copy is in Iteration_1 and the other is in the eclipse src folder
+
+*I have created a sub folder under rescouces for class supporting documents
+- IG 5/12/14
