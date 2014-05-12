@@ -1,0 +1,7 @@
+*If we eventually make a GUI, consider making the graphics resource a singleton? That way 
+anyone has access to it? And store it in a global resources type file? But, is that bad design?
+Global resource?
+
+*Don't exactly understand folder structure of iterations/current working. Do we just 
+set aside an iteration when it is finished into the FullyFunctionalVersions? If so,
+why do we have a Trivia_Maze_v1.0 folder inside the current directory?
