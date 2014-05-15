@@ -18,7 +18,7 @@ public class Maze {
 		this.rooms = generateMaze();
 		this.current_Door = null;
 		this.entrance = rooms[0][0];
-		this.exit = rooms[3][3];
+		this.exit = rooms[2][2];
 		this.player = p1;
 	}
 	
@@ -113,4 +113,19 @@ public class Maze {
 		}
 	}
 	
+	public boolean isPlayerAtExit()
+	{
+		return false;
+	}
+	
+	public boolean isCorrectAnswer(String answer)
+	{
+		return false;
+	}
+	
+	public void getQuestion(Direction direction)
+	{
+		//TODO
+		System.out.println("Maze.getQuestion(): not yet implemented!");
+	}
 }
