@@ -18,13 +18,13 @@ public class Maze {
 		this.rooms = generateMaze();
 		this.current_Door = null;
 		this.entrance = rooms[0][0];
-		this.exit = rooms[5][5];
+		this.exit = rooms[3][3];
 		this.player = p1;
 	}
 	
 	Room[][] generateMaze()
 	{
-		Room[][] rooms = new Room[5][5];
+		Room[][] rooms = new Room[3][3];
 		return rooms;
 	}
 	
@@ -69,11 +69,11 @@ public class Maze {
 	void drawMaze()
 	{
 		System.out.println(". . . . . . . . . . .");
-		for(int i = 1; i < 5; i++)
+		for(int i = 1; i < 3; i++)
 		{
 			if(this.player.getPlayerLocation().getRow() == i)
 			{
-				for(int j = 0; j < 5; j++)
+				for(int j = 0; j < 3; j++)
 				{
 					if(this.player.getPlayerLocation().getColumn() == j)
 						System.out.print(". P ");
@@ -91,21 +91,21 @@ public class Maze {
 	//this is my implementation with an array
 	void drawMazeArray()
 	{
-		char[][] mazeAra = new char[5][5];
-		for(int i = 0; i < 5; i++)
+		char[][] mazeAra = new char[3][3];
+		for(int i = 0; i < 3; i++)
 		{
-			for(int j = 0; j < 5; j++)
+			for(int j = 0; j < 3; j++)
 				mazeAra[i][j] = '.';
 		}
 		mazeAra[0][0] = 'E';
-		mazeAra[5][5] = 'X';
+		mazeAra[3][3] = 'X';
 		mazeAra[this.player.getPlayerLocation().getColumn()][this.player.getPlayerLocation().getRow()] = 'P';
 		
 		System.out.println(". . . . . . . . . . .")
-		for(int i = 0; i < 5; i ++)
+		for(int i = 0; i < 3; i ++)
 		{
 			System.out.print(".")
-			for(int j = 0; j < 5; j++)
+			for(int j = 0; j < 3; j++)
 			{
 				System.out.print(" " + mazeAra[i][j] + " .");
 			}

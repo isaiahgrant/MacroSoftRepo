@@ -4,3 +4,21 @@ mc-Nature and Technology-What color is a giraffe's tongue?-Green-Pink-Orange-Blu
 mc-Sports and Hobbies-What is added to a Cosmopolitan martini to create its fashionably pink color?-Grapefruit Juice-Cranberry Juice-Raspberry Juice-Red Food Coloring-b
 tf-Sports and Hobbies-The video game Tetris was bundled with the Atari 2600 upon its U.S. debut in 1977-False
 tf-The Arts-Grouchy Templeton from Charlotte's Web was a rat-True
+mc-The Arts-Where does the Muffin Man live, according to the song?-Duby Road-Drury Lane-Division Street-Cupcake Place-b
+mc-Sports and Hobbies-What NBA franchise was known as the Bullets from 1964 to 1997?-Rockets-Sonics-Wizards-Spurs-c
+tf-The Arts-"The" is the most-used word in written English-True
+mc-Sports and Hobbies-About how long would it take you to walk one lap around the Indy 500 track-1 hour-30 minutes-3 hours-8 hours-a
+mc-Science and Nature-Where are the three teeniest bones in the human body?-pinkie finger-baby toe-ear-nose-c
+tf-Geography-Rhode Island is the only U.S. state that borders only one other state-False
+tf-History-1958 was the year of the first Super Bowl-False
+mc-Entertainment-What does TMZ stand for in TMZ.com?-Too Many Zebra's-Thirty Mile Zone-The Man Zorro-Talk Mingle Zing-b
+tf-History-Arnold Schwarzenegger was the first Hummer made for civilian use-True
+mc-Sports and Hobbies-In a game of Hearts, what term describes winning every heart and the queen of spades?-Bingo-Jenga-Shooting For The Starts-Shooting The Moon-d
+tf-Science and Nature-Thomas edison averaged one invention patent for every two weeks of his working life-True
+mc-Geography-Which form of life is not found on Antarctica?insects-birds-reptiles-humans-c
+tf-Entertainment-Ice Ice Baby was the first rap song to reach number one on the Billboard pop chart-True
+mc-Sports and Hobbies-What sport has official rules to cover "tea intervals"?-Football-Soccer-Hockey-Cricket-d
+tf-Science and Nature-LCD stands for Laser Crystal Display, in flat screen technology-False
+mc-Sports and Hobbies-What digit does every Mastercard number start with?-4-5-7-3-b
+mc-Sports and Hobbies-What color blazer is presented to the Masters golf winner?-Gold-Green-White-Blue-b
+tf-History-A 2009 study found Cocaine on 90% of U.S. currency bills-True
