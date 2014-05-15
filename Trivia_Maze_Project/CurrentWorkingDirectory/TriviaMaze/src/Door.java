@@ -13,4 +13,10 @@ public class Door
 	{
 		
 	}
+	
+	public TriviaItem getTriviaItem() 
+	{
+		//TODO
+		return null;
+	}
 }
