@@ -34,9 +34,9 @@ public class Maze {
 		int y = this.player.getPlayerLocation().getRow();
 		if(x == 0 && direct.equals(Direction.LEFT))
 			return false;
-		else if(x == 5 && direct.equals(Direction.Right))
+		else if(x == 5 && direct.equals(Direction.RIGHT))
 			return false;
-		else if(y == 0 && direct.equals(Direction.Up))
+		else if(y == 0 && direct.equals(Direction.UP))
 			return false;
 		else if(y == 5 && direct.equals(Direction.DOWN))
 			return false;
@@ -101,15 +101,15 @@ public class Maze {
 		mazeAra[3][3] = 'X';
 		mazeAra[this.player.getPlayerLocation().getColumn()][this.player.getPlayerLocation().getRow()] = 'P';
 		
-		System.out.println(". . . . . . . . . . .")
+		System.out.println(". . . . . . . . . . .");
 		for(int i = 0; i < 3; i ++)
 		{
-			System.out.print(".")
+			System.out.print(".");
 			for(int j = 0; j < 3; j++)
 			{
 				System.out.print(" " + mazeAra[i][j] + " .");
 			}
-			System.out.println("\n. . . . . . . . . . .")
+			System.out.println("\n. . . . . . . . . . .");
 		}
 	}
 	

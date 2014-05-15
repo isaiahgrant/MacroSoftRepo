@@ -49,10 +49,4 @@ public class Door
 	{
 		this.triviaItem = trivia;
 	}
-	
-	public TriviaItem getTriviaItem() 
-	{
-		//TODO
-		return null;
-	}
 }
