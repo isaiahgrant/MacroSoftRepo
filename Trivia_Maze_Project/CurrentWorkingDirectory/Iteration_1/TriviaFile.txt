@@ -1,9 +1,9 @@
 mc-Entertainment-What 1990s sitcom was the first to win five straight Emmy awards for "Best Comedy"?-c-Friends-Seinfeld-Frasier-Family Matters
 mc-Events-What country, often referred to as the chocolate capital of the world, is credited with the invention of praline 100 years ago?-a-Belgium-Switzerland-Austria-France
-mc-Nature and Technology-What color is a giraffe's tongue?-d-Green-Pink-Orange-Blue
+mc-Nature and Technology-What color is a giraffes tongue?-d-Green-Pink-Orange-Blue
 mc-Sports and Hobbies-What is added to a Cosmopolitan martini to create its fashionably pink color?-b-Grapefruit Juice-Cranberry Juice-Raspberry Juice-Red Food Coloring
 tf-Sports and Hobbies-The video game Tetris was bundled with the Atari 2600 upon its U.S. debut in 1977-b
-tf-The Arts-Grouchy Templeton from Charlotte's Web was a rat-a
+tf-The Arts-Grouchy Templeton from Charlottes Web was a rat-a
 mc-The Arts-Where does the Muffin Man live, according to the song?-b-Duby Road-Drury Lane-Division Street-Cupcake Place
 mc-Sports and Hobbies-What NBA franchise was known as the Bullets from 1964 to 1997?-c-Rockets-Sonics-Wizards-Spurs
 tf-The Arts-"The" is the most-used word in written English-a
@@ -11,7 +11,7 @@ mc-Sports and Hobbies-About how long would it take you to walk one lap around th
 mc-Science and Nature-Where are the three teeniest bones in the human body?-c-pinkie finger-baby toe-ear-nose
 tf-Geography-Rhode Island is the only U.S. state that borders only one other state-b
 tf-History-1958 was the year of the first Super Bowl-b
-mc-Entertainment-What does TMZ stand for in TMZ.com?-b-Too Many Zebra's-Thirty Mile Zone-The Man Zorro-Talk Mingle Zing
+mc-Entertainment-What does TMZ stand for in TMZ.com?-b-Too Many Zebras-Thirty Mile Zone-The Man Zorro-Talk Mingle Zing
 tf-History-Arnold Schwarzenegger was the first Hummer made for civilian use-a
 mc-Sports and Hobbies-In a game of Hearts, what term describes winning every heart and the queen of spades?-d-Bingo-Jenga-Shooting For The Starts-Shooting The Moon
 tf-Science and Nature-Thomas Edison averaged one invention patent for every two weeks of his working life-a
