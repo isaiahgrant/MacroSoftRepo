@@ -18,6 +18,8 @@ public class TriviaMazeDriver
 			System.out.println();
 		}
 		
+		factory.closeFactory();
+		
 		
 	}
 

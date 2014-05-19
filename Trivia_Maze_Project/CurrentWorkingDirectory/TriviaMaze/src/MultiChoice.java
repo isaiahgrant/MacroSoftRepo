@@ -17,7 +17,7 @@ public class MultiChoice extends TriviaItem
 		this.ChoiceD = "Default";
 	}
 	
-	public MultiChoice(String type, String category, String trivia, String a, String b, String c, String d, String answer) 
+	public MultiChoice(String type, String category, String trivia, String answer, String a, String b, String c, String d) 
 	{
 		super(type, category, trivia, answer);
 		this.ChoiceA = a;

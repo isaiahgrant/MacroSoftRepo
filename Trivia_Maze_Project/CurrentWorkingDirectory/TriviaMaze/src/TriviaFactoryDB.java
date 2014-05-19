@@ -65,6 +65,20 @@ public class TriviaFactoryDB
 	}
 	
 	
+	public void closeFactory()
+	{
+		try
+		{
+			statement.close();
+			connection.close();
+		}catch(Exception e)
+		{
+			System.out.println("Unable to close factory");
+		}
+				
+	}
+	
+	
 }//end TriviaFactoryDB
 
 
