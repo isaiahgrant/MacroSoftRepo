@@ -18,10 +18,18 @@ public class Game
 
 		mainGame.draw();
 		
-		while( !mainGame.gameFinished() )
+		//TODO to test
+		//System.out.println("Game winnable:" + mainGame.gameWinnable());
+		
+		while( !mainGame.gameFinished() /*&& mainGame.gameWinnable()*/ )
 		{
 			mainGame.processLogic();
 			mainGame.draw();
+		}
+		
+		if(!mainGame.gameWinnable())
+		{
+			System.out.println("Game Over. You can not win the game.");
 		}
 		
 		mainGame.cleanUp();
@@ -89,6 +97,14 @@ public class Game
 	public boolean gameFinished()
 	{
 		return this.gameMaze.isPlayerAtExit();
+	}
+	
+	//Returns false if the player has enough doors locked
+	//So that they can not get to the exit
+	//True otherwise.
+	public boolean gameWinnable()
+	{
+		return this.gameMaze.isWinnable();
 	}
 	
 	public void cleanUp()
