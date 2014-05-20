@@ -39,7 +39,7 @@ public class PlayerInput
 		//Consider redoing this with no exception handling
 		while(!done)
 		{
-			System.out.println("Where would you like to go? (N,S,E,W)");
+			System.out.print("Where would you like to go? (N,S,E,W):");
 			
 			
 			try
@@ -65,30 +65,30 @@ public class PlayerInput
 	
 	public boolean isValidDirectionInput(String directionInput)
 	{
-		return directionInput.equals("N") || 
-			   directionInput.equals("S") ||
-			   directionInput.equals("E") ||
-			   directionInput.equals("W");
+		return directionInput.equalsIgnoreCase("N") || 
+			   directionInput.equalsIgnoreCase("S") ||
+			   directionInput.equalsIgnoreCase("E") ||
+			   directionInput.equalsIgnoreCase("W");
 	}
 	
 	public Direction convertStringToDirection(String input)
 	{
-		if(input.equals("N"))
+		if(input.equalsIgnoreCase("N"))
 		{
 			return Direction.UP;
 		}
 		
-		if(input.equals("S"))
+		if(input.equalsIgnoreCase("S"))
 		{
 			return Direction.DOWN;
 		}
 		
-		if(input.equals("E"))
+		if(input.equalsIgnoreCase("E"))
 		{
 			return Direction.RIGHT;
 		}
 		
-		if(input.equals("W"))
+		if(input.equalsIgnoreCase("W"))
 		{
 			return Direction.LEFT;
 		}
