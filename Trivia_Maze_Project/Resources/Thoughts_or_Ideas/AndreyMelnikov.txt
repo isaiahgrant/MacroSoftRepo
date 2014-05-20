@@ -15,3 +15,10 @@ why do we have a Trivia_Maze_v1.0 folder inside the current directory?
 
 *I have created a sub folder under rescouces for class supporting documents
 - IG 5/12/14
+
+*Need to discuss coding standards with regards to method placement. Where do setters/getters go?
+Where do static methods go? 
+
+*Need to discuss coding standards with regards to referencing variables as this.variable. 
+I like to do this whenever possible, as it clearly shows what variable is in the class,
+and what comes from elsewhere.
