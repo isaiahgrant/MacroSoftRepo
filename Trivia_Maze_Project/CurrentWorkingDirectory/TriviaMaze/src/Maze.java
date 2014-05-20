@@ -68,24 +68,39 @@ public class Maze {
 	//thinking doing this with an array would be easier and also less prone to errors.
 	void drawMaze()
 	{
-		System.out.println(". . . . . . . . . . .");
-		for(int i = 1; i < 3; i++)
+		int i, j;
+		
+		for(i = 0; i < rooms.length; i++)
 		{
-			if(this.player.getPlayerLocation().getRow() == i)
+			for(j = 0; j < rooms[i].length; j++)
 			{
-				for(int j = 0; j < 3; j++)
+				if(i == 0)
 				{
-					if(this.player.getPlayerLocation().getColumn() == j)
-						System.out.print(". P ");
-					else
-						System.out.print(".   ");
+					System.out.print(" ___ ");
 				}
-				System.out.println(".");
 			}
-			else
-				System.out.println(".   .   .   .   .   .");
-			System.out.println(". . . . . . . . . . .");
+			
+			System.out.println();
+			
+			for(j = 0; j < rooms[i].length; j++)
+			{
+				if(this.player.getPlayerLocation().getRow() == i && this.player.getPlayerLocation().getColumn() == j)//prints player location
+				{
+					System.out.print("|" + "_P_" + "|");
+				}
+				
+				else if(i == rooms.length - 1 && j == rooms[i].length - 1)//prints exit location
+				{
+					System.out.print("|" + "_X_" + "|");
+				}
+				
+				else
+				{
+					System.out.print("|" + "___" + "|");
+				}
+			}
 		}
+
 	}
 	
 	//this is my implementation with an array
