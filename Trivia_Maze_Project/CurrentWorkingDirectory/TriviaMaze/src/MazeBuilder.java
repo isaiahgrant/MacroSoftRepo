@@ -8,7 +8,7 @@
 public class MazeBuilder 
 {
 	TriviaFactoryDB triviaFactory = null;
-	Room [][] newMaze;
+	Room [][] newMaze = null;
 	
 	public MazeBuilder(Difficulty challenge)
 	{
@@ -33,7 +33,7 @@ public class MazeBuilder
 	
 	public Room [][] getNewMaze()
 	{
-		if(this.triviaFactory == null)
+		if(this.triviaFactory == null || this.newMaze == null)
 		{
 			System.out.println("The integrity of the Trivia Questions are challenged. You need to initialize (or reinitialize) this Maze Builder object.");
 			return new Room[1][2];
@@ -160,6 +160,9 @@ public class MazeBuilder
 				this.newMaze[i][j] = new Room(door1, door2, door3, door4);
 			}
 		}
+		
+		this.triviaFactory.closeFactory();
+		this.triviaFactory = null;
 		
 		return this.newMaze;
 	}

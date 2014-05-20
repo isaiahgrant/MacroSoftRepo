@@ -152,7 +152,28 @@ public class Maze {
 	public void getQuestion(Direction direction)
 	{
 		//TODO
-		System.out.println("Maze.getQuestion(): not yet implemented!");
+		//System.out.println("Maze.getQuestion(): not yet implemented!");
+		
+		//TEMP CODE
+		String question = "";
+		if(direction == Direction.UP)
+		{
+			question = this.rooms[this.player.getPlayerLocation().getRow() - 1][this.player.getPlayerLocation().getColumn()].getNorthDoor().getTriviaItem().getTrivia();
+		}
+		else if(direction == Direction.DOWN)
+		{
+			question = this.rooms[this.player.getPlayerLocation().getRow() + 1][this.player.getPlayerLocation().getColumn()].getNorthDoor().getTriviaItem().getTrivia();			
+		}
+		else if(direction == Direction.RIGHT)
+		{
+			question = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn() + 1].getNorthDoor().getTriviaItem().getTrivia();			
+		}
+		else if(direction == Direction.LEFT)
+		{
+			question = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn() - 1].getNorthDoor().getTriviaItem().getTrivia();		
+		}
+		System.out.println(question);
+		//END TEMP CODE
 	}
 	
 	//Returns true if it is possible to get to the exit of the maze
