@@ -21,16 +21,25 @@ public class Game
 		//TODO to test
 		//System.out.println("Game winnable:" + mainGame.gameWinnable());
 		
+
+		
 		while( !mainGame.gameFinished() /*&& mainGame.gameWinnable()*/ )
 		{
 			mainGame.processLogic();
 			mainGame.draw();
 		}
 		
-		if(!mainGame.gameWinnable())
+		if(mainGame.gameFinished())
+		{
+			System.out.println("Congratulations! You've won the game!");
+			System.out.println();
+			mainGame.printTrophy();
+		}
+		
+		/*if(!mainGame.gameWinnable())
 		{
 			System.out.println("Game Over. You can not win the game.");
-		}
+		}*/
 		
 		mainGame.cleanUp();
 	}
@@ -111,4 +120,30 @@ public class Game
 	{
 		this.input.cleanUp();
 	}
+	
+	public void printTrophy()
+	{
+		try{
+		Thread.sleep(200);
+		System.out.println(".-..-\"\"``\"\"-..-.");Thread.sleep(200);
+        System.out.println("|(`\\`'----'`/`)|");Thread.sleep(200);
+        System.out.println(" \\\\ ;:.    ; //");Thread.sleep(200);
+        System.out.println("  \\\\|%.    |//");Thread.sleep(200);
+        System.out.println("   )|%:    |(");Thread.sleep(200);
+        System.out.println(" ((,|%.    |,))");Thread.sleep(200);
+        System.out.println("  '-\\::.   /-'");Thread.sleep(200);
+        System.out.println("     '::..'");Thread.sleep(200);
+        System.out.println("       }{");Thread.sleep(200);
+        System.out.println("      {__} ");Thread.sleep(200);
+        System.out.println("     /    \\");Thread.sleep(200);
+        System.out.println("    |`----'|");Thread.sleep(200);
+        System.out.println("    | [#1] |");Thread.sleep(200);
+        System.out.println("    '.____.'");   Thread.sleep(200);  
+		}
+		catch(Exception error)
+		{
+			System.out.println("Thread sleep error");
+		}
+	}
+	
 }

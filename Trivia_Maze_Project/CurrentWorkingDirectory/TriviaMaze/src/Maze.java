@@ -37,18 +37,20 @@ public class Maze {
 		int y = this.player.getPlayerLocation().getRow();
 		if(x == 0 && direct.equals(Direction.LEFT))
 			return false;
-		else if(x == 5 && direct.equals(Direction.RIGHT))
+		else if(x == 2 && direct.equals(Direction.RIGHT))
 			return false;
 		else if(y == 0 && direct.equals(Direction.UP))
 			return false;
-		else if(y == 5 && direct.equals(Direction.DOWN))
+		else if(y == 2 && direct.equals(Direction.DOWN))
 			return false;
 		return true;
 	}
 	
 	boolean isValidAnswer(String answer)
 	{
-		return this.current_Door.getTriviaItem().getAnswer().equals(answer);
+		//TEMP CODE FOR PRESENTATION - REMOVE WHEN DONE
+		return true;
+		//return this.current_Door.getTriviaItem().getAnswer().equals(answer);
 	}
 	
 	void movePlayer(Direction direct)
@@ -104,6 +106,7 @@ public class Maze {
 			}
 		}
 
+		System.out.println();
 	}
 	
 	//this is my implementation with an array
@@ -133,12 +136,17 @@ public class Maze {
 	
 	public boolean isPlayerAtExit()
 	{
-		return false;
+		//TEMP CODE FOR PRESENTATION REMOVE WHEN NEEDED
+		return this.player.getPlayerLocation().getRow() == (this.rooms.length-1) &&
+				this.player.getPlayerLocation().getColumn() == (this.rooms.length-1);
+		
+		//END TEMP CODE
+		//return false;
 	}
 	
 	public boolean isCorrectAnswer(String answer)
 	{
-		return false;
+		return true;
 	}
 	
 	public void getQuestion(Direction direction)
