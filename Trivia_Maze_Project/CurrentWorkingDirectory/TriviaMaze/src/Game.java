@@ -9,9 +9,9 @@
 //High level handling of user input
 public class Game 
 {
-	private PlayerInput input;
-	private Maze gameMaze;
-	private MazeBuilder mazeBuilder;
+	protected PlayerInput input;
+	protected Maze gameMaze;
+	protected MazeBuilder mazeBuilder;
 	
 	public static void main(String[] args)
 	{
