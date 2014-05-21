@@ -109,6 +109,50 @@ public class Maze {
 		System.out.println();
 	}
 	
+	//DEBUGING MATERIAL
+	String drawMazeDebug()
+	{
+		int i, j;
+		
+		String result = "";
+		
+		for(i = 0; i < rooms.length; i++)
+		{
+			for(j = 0; j < rooms[i].length; j++)
+			{
+				if(i == 0)
+				{
+					result += " ___ ";
+				}
+			}
+			
+			result += "\n";
+			
+			for(j = 0; j < rooms[i].length; j++)
+			{
+				if(this.player.getPlayerLocation().getRow() == i && this.player.getPlayerLocation().getColumn() == j)//prints player location
+				{
+					result += "|" + "_P_" + "|";
+				}
+				
+				else if(i == rooms.length - 1 && j == rooms[i].length - 1)//prints exit location
+				{
+					result += "|" + "_X_" + "|";
+				}
+				
+				else
+				{
+					result +="|" + "___" + "|";
+				}
+			}
+		}
+
+		result += "\n";
+		
+		return result;
+	}
+	//END DEBUGING MATERIAL
+	
 	//this is my implementation with an array
 	void drawMazeArray()
 	{
@@ -149,7 +193,7 @@ public class Maze {
 		return true;
 	}
 	
-	public void getQuestion(Direction direction)
+	public String getQuestion(Direction direction)
 	{
 		//TODO
 		//System.out.println("Maze.getQuestion(): not yet implemented!");
@@ -173,6 +217,8 @@ public class Maze {
 			question = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn() - 1].getNorthDoor().getTriviaItem().getTrivia();		
 		}
 		System.out.println(question);
+		
+		return question;
 		//END TEMP CODE
 	}
 	
