@@ -25,6 +25,7 @@ public class GameGUI extends Game implements ActionListener
 	private JTextArea outputArea;
 	private JTextField inputArea;
 	private JPanel inputOutput;
+	private JButton submitAnswer;
 	
 	private JButton northButton;
 	private JButton eastButton;
@@ -33,6 +34,12 @@ public class GameGUI extends Game implements ActionListener
 	
 	private JPanel directionButtons;
 	
+	private GameState currentState;
+	
+	
+	//DEBUGING MATERIAL
+	private JButton drawASCIIMaze;
+	//END DEBUGING MATERIAL
 	
 	public GameGUI(int width, int height)
 	{
@@ -45,6 +52,14 @@ public class GameGUI extends Game implements ActionListener
 		this.setUpInputButtons();
 		this.setUpWindow();
 		//this.drawSomething();
+		
+		//DEBUGING MATERIAL
+		drawASCIIMaze = new JButton("Draw ASCII Maze");
+		drawASCIIMaze.addActionListener(this);
+		this.window.add(drawASCIIMaze, BorderLayout.CENTER);
+		//END DEBUGING MATERIAL
+		
+		currentState = GameState.GETTING_MOVEMENT_INPUT;
 	}
 	
 	private void setUpCanvas(int width, int height)
@@ -71,9 +86,13 @@ public class GameGUI extends Game implements ActionListener
 		this.inputArea = new JTextField(16);
 		this.inputArea.setBackground(Color.WHITE);
 		
+		this.submitAnswer = new JButton("Submit Answer");
+		this.submitAnswer.addActionListener(this);
+		
 		this.inputOutput = new JPanel(new BorderLayout());
 		this.inputOutput.add(outputArea, BorderLayout.NORTH);
-		this.inputOutput.add(inputArea, BorderLayout.SOUTH);
+		this.inputOutput.add(inputArea, BorderLayout.CENTER);
+		this.inputOutput.add(submitAnswer, BorderLayout.SOUTH);
 		
 
 		//this.inputOutput.setPreferredSize(new Dimension(150, 160));
@@ -138,32 +157,96 @@ public class GameGUI extends Game implements ActionListener
 	{
 		if(event.getSource() == this.northButton)
 		{
-			JOptionPane.showMessageDialog(null, "North");
+			this.processInput(Direction.UP);
 		}
 		else if(event.getSource() == this.eastButton)
 		{
-			JOptionPane.showMessageDialog(null, "East");
+			this.processInput(Direction.RIGHT);
 		}
 		else if(event.getSource() == this.southButton)
 		{
-			JOptionPane.showMessageDialog(null, "South");
+			this.processInput(Direction.DOWN);
 		}
 		else if(event.getSource() == this.westButton)
 		{
-			JOptionPane.showMessageDialog(null, "West");
+			this.processInput(Direction.LEFT);
 		}
+		else if(event.getSource() == this.submitAnswer)
+		{
+			this.processInput();
+		}
+		
+		//DEBUGING MATERIAL
+		else if(event.getSource() == this.drawASCIIMaze)
+		{
+			this.setOutputText(this.gameMaze.drawMazeDebug());
+		}	
+		//END DEBUGING MATERIAL
 	}
 	
 	
 	//Processes movement
 	public void processInput(Direction direction)
 	{
-		//TODO
+		if(this.currentState == GameState.GETTING_MOVEMENT_INPUT)
+		{
+			if(this.gameMaze.isValidMove(direction))
+			{
+				String question = "In which country is the city of Dzambul located?";//this.gameMaze.getQuestion(direction);
+				this.setOutputText(question);
+				
+				this.currentState = GameState.GETTING_QUESTION_ANSWER;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "You can't move there.");
+			}
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Please answer the question before trying to move.");
+		}
 	}
 	
 	//Processes answering a question
-	public void processInput(String answer)
+	public void processInput()
 	{
-		
+		if(this.currentState == GameState.GETTING_QUESTION_ANSWER)
+		{
+			String answer = this.getAnswerToQuestion();
+			
+			if(this.gameMaze.isValidAnswer(answer))
+			{
+				JOptionPane.showMessageDialog(null, "NEED TO PROCESS ANSWER AND INDICATE THAT PLAYER WAS RIGHT OR WRONG.");
+				
+				this.clearInputOutputText();
+				this.currentState = GameState.GETTING_MOVEMENT_INPUT;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "That is not a valid answer.");
+			}
+			
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "There is no question to answer right now.");
+		}
+	}
+	
+	private void setOutputText(String message)
+	{
+		this.outputArea.setText(message);
+	}
+	
+	private String getAnswerToQuestion()
+	{
+		return this.inputArea.getText();
+	}
+	
+	private void clearInputOutputText()
+	{
+		this.outputArea.setText("");
+		this.inputArea.setText("");
 	}
 }
