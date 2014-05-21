@@ -206,15 +206,15 @@ public class Maze {
 		}
 		else if(direction == Direction.DOWN)
 		{
-			question = this.rooms[this.player.getPlayerLocation().getRow() + 1][this.player.getPlayerLocation().getColumn()].getNorthDoor().getTriviaItem().getTrivia();			
-		}
+			question = this.rooms[this.player.getPlayerLocation().getRow() + 1][this.player.getPlayerLocation().getColumn()].getSouthDoor().getTriviaItem().getTrivia();			
+		}  
 		else if(direction == Direction.RIGHT)
 		{
-			question = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn() + 1].getNorthDoor().getTriviaItem().getTrivia();			
+			question = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn() + 1].getEastDoor().getTriviaItem().getTrivia();			
 		}
 		else if(direction == Direction.LEFT)
 		{
-			question = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn() - 1].getNorthDoor().getTriviaItem().getTrivia();		
+			question = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn() - 1].getWestDoor().getTriviaItem().getTrivia();		
 		}
 		System.out.println(question);
 		
