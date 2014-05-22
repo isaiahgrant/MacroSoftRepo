@@ -220,19 +220,19 @@ public class Maze {
 		{
 		if(direction == Direction.UP)
 		{
-			question = currentRoom.getNorthDoor().getTriviaItem().getTrivia();
+			question = currentRoom.getNorthDoor().getTriviaItem().askQuestion();
 		}
 		else if(direction == Direction.DOWN)
 		{
-			question = currentRoom.getSouthDoor().getTriviaItem().getTrivia();			
+			question = currentRoom.getSouthDoor().getTriviaItem().askQuestion();			
 		}  
 		else if(direction == Direction.RIGHT)
 		{
-			question = currentRoom.getEastDoor().getTriviaItem().getTrivia();			
+			question = currentRoom.getEastDoor().getTriviaItem().askQuestion();			
 		}
 		else if(direction == Direction.LEFT)
 		{
-			question = currentRoom.getWestDoor().getTriviaItem().getTrivia();		
+			question = currentRoom.getWestDoor().getTriviaItem().askQuestion();		
 		}
 		System.out.println(question);
 		}

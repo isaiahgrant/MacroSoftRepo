@@ -15,7 +15,30 @@ public class MazeGUI extends Maze
 	
 	public void draw(Graphics brush)
 	{
-		brush.setColor(Color.BLUE);
-		brush.drawOval(50, 50, 300, 200);
+		int i, j, roomOffset;
+		roomOffset = 30;
+		
+		
+		for(i = 0; i < rooms.length; i++)
+		{
+			for(j = 0; j < rooms[i].length; j++)
+			{
+				brush.setColor(Color.BLUE);
+				brush.drawRect(i * roomOffset, j * roomOffset, 30, 30);
+				//if(i != 0 && j != 0)
+				//{
+				if(i > 0 && i < rooms.length)
+				{
+					brush.fillRect((i * roomOffset) - 3 , (j * roomOffset) + 7, 6, 15);
+				}
+				
+				if(j > 0 && j < rooms.length)
+				{
+					brush.fillRect((i * roomOffset) + 7, (j * roomOffset) - 3, 15, 6);
+				}
+				//}
+			}
+		}
+		
 	}
 }
