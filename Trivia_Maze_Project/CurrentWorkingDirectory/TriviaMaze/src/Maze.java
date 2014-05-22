@@ -53,6 +53,26 @@ public class Maze {
 		//return this.current_Door.getTriviaItem().getAnswer().equals(answer);
 	}
 	
+	boolean isCorrectAnswer(String answer)
+	{
+		return this.current_Door.getTriviaItem().getAnswer().equals(answer);	
+	}
+	
+	void processAnswer(String answer)
+	{
+		this.player.increaseTotalQuestionsAnsweredByOne();
+		if(this.isCorrectAnswer(answer))
+		{
+			this.player.increaseQuestionsAnsweredByOne();
+			this.current_Door.unlockDoor();
+			movePlayer(Direction.UP);
+		}
+		else
+		{
+			this.current_Door.lockDoor();
+		}
+	}
+	
 	void movePlayer(Direction direct)
 	{
 		if(direct == Direction.UP)
@@ -186,11 +206,6 @@ public class Maze {
 		
 		//END TEMP CODE
 		//return false;
-	}
-	
-	public boolean isCorrectAnswer(String answer)
-	{
-		return true;
 	}
 	
 	public String getQuestion(Direction direction)
