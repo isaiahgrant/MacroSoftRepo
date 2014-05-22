@@ -215,24 +215,31 @@ public class Maze {
 		
 		//TEMP CODE
 		String question = "";
+		Room currentRoom = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn()];
+		try
+		{
 		if(direction == Direction.UP)
 		{
-			question = this.rooms[this.player.getPlayerLocation().getRow() - 1][this.player.getPlayerLocation().getColumn()].getNorthDoor().getTriviaItem().getTrivia();
+			question = currentRoom.getNorthDoor().getTriviaItem().getTrivia();
 		}
 		else if(direction == Direction.DOWN)
 		{
-			question = this.rooms[this.player.getPlayerLocation().getRow() + 1][this.player.getPlayerLocation().getColumn()].getSouthDoor().getTriviaItem().getTrivia();			
+			question = currentRoom.getSouthDoor().getTriviaItem().getTrivia();			
 		}  
 		else if(direction == Direction.RIGHT)
 		{
-			question = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn() + 1].getEastDoor().getTriviaItem().getTrivia();			
+			question = currentRoom.getEastDoor().getTriviaItem().getTrivia();			
 		}
 		else if(direction == Direction.LEFT)
 		{
-			question = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn() - 1].getWestDoor().getTriviaItem().getTrivia();		
+			question = currentRoom.getWestDoor().getTriviaItem().getTrivia();		
 		}
 		System.out.println(question);
-		
+		}
+		catch(Exception e)
+		{
+			question = "Error: question was not found! Maybe the trivia factory ran out of questions!";
+		}
 		return question;
 		//END TEMP CODE
 	}

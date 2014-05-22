@@ -91,7 +91,7 @@ public class MazeBuilder
 		
 		/* Top Boundary */
 		door1 = new NullDoor();
-		for(int j = 1; j < this.newMaze[0].length - 2; j++)
+		for(int j = 1; j < this.newMaze[0].length - 1; j++)
 		{
 			i2 = this.triviaFactory.getTriviaItem();
 			door2 = new Door(i2);
@@ -104,7 +104,7 @@ public class MazeBuilder
 		
 		/* Left Boundary */
 		door4 = new NullDoor();
-		for(int i = 1; i < this.newMaze.length - 2;i++)
+		for(int i = 1; i < this.newMaze.length - 1;i++)
 		{
 			i1 = this.triviaFactory.getTriviaItem();
 			door1 = new Door(i1);
@@ -118,7 +118,7 @@ public class MazeBuilder
 		
 		/* Right Boundary */
 		door3 = new NullDoor();
-		for(int i = 1; i < this.newMaze.length - 2;i++)
+		for(int i = 1; i < this.newMaze.length - 1;i++)
 		{
 			i1 = this.triviaFactory.getTriviaItem();
 			door1 = new Door(i1);
@@ -132,7 +132,7 @@ public class MazeBuilder
 		
 		/* Bottom Boundary */
 		door2 = new NullDoor();
-		for(int j = 1; j < this.newMaze[0].length - 2;j++)
+		for(int j = 1; j < this.newMaze[0].length - 1;j++)
 		{
 			i1 = this.triviaFactory.getTriviaItem();
 			door1 = new Door(i1);
@@ -145,9 +145,9 @@ public class MazeBuilder
 		}
 		
 		/* Fill the rest */
-		for(int i = 1; i < this.newMaze.length - 2; i++)
+		for(int i = 1; i < this.newMaze.length - 1; i++)
 		{
-			for(int j = 1; j < this.newMaze[i].length - 2; j++)
+			for(int j = 1; j < this.newMaze[i].length - 1; j++)
 			{
 				i1 = this.triviaFactory.getTriviaItem();
 				door1 = new Door(i1);
