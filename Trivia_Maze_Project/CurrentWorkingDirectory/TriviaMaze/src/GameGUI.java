@@ -10,11 +10,11 @@ import javax.swing.*;
 
 //TODO - dynamic sizing of components.
 
-public class GameGUI extends Game implements ActionListener
+public class GameGUI extends Game implements ActionListener, GamePortion
 {
 	/*public static void main(String[] args)
 	{
-		GameGUI mainGame = new GameGUI(800, 500);
+		GameGUI mainGame = new GameGUI(800, 650);
 		mainGame.draw();
 	}*/
 	
@@ -41,9 +41,9 @@ public class GameGUI extends Game implements ActionListener
 	private JButton drawASCIIMaze;
 	//END DEBUGING MATERIAL
 	
-	public GameGUI(int width, int height)
+	public GameGUI(int width, int height, Difficulty difficulty, ActionListener listener)
 	{
-		//super();
+		super();
 		
 		this.gameMaze = new MazeGUI(new Player("Sven"));
 
@@ -59,6 +59,7 @@ public class GameGUI extends Game implements ActionListener
 		this.window.add(drawASCIIMaze, BorderLayout.CENTER);
 		//END DEBUGING MATERIAL
 		
+		this.draw();
 		currentState = GameState.GETTING_MOVEMENT_INPUT;
 	}
 	
@@ -149,8 +150,9 @@ public class GameGUI extends Game implements ActionListener
 		//Need to figure out inheritance hierarchy - obviously 
 		//there is no draw(Graphics pen method in the ASCII version)
 		this.brush.setColor(Color.CYAN);
-		this.brush.fillRect(0, 0, this.window.getWidth(), this.window.getHeight());
+		this.brush.fillRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
 		((MazeGUI)this.gameMaze).draw(this.brush);
+		this.canvas.repaint();
 	}
 
 	public void actionPerformed(ActionEvent event)
@@ -206,6 +208,8 @@ public class GameGUI extends Game implements ActionListener
 		{
 			JOptionPane.showMessageDialog(null, "Please answer the question before trying to move.");
 		}
+		
+		this.draw();
 	}
 	
 	//Processes answering a question
@@ -248,5 +252,11 @@ public class GameGUI extends Game implements ActionListener
 	{
 		this.outputArea.setText("");
 		this.inputArea.setText("");
+	}
+	
+	@Override
+	public void close() 
+	{
+		this.window.dispose();
 	}
 }
