@@ -18,6 +18,12 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		mainGame.draw();
 	}*/
 	
+	/*public static void main(String[] args)
+	{
+		GameGUI mainGame = new GameGUI(800, 650, Difficulty.EASY);
+		mainGame.draw();
+	}*/
+	
 	private JFrame window;
 	private JPanel canvas;
 	private Graphics brush;
@@ -42,6 +48,7 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 	//END DEBUGING MATERIAL
 	
 	public GameGUI(int width, int height, Difficulty difficulty, ActionListener listener)
+//	public GameGUI(int width, int height, Difficulty difficulty)
 	{
 		super();
 		
