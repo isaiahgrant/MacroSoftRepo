@@ -50,4 +50,15 @@ public class Door
 	{
 		this.triviaItem = trivia;
 	}
+	
+	public boolean getIsAttempted() 
+	{
+		return isAttempted;
+	}
+
+	public void setIsAttempted(boolean isAttempted) 
+	{
+		this.isAttempted = isAttempted;
+	}
+
 }
