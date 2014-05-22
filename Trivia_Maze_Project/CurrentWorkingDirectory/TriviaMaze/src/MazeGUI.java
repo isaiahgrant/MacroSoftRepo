@@ -25,8 +25,6 @@ public class MazeGUI extends Maze
 			{
 				brush.setColor(Color.BLUE);
 				brush.drawRect(i * roomOffset, j * roomOffset, 30, 30);
-				//if(i != 0 && j != 0)
-				//{
 				if(i > 0 && i < rooms.length)
 				{
 					brush.fillRect((i * roomOffset) - 3 , (j * roomOffset) + 7, 6, 15);
@@ -36,9 +34,11 @@ public class MazeGUI extends Maze
 				{
 					brush.fillRect((i * roomOffset) + 7, (j * roomOffset) - 3, 15, 6);
 				}
-				//}
+				
 			}
+			
 		}
 		
 	}
+	
 }
