@@ -51,18 +51,10 @@ public class Game
 		this.input = new PlayerInput();
 		
 		String playerName = "Sven";//input.getPlayerName();
-		
-		Player mainPlayer = new Player(playerName);
-		
-		this.gameMaze = new Maze(mainPlayer);
-		
-		//TEMP CODE
-		/* This should probably be handled in some fashion within the Maze class (maybe new constructor?) */
-		this.mazeBuilder = new MazeBuilder(Difficulty.EASY);
-		this.gameMaze.rooms = this.mazeBuilder.getNewMaze();
-		this.gameMaze.entrance = this.gameMaze.rooms[0][0];
-		this.gameMaze.exit = this.gameMaze.rooms[this.gameMaze.rooms.length - 1][this.gameMaze.rooms[0].length - 1];
-		//END TEMP CODE
+
+		this.mazeBuilder = new MazeBuilder(playerName,Difficulty.EASY);
+		this.gameMaze = this.mazeBuilder.getNewMaze();
+
 	}
 	
 	

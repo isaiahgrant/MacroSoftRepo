@@ -83,7 +83,8 @@ public class MazeBuilder
 				this.newRooms[i][j] = new Room(door1,door2,door3,door4);
 			}//end inner for
 		}//end outer for
-		
+		this.triviaFactory.closeFactory();
+		this.triviaFactory = null;
 		Player thisPlayer = new Player(this.newPlayerName);
 		return new Maze(thisPlayer, this.newRooms);
 	}
