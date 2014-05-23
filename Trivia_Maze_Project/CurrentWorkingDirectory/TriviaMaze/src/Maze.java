@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  * @author ajohnston
  *
@@ -344,4 +347,39 @@ public class Maze {
 	}
 	
 	//END The *****PathValid methods 
+	
+	
+	public void draw(Graphics brush)
+	{
+		int i, j, roomOffset;
+		roomOffset = 30;
+		
+		
+		for(i = 0; i < rooms.length; i++)
+		{
+			for(j = 0; j < rooms[i].length; j++)
+			{
+				brush.setColor(Color.BLUE);
+				brush.drawRect(i * roomOffset, j * roomOffset, 30, 30);
+				if(i > 0 && i < rooms.length)
+				{
+					if(rooms[i][j].getEastDoor().getIsAttempted())
+					{
+						brush.setColor(Color.GREEN);
+					}
+					brush.fillRect((i * roomOffset) - 3 , (j * roomOffset) + 7, 6, 15);
+				}
+				
+				if(j > 0 && j < rooms.length)
+				{
+					
+					brush.setColor(Color.GREEN);
+					brush.fillRect((i * roomOffset) + 7, (j * roomOffset) - 3, 15, 6);
+				}
+				
+			}
+			
+		}
+		
+	}
 }

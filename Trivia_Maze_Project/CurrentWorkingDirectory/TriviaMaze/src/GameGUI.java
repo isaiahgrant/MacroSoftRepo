@@ -50,18 +50,6 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 	public GameGUI(int width, int height, Difficulty difficulty, ActionListener listener)
 	{
 		super();
-		
-		this.gameMaze = new MazeGUI(new Player("Sven"));
-		
-		//TEMP CODE
-		/* This should probably be handled in some fashion within the Maze class (maybe new constructor?) */
-		this.mazeBuilder = new MazeBuilder(Difficulty.EASY);
-		this.gameMaze.rooms = this.mazeBuilder.getNewMaze();
-		this.gameMaze.entrance = this.gameMaze.rooms[0][0];
-		this.gameMaze.exit = this.gameMaze.rooms[this.gameMaze.rooms.length - 1][this.gameMaze.rooms[0].length - 1];
-		//END TEMP CODE
-
-		
 
 		this.setUpCanvas(width, height);
 		this.setUpTextInputOutput();
@@ -167,7 +155,7 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		//there is no draw(Graphics pen method in the ASCII version)
 		this.brush.setColor(Color.CYAN);
 		this.brush.fillRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
-		((MazeGUI)this.gameMaze).draw(this.brush);
+		this.gameMaze.draw(this.brush);
 		this.canvas.repaint();
 	}
 

@@ -50,7 +50,7 @@ public class Game
 	{
 		this.input = new PlayerInput();
 		
-		String playerName = input.getPlayerName();
+		String playerName = "Sven";//input.getPlayerName();
 		
 		Player mainPlayer = new Player(playerName);
 		

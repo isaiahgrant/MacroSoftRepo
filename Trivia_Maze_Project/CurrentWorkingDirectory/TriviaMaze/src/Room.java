@@ -1,3 +1,5 @@
+import java.awt.Graphics;
+
 /*
  * Developed By: Isaiah Grant
  * This class serves as a data wrapper for 4 Door objects. At this point it has no functionality / behaviours other than
@@ -64,5 +66,10 @@ public class Room
 	public void setWestDoor(Door door)
 	{
 		this.westDoor = door;
+	}
+	
+	public void draw(Graphics brush)
+	{
+		//TODO
 	}
 }
