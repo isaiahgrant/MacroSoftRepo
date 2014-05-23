@@ -208,7 +208,7 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		{
 			if(this.gameMaze.isValidMove(direction))
 			{
-				String question = "In which country is the city of Dzambul located?";//this.gameMaze.getQuestion(direction);
+				String question = this.gameMaze.getQuestion(direction);
 				this.setOutputText(question);
 				
 				this.currentState = GameState.GETTING_QUESTION_ANSWER;
@@ -235,8 +235,7 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 			
 			if(this.gameMaze.isValidAnswer(answer))
 			{
-				JOptionPane.showMessageDialog(null, "NEED TO PROCESS ANSWER AND INDICATE THAT PLAYER WAS RIGHT OR WRONG.");
-				
+				this.gameMaze.processAnswer(answer);
 				this.clearInputOutputText();
 				this.currentState = GameState.GETTING_MOVEMENT_INPUT;
 			}
@@ -250,6 +249,8 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		{
 			JOptionPane.showMessageDialog(null, "There is no question to answer right now.");
 		}
+		
+		this.draw();
 	}
 	
 	private void setOutputText(String message)

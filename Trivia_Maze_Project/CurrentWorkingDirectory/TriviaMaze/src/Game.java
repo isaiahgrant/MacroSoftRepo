@@ -93,13 +93,7 @@ public class Game
 				answer = this.input.getAnswerToQuestion();
 			}
 			
-			
-			//TODO - How does maze do its processing, knowing the player has gotten
-			//The answer right?
-			if(this.gameMaze.isCorrectAnswer(answer))
-			{
-				this.gameMaze.movePlayer(directionToMove);
-			}
+			this.gameMaze.processAnswer(answer);
 		}
 		else
 		{
