@@ -7,16 +7,16 @@
  */
 public class Maze {
 
-	Room[][] rooms;
-	int[][] simpleMaze; //Only used in isWinnable() method.
-	Room entrance;
-	Room exit;
-	Door current_Door;
-	Player player;
+	private Room[][] rooms;
+	private int[][] simpleMaze; //Only used in isWinnable() method.
+	private Room entrance;
+	private Room exit;
+	private Door current_Door;
+	private Player player;
 	
-	public Maze(Player p1)
+	public Maze(Player p1, Room[][] newRooms)
 	{
-		this.rooms = generateMaze();
+		this.rooms = newRooms;
 		this.current_Door = null;
 		this.entrance = rooms[0][0];
 		this.exit = rooms[2][2];
@@ -35,8 +35,9 @@ public class Maze {
 	{
 		int x = this.player.getPlayerLocation().getColumn();
 		int y = this.player.getPlayerLocation().getRow();
-		if(x == 0 && direct.equals(Direction.LEFT))
-			return false;
+		Room curRoom = this.rooms[x][y];
+		if(direct.equals(Direction.LEFT) && curRoom.getWestDoor().isLocked())
+			;
 		else if(x == 2 && direct.equals(Direction.RIGHT))
 			return false;
 		else if(y == 0 && direct.equals(Direction.UP))
