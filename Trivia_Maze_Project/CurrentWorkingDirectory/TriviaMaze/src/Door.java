@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
 /*
  * Developed By: Isaiah Grant
  * The purpose of this class is to allow access to a given triviaItem
@@ -59,6 +62,43 @@ public class Door
 	public void setIsAttempted(boolean isAttempted) 
 	{
 		this.isAttempted = isAttempted;
+	}
+	
+	
+	public void draw(int x, int y, int roomSize, Direction direction, Graphics brush)
+	{
+		int doorThickness = 4;
+		int doorWidth = roomSize / 2;
+		
+		if(direction == Direction.RIGHT)
+		{
+			if(this.isAttempted)
+			{
+				brush.setColor(Color.red);
+				brush.fillRect(x, y, doorThickness, doorWidth);
+			}
+			
+			else
+			{
+				brush.setColor(Color.black);
+				brush.fillRect(x, y, doorThickness, doorWidth);
+			}
+		}		
+		
+		if(direction == Direction.DOWN)
+		{
+			if(this.isAttempted)
+			{
+				brush.setColor(Color.red);
+				brush.fillRect(x, y, doorWidth,doorThickness);
+			}
+			
+			else
+			{
+				brush.setColor(Color.black);
+				brush.fillRect(x, y, doorWidth,doorThickness);
+			}
+		}
 	}
 
 }

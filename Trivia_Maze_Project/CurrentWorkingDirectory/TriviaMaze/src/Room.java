@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 
 /*
@@ -68,8 +69,21 @@ public class Room
 		this.westDoor = door;
 	}
 	
-	public void draw(Graphics brush)
+	public void draw(int x, int y, int roomSize, Graphics brush)
 	{
-		//TODO
+		int doorThickness = 4;
+		brush.setColor(Color.blue);
+		brush.drawRect(x, y, roomSize, roomSize);
+		
+		if(!this.eastDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
+		{
+			this.eastDoor.draw(x + (roomSize - (doorThickness / 2)), y + (roomSize / 4), roomSize, Direction.RIGHT, brush);
+		}
+		
+		if(!this.southDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
+		{
+			this.southDoor.draw(x + (roomSize / 4), y + (roomSize - (doorThickness / 2)), roomSize, Direction.DOWN, brush);
+		}
+		
 	}
 }
