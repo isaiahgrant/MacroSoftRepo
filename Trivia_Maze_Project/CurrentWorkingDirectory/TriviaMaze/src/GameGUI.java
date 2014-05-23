@@ -48,11 +48,8 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 	//END DEBUGING MATERIAL
 	
 	public GameGUI(int width, int height, Difficulty difficulty, ActionListener listener)
-//	public GameGUI(int width, int height, Difficulty difficulty)
 	{
 		super();
-		
-		this.gameMaze = new MazeGUI(new Player("Sven"));
 
 		this.setUpCanvas(width, height);
 		this.setUpTextInputOutput();
@@ -158,7 +155,7 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		//there is no draw(Graphics pen method in the ASCII version)
 		this.brush.setColor(Color.CYAN);
 		this.brush.fillRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
-		((MazeGUI)this.gameMaze).draw(this.brush);
+		this.gameMaze.draw(this.brush);
 		this.canvas.repaint();
 	}
 
@@ -201,7 +198,7 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		{
 			if(this.gameMaze.isValidMove(direction))
 			{
-				String question = "In which country is the city of Dzambul located?";//this.gameMaze.getQuestion(direction);
+				String question = this.gameMaze.getQuestion(direction);
 				this.setOutputText(question);
 				
 				this.currentState = GameState.GETTING_QUESTION_ANSWER;
@@ -228,8 +225,7 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 			
 			if(this.gameMaze.isValidAnswer(answer))
 			{
-				JOptionPane.showMessageDialog(null, "NEED TO PROCESS ANSWER AND INDICATE THAT PLAYER WAS RIGHT OR WRONG.");
-				
+				this.gameMaze.processAnswer(answer);
 				this.clearInputOutputText();
 				this.currentState = GameState.GETTING_MOVEMENT_INPUT;
 			}
@@ -243,6 +239,8 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		{
 			JOptionPane.showMessageDialog(null, "There is no question to answer right now.");
 		}
+		
+		this.draw();
 	}
 	
 	private void setOutputText(String message)

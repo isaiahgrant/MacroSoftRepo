@@ -27,11 +27,17 @@ public class MazeGUI extends Maze
 				brush.drawRect(i * roomOffset, j * roomOffset, 30, 30);
 				if(i > 0 && i < rooms.length)
 				{
+					if(rooms[i][j].getEastDoor().getIsAttempted())
+					{
+						brush.setColor(Color.GREEN);
+					}
 					brush.fillRect((i * roomOffset) - 3 , (j * roomOffset) + 7, 6, 15);
 				}
 				
 				if(j > 0 && j < rooms.length)
 				{
+					
+					brush.setColor(Color.GREEN);
 					brush.fillRect((i * roomOffset) + 7, (j * roomOffset) - 3, 15, 6);
 				}
 				

@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
 /*
  * Developed By: Isaiah Grant
  * This class serves as a data wrapper for 4 Door objects. At this point it has no functionality / behaviours other than
@@ -64,5 +67,23 @@ public class Room
 	public void setWestDoor(Door door)
 	{
 		this.westDoor = door;
+	}
+	
+	public void draw(int x, int y, int roomSize, Graphics brush)
+	{
+		int doorThickness = 4;
+		brush.setColor(Color.blue);
+		brush.drawRect(x, y, roomSize, roomSize);
+		
+		if(!this.eastDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
+		{
+			this.eastDoor.draw(x + (roomSize - (doorThickness / 2)), y + (roomSize / 4), roomSize, Direction.RIGHT, brush);
+		}
+		
+		if(!this.southDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
+		{
+			this.southDoor.draw(x + (roomSize / 4), y + (roomSize - (doorThickness / 2)), roomSize, Direction.DOWN, brush);
+		}
+		
 	}
 }

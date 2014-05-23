@@ -50,7 +50,7 @@ public class Game
 	{
 		this.input = new PlayerInput();
 		
-		String playerName = input.getPlayerName();
+		String playerName = "Sven";//input.getPlayerName();
 		
 		Player mainPlayer = new Player(playerName);
 		
@@ -93,18 +93,12 @@ public class Game
 				answer = this.input.getAnswerToQuestion();
 			}
 			
-			
-			//TODO - How does maze do its processing, knowing the player has gotten
-			//The answer right?
-			if(this.gameMaze.isCorrectAnswer(answer))
-			{
-				this.gameMaze.movePlayer(directionToMove);
-			}
+			this.gameMaze.processAnswer(answer);
 		}
 		else
 		{
 			System.out.println("You can't move there.");
-		}		
+		}
 	}
 	
 	public void draw()

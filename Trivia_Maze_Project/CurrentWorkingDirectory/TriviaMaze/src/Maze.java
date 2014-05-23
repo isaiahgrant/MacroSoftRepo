@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  * @author ajohnston
  *
@@ -345,4 +348,22 @@ public class Maze {
 	}
 	
 	//END The *****PathValid methods 
+	
+	
+	public void draw(Graphics brush)
+	{
+		int i, j, roomSize;
+		roomSize = 60;
+		
+		
+		for(i = 0; i < rooms.length; i++)
+		{
+			for(j = 0; j < rooms[i].length; j++)
+			{
+				rooms[i][j].draw(j * roomSize, i * roomSize, roomSize, brush);		
+			}
+			
+		}
+		
+	}//END draw
 }

@@ -194,7 +194,7 @@ public class MazeBuilder
 			i1 = this.triviaFactory.getTriviaItem();
 			door1 = new Door(i1);
 			i3 = this.triviaFactory.getTriviaItem();
-			door2 = new Door(i3);
+			door3 = new Door(i3);
 			i4 = this.triviaFactory.getTriviaItem();
 			door4 = new Door(i4);
 			
