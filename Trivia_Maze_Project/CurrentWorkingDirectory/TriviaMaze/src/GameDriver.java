@@ -8,10 +8,10 @@ import java.awt.event.*;
 
 public class GameDriver implements ActionListener
 {
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		GameDriver game = new GameDriver();
-	}
+	}*/
 	
 	private GamePortion currentGamePart;
 	
