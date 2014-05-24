@@ -10,12 +10,12 @@ public class MazeGUI extends Maze
 {
 	public MazeGUI(Player p1)
 	{
-		super(p1);
+		super(p1, null);
 	}
 	
 	public void draw(Graphics brush)
 	{
-		int i, j, roomOffset;
+		/*int i, j, roomOffset;
 		roomOffset = 30;
 		
 		
@@ -43,7 +43,7 @@ public class MazeGUI extends Maze
 				
 			}
 			
-		}
+		}*/
 		
 	}
 	
