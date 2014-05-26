@@ -6,6 +6,7 @@
 
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -21,7 +22,7 @@ public class NewGameGUI implements GamePortion
 	
 	private JFrame window;
 	
-	public NewGameGUI(ActionListener endNewGame)
+	public NewGameGUI(int width, int height, ActionListener endNewGame)
 	{	
 		this.nameLabel = new JLabel("Name");
 		
@@ -38,7 +39,9 @@ public class NewGameGUI implements GamePortion
 		this.window.add(this.nameField, BorderLayout.CENTER);
 		this.window.add(this.difficultyLabel, BorderLayout.EAST);
 		this.window.add(this.launchGame, BorderLayout.NORTH);
-		this.window.pack();
+		
+		this.window.setSize( new Dimension(width, height) );
+		this.window.setLocation(50, 50); //Reconfigure to be as centered as possible
 		this.window.setVisible(true);
 	}
 	

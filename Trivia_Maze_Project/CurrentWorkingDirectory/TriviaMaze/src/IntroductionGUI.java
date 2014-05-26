@@ -14,12 +14,12 @@ public class IntroductionGUI implements ActionListener, GamePortion
 {
 	private BufferedImage mainPicture;
 	private JButton newGame; 
-	private JButton loadGame; //If there's time.
+	private JButton loadGame; //If there is time.
 	private JButton help;
 	
 	private JFrame window;
 	
-	public IntroductionGUI(ActionListener endIntro)
+	public IntroductionGUI(int width, int height, ActionListener endIntro)
 	{
 		this.newGame = new JButton("Start New Game");
 		this.newGame.addActionListener(endIntro);
@@ -40,7 +40,10 @@ public class IntroductionGUI implements ActionListener, GamePortion
 		this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.window.setLayout(new BorderLayout());
 		this.window.add(buttonContainer, BorderLayout.SOUTH);
-		this.window.pack();
+		
+		
+		this.window.setSize( new Dimension(width, height) );
+		this.window.setLocation(50, 50); //Reconfigure to be as centered as possible
 		this.window.setVisible(true);
 	}
 	

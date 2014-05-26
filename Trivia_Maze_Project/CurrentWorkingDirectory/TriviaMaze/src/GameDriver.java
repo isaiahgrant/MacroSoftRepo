@@ -8,6 +8,9 @@ import java.awt.event.*;
 
 public class GameDriver implements ActionListener
 {
+	public static final int DEFAULT_WIDTH = 800;
+	public static final int DEFAULT_HEIGHT = 650;
+	
 	public static void main(String[] args)
 	{
 		GameDriver game = new GameDriver();
@@ -17,7 +20,7 @@ public class GameDriver implements ActionListener
 	
 	public GameDriver()
 	{
-		this.currentGamePart = new IntroductionGUI(this);
+		this.currentGamePart = new IntroductionGUI(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
 	}
 	
 	@Override
@@ -27,12 +30,20 @@ public class GameDriver implements ActionListener
 		
 		if( this.currentGamePart.getClass().getSimpleName().equals("IntroductionGUI") )
 		{
-			this.currentGamePart = new NewGameGUI(this);
+			this.currentGamePart = new NewGameGUI(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
 		}
 		else if( this.currentGamePart.getClass().getSimpleName().equals("NewGameGUI") )
 		{
 			//Get player name and difficulty from NewGameGUI here
-			this.currentGamePart = new GameGUI(800, 650, Difficulty.EASY, this);
+			this.currentGamePart = new GameGUI(DEFAULT_WIDTH,DEFAULT_HEIGHT, Difficulty.EASY, this);
+		}
+		else if(this.currentGamePart.getClass().getSimpleName().equals("GameGUI"))
+		{
+			this.currentGamePart = new GameOver(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
+		}
+		else if(this.currentGamePart.getClass().getSimpleName().equals("GameOver"))
+		{
+			this.currentGamePart = new NewGameGUI(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
 		}
 	}
 }

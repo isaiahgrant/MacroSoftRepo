@@ -45,22 +45,30 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 	
 	//DEBUGING MATERIAL
 	private JButton drawASCIIMaze;
+	private JButton endGame;
 	//END DEBUGING MATERIAL
 	
 	public GameGUI(int width, int height, Difficulty difficulty, ActionListener listener)
 	{
 		super();
 
-		this.setUpCanvas(width, height);
+		int canvasWidth = width;
+		int canvasHeight = height * 2 / 3;
+		
+		this.setUpCanvas(canvasWidth, canvasHeight);
 		this.setUpTextInputOutput();
 		this.setUpInputButtons();
-		this.setUpWindow();
+		this.setUpWindow(width, height);
 		//this.drawSomething();
 		
 		//DEBUGING MATERIAL
 		drawASCIIMaze = new JButton("Draw ASCII Maze");
 		drawASCIIMaze.addActionListener(this);
 		this.window.add(drawASCIIMaze, BorderLayout.CENTER);
+		
+		endGame = new JButton("End Game");
+		endGame.addActionListener(listener);
+		this.window.add(endGame, BorderLayout.SOUTH);
 		//END DEBUGING MATERIAL
 		
 		this.draw();
@@ -114,17 +122,15 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		this.westButton = new JButton("W");
 		this.westButton.addActionListener(this);
 		
-		
 		this.directionButtons = new JPanel(new BorderLayout());
 		
 		this.directionButtons.add(this.northButton, BorderLayout.NORTH);
 		this.directionButtons.add(this.eastButton, BorderLayout.EAST);
 		this.directionButtons.add(this.southButton, BorderLayout.SOUTH);
 		this.directionButtons.add(this.westButton, BorderLayout.WEST);
-
 	}
 	
-	private void setUpWindow()
+	private void setUpWindow(int width, int height)
 	{
 		window = new JFrame("Trivia Maze");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,7 +142,8 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		window.add(this.inputOutput, BorderLayout.WEST);
 		window.add(this.directionButtons, BorderLayout.EAST);
 		
-		window.pack();
+		this.window.setSize( new Dimension(width, height) );
+		this.window.setLocation(50, 50); //Reconfigure to be as centered as possible
 		window.setVisible(true);
 	}
 	
