@@ -30,12 +30,24 @@ public class GameOver implements GamePortion, ActionListener
 	
 	public GameOver(int width, int height, Player player, ActionListener listener)
 	{
-		this.asciiOutput = new JTextArea(25, 40);
+
+		
+		this.setUpTextOutput();
 		this.setUpButtons(listener);
 		this.setUpPlayerStatistics(player);
 		this.setUpWindow(width, height);
 		
-		//this.drawWinningArt();
+		drawWinningArt();
+
+	}
+	
+	public void setUpTextOutput()
+	{
+		this.asciiOutput = new JTextArea(15, 40);
+		
+		Font outputFont = new Font("Arial", Font.PLAIN, 20);
+
+		this.asciiOutput.setFont(outputFont);
 	}
 	
 	public void setUpButtons(ActionListener listener)
@@ -106,29 +118,38 @@ public class GameOver implements GamePortion, ActionListener
 	
 	public void drawWinningArt()
 	{	
-		
-		this.window.invalidate();
-		
-		try{
-		this.asciiOutput.append(".-..-\"\"``\"\"-..-.\n");
-        this.asciiOutput.append("|(`\\`'----'`/`)|\n");
-        this.asciiOutput.append(" \\\\ ;:.    ; //\n");
-        this.asciiOutput.append("  \\\\|%.    |//\n");
-        this.asciiOutput.append("   )|%:    |(\n");
-        this.asciiOutput.append(" ((,|%.    |,))\n");
-        this.asciiOutput.append("  '-\\::.   /-'\n");
-        this.asciiOutput.append("     '::..'\n");
-        this.asciiOutput.append("       }{\n");
-        this.asciiOutput.append("      {__} \n");
-        this.asciiOutput.append("     /    \\\n");
-        this.asciiOutput.append("    |`----'|\n");
-        this.asciiOutput.append("    | [#1] |\n");
-        this.asciiOutput.append("    '.____.'\n");   
-		}
-		catch(Exception error)
+		//Good lord...Try to find a better solution
+		new Thread( new Runnable()
 		{
-			System.out.println("Thread sleep error");
+				
+				public void run()
+				{
+					try
+					{
+						asciiOutput.append(".-..-\"\"``\"\"-..-.\n"); Thread.sleep(200);
+				        asciiOutput.append("|(`\\`'----'`/`)|\n");Thread.sleep(200); 
+				        asciiOutput.append(" \\\\ ;:.    ; //\n");Thread.sleep(200); 
+				        asciiOutput.append("  \\\\|%.    |//\n");Thread.sleep(200); 
+				        asciiOutput.append("   )|%:    |(\n");Thread.sleep(200);
+				        asciiOutput.append(" ((,|%.    |,))\n");Thread.sleep(200);
+				        asciiOutput.append("  ' -\\::.   /-'\n");Thread.sleep(200);
+				        asciiOutput.append("      '::..'\n");Thread.sleep(200);
+				        asciiOutput.append("        }{\n");Thread.sleep(200);
+				        asciiOutput.append("       {__} \n");Thread.sleep(200);
+				        asciiOutput.append("      /    \\\n");Thread.sleep(200);
+				        asciiOutput.append("     |`----'|\n");Thread.sleep(200);
+				        asciiOutput.append("     | [#1] |\n");Thread.sleep(200);
+				        asciiOutput.append("     '.____.'\n");   Thread.sleep(200);
+					}
+					catch(Exception error)
+					{
+						System.out.println("Thread sleep error");
+					}
+				}
+								
 		}
+		
+		).start();
 	}
 	
 	public void drawLosingArt()
