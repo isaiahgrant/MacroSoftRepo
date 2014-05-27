@@ -72,7 +72,7 @@ public class Door
 		
 		if(direction == Direction.RIGHT)
 		{
-			if(this.isAttempted)
+			if(this.isAttempted && this.isLocked)
 			{
 				brush.setColor(Color.red);
 				brush.fillRect(x, y, doorThickness, doorWidth);
@@ -87,7 +87,7 @@ public class Door
 		
 		if(direction == Direction.DOWN)
 		{
-			if(this.isAttempted)
+			if(this.isAttempted && this.isLocked)
 			{
 				brush.setColor(Color.red);
 				brush.fillRect(x, y, doorWidth,doorThickness);
