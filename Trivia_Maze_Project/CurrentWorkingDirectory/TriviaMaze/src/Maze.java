@@ -366,4 +366,9 @@ public class Maze {
 		}
 		
 	}//END draw
+	
+	public Player getPlayer()
+	{
+		return this.player;
+	}
 }

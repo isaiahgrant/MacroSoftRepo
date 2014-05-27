@@ -266,6 +266,11 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		this.inputArea.setText("");
 	}
 	
+	public Player getPlayer()
+	{
+		return this.gameMaze.getPlayer();
+	}
+	
 	@Override
 	public void close() 
 	{
