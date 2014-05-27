@@ -66,7 +66,7 @@ public class Player
 	}
 	
 	
-	public void increaseQuestionsAnsweredByOne()
+	public void increaseQuestionsAnsweredCorrectlyByOne()
 	{
 		this.questionsAnsweredCorrectly++;
 	}

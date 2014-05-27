@@ -11,10 +11,10 @@ public class GameDriver implements ActionListener
 	public static final int DEFAULT_WIDTH = 800;
 	public static final int DEFAULT_HEIGHT = 650;
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		GameDriver game = new GameDriver();
-	}
+	}*/
 	
 	private GamePortion currentGamePart;
 	

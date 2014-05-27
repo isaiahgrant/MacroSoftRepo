@@ -12,8 +12,12 @@ public class Maze {
 
 	private Room[][] rooms;
 	private int[][] simpleMaze; //Only used in isWinnable() method.
-	private Room entrance;
-	private Room exit;
+	
+	private Coordinates entrance;
+	private Coordinates exit;
+	
+	private Direction currentPlayerDirection;
+	
 	private Door current_Door;
 	private Player player;
 	
@@ -21,8 +25,12 @@ public class Maze {
 	{
 		this.rooms = newRooms;
 		this.current_Door = null;
-		this.entrance = rooms[0][0];
-		this.exit = rooms[2][2];
+
+		this.entrance = new Coordinates(0,0);
+		this.exit = new Coordinates(newRooms.length-1, newRooms[newRooms.length -1].length-1);
+		
+		this.currentPlayerDirection = null;
+		
 		this.player = p1;
 		
 		simpleMaze = new int[this.rooms.length][this.rooms.length];
@@ -34,9 +42,70 @@ public class Maze {
 		return rooms;
 	}
 	
-	boolean isValidMove(Direction direct)
+	boolean isValidMove(Direction direction)
 	{
-		int x = this.player.getPlayerLocation().getColumn();
+		int row = this.player.getPlayerLocation().getRow();
+		int col = this.player.getPlayerLocation().getColumn();
+		
+		int maxRows = this.rooms.length - 1;
+		int maxCols = this.rooms[this.rooms.length - 1].length - 1;
+		
+		Room currentRoom = this.rooms[row][col];
+		
+		switch(direction)
+		{
+			case UP:
+			{
+				if( row == 0 || currentRoom.getNorthDoor().isLocked() )
+				{
+					return false;
+				}
+				
+				this.current_Door = this.rooms[row][col].getNorthDoor();
+				
+				break;
+			}
+			case RIGHT:
+			{
+				if( col == maxCols || currentRoom.getEastDoor().isLocked() )
+				{
+					return false;
+				}
+				
+				this.current_Door = this.rooms[row][col].getEastDoor();
+
+				break;
+			}
+			case DOWN:
+			{
+				if( row == maxRows || currentRoom.getSouthDoor().isLocked() )
+				{
+					return false;
+				}
+				
+				this.current_Door = this.rooms[row][col].getSouthDoor();
+
+				break;
+			}
+			case LEFT:
+			{
+				if( col == 0 || currentRoom.getWestDoor().isLocked() )
+				{
+					return false;
+				}
+				
+				this.current_Door = this.rooms[row][col].getWestDoor();
+
+				break;
+			}
+		}
+		
+		this.currentPlayerDirection = direction;
+		
+		return true;
+		
+		
+		/*int x = this.player.getPlayerLocation().getColumn();
 		int y = this.player.getPlayerLocation().getRow();
 		Room curRoom = this.rooms[x][y];
 		if(direct.equals(Direction.LEFT) && curRoom.getWestDoor().isLocked())
@@ -47,45 +116,59 @@ public class Maze {
 			return false;
 		else if(y == 2 && direct.equals(Direction.DOWN))
 			return false;
-		return true;
+		return true;*/
 	}
 	
 	boolean isValidAnswer(String answer)
-	{
-		//TEMP CODE FOR PRESENTATION - REMOVE WHEN DONE
-		return true;
-		//return this.current_Door.getTriviaItem().getAnswer().equals(answer);
+	{		
+		if(this.current_Door.getTriviaItem().getType().equals("mc"))
+		{
+			return answer.equalsIgnoreCase("a") || 
+				   answer.equalsIgnoreCase("b") ||
+				   answer.equalsIgnoreCase("c") ||
+				   answer.equalsIgnoreCase("d") ||
+				   answer.equalsIgnoreCase("e");
+		}
+		else //true/false
+		{
+			return answer.equalsIgnoreCase("a") || 
+				   answer.equalsIgnoreCase("b");
+		}
 	}
 	
 	boolean isCorrectAnswer(String answer)
 	{
-		return this.current_Door.getTriviaItem().getAnswer().equals(answer);	
+		return this.current_Door.getTriviaItem().getAnswer().equalsIgnoreCase(answer);	
 	}
 	
 	void processAnswer(String answer)
 	{
 		this.player.increaseTotalQuestionsAnsweredByOne();
+		
 		if(this.isCorrectAnswer(answer))
 		{
-			this.player.increaseQuestionsAnsweredByOne();
+			this.player.increaseQuestionsAnsweredCorrectlyByOne();
 			this.current_Door.unlockDoor();
-			movePlayer(Direction.UP);
+			
+			movePlayer();
 		}
 		else
 		{
 			this.current_Door.lockDoor();
 		}
+		
+		this.currentPlayerDirection = null;
 	}
 	
-	void movePlayer(Direction direct)
+	void movePlayer()
 	{
-		if(direct == Direction.UP)
+		if(this.currentPlayerDirection == Direction.UP)
 			this.player.getPlayerLocation().decreaseRowByOne();
-		if(direct == Direction.DOWN)
+		if(this.currentPlayerDirection == Direction.DOWN)
 			this.player.getPlayerLocation().increaseRowByOne();
-		if(direct == Direction.LEFT)
+		if(this.currentPlayerDirection == Direction.LEFT)
 			this.player.getPlayerLocation().decreaseColumnByOne();
-		if(direct == Direction.RIGHT)
+		if(this.currentPlayerDirection == Direction.RIGHT)
 			this.player.getPlayerLocation().increaseColumnByOne();		
 	}
 	
@@ -204,48 +287,40 @@ public class Maze {
 	
 	public boolean isPlayerAtExit()
 	{
-		//TEMP CODE FOR PRESENTATION REMOVE WHEN NEEDED
-		return this.player.getPlayerLocation().getRow() == (this.rooms.length-1) &&
-				this.player.getPlayerLocation().getColumn() == (this.rooms.length-1);
-		
-		//END TEMP CODE
-		//return false;
+		return this.player.getPlayerLocation().equals(this.exit);
 	}
 	
 	public String getQuestion(Direction direction)
 	{
-		//TODO
-		//System.out.println("Maze.getQuestion(): not yet implemented!");
-		
-		//TEMP CODE
 		String question = "";
 		Room currentRoom = this.rooms[this.player.getPlayerLocation().getRow()][this.player.getPlayerLocation().getColumn()];
+		
 		try
 		{
-		if(direction == Direction.UP)
-		{
-			question = currentRoom.getNorthDoor().getTriviaItem().askQuestion();
-		}
-		else if(direction == Direction.DOWN)
-		{
-			question = currentRoom.getSouthDoor().getTriviaItem().askQuestion();			
-		}  
-		else if(direction == Direction.RIGHT)
-		{
-			question = currentRoom.getEastDoor().getTriviaItem().askQuestion();			
-		}
-		else if(direction == Direction.LEFT)
-		{
-			question = currentRoom.getWestDoor().getTriviaItem().askQuestion();		
-		}
-		System.out.println(question);
+			if(direction == Direction.UP && !currentRoom.getNorthDoor().getIsAttempted())
+			{
+				question = currentRoom.getNorthDoor().getTriviaItem().askQuestion();
+			}
+			else if(direction == Direction.DOWN  && !currentRoom.getSouthDoor().getIsAttempted())
+			{
+				question = currentRoom.getSouthDoor().getTriviaItem().askQuestion();			
+			}  
+			else if(direction == Direction.RIGHT  && !currentRoom.getEastDoor().getIsAttempted())
+			{
+				question = currentRoom.getEastDoor().getTriviaItem().askQuestion();			
+			}
+			else if(direction == Direction.LEFT  && !currentRoom.getWestDoor().getIsAttempted())
+			{
+				question = currentRoom.getWestDoor().getTriviaItem().askQuestion();		
+			}
+				System.out.println(question);
 		}
 		catch(Exception e)
 		{
 			question = "Error: question was not found! Maybe the trivia factory ran out of questions!";
 		}
+		
 		return question;
-		//END TEMP CODE
 	}
 	
 	//Returns true if it is possible to get to the exit of the maze
@@ -253,6 +328,7 @@ public class Maze {
 	//False otherwise
 	public boolean isWinnable()
 	{
+		this.clearSimpleMaze();
 		return isWinnable(this.player.getPlayerLocation().getRow(), 
 						  this.player.getPlayerLocation().getColumn());
 	}
@@ -267,7 +343,7 @@ public class Maze {
 		
 		//TODO Need to modify this to include Exit coordinate
 		//Are we at the exit?
-		if( row == this.simpleMaze.length && column == this.simpleMaze.length)
+		if( row == this.exit.getRow() && column == this.exit.getColumn() )
 		{
 			return true;
 		}
@@ -349,6 +425,16 @@ public class Maze {
 	
 	//END The *****PathValid methods 
 	
+	private void clearSimpleMaze()
+	{
+		for(int i = 0; i < this.simpleMaze.length; i++)
+		{
+			for(int j = 0; j < this.simpleMaze[i].length; j++)
+			{
+				this.simpleMaze[i][j] = 0;
+			}
+		}
+	}
 	
 	public void draw(Graphics brush)
 	{

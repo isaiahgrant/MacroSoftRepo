@@ -21,10 +21,8 @@ public class Game
 		
 		//TODO to test
 		//System.out.println("Game winnable:" + mainGame.gameWinnable());
-		
 
-		
-		while( !mainGame.gameFinished() /*&& mainGame.gameWinnable()*/ )
+		while( !mainGame.gameFinished() && mainGame.gameWinnable() )
 		{
 			mainGame.processLogic();
 			mainGame.draw();
@@ -37,10 +35,10 @@ public class Game
 			mainGame.printTrophy();
 		}
 		
-		/*if(!mainGame.gameWinnable())
+		if(!mainGame.gameWinnable())
 		{
 			System.out.println("Game Over. You can not win the game.");
-		}*/
+		}
 		
 		mainGame.cleanUp();
 	}
@@ -72,20 +70,27 @@ public class Game
 		
 		if( this.gameMaze.isValidMove(directionToMove) )
 		{
-			this.gameMaze.getQuestion(directionToMove);
+			String question = this.gameMaze.getQuestion(directionToMove);
 			
-			String answer = null;
-			
-			answer = this.input.getAnswerToQuestion();
-			
-			while( !this.gameMaze.isValidAnswer(answer) )
+			if(!question.equals("")) //TEMP Code for moving when the door is not locked. Need to reconsider for more elegant design.
 			{
-				System.out.println("That is not a valid answer.");
-				System.out.println("Please Enter a valid answer.");
+				String answer = null;
+				
 				answer = this.input.getAnswerToQuestion();
+				
+				while( !this.gameMaze.isValidAnswer(answer) )
+				{
+					System.out.println("That is not a valid answer.");
+					System.out.println("Please Enter a valid answer.");
+					answer = this.input.getAnswerToQuestion();
+				}
+				
+				this.gameMaze.processAnswer(answer);
 			}
-			
-			this.gameMaze.processAnswer(answer);
+			else
+			{
+				this.gameMaze.movePlayer();
+			}
 		}
 		else
 		{

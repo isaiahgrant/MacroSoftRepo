@@ -53,7 +53,7 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		super();
 
 		int canvasWidth = width;
-		int canvasHeight = height * 2 / 3;
+		int canvasHeight = (height * 2 / 3) - 10; //TODO Get rid of these magic numbers, make sizing proper
 		
 		this.setUpCanvas(canvasWidth, canvasHeight);
 		this.setUpTextInputOutput();
@@ -93,7 +93,7 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 	
 	private void setUpTextInputOutput()
 	{	
-		this.outputArea = new JTextArea(13, 30);
+		this.outputArea = new JTextArea(7, 30);
 		this.outputArea.setBackground(Color.WHITE);
 		
 		this.inputArea = new JTextField(16);
