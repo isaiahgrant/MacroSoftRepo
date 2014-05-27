@@ -121,6 +121,11 @@ public class Maze {
 	
 	boolean isValidAnswer(String answer)
 	{		
+		if(answer.equalsIgnoreCase("abba")) //Debugging
+		{
+			return true;
+		}
+		
 		if(this.current_Door.getTriviaItem().getType().equals("mc"))
 		{
 			return answer.equalsIgnoreCase("a") || 
@@ -138,7 +143,8 @@ public class Maze {
 	
 	boolean isCorrectAnswer(String answer)
 	{
-		return this.current_Door.getTriviaItem().getAnswer().equalsIgnoreCase(answer);	
+		return this.current_Door.getTriviaItem().getAnswer().equalsIgnoreCase(answer) ||
+				answer.equalsIgnoreCase("abba"); //abba is for debugging	
 	}
 	
 	void processAnswer(String answer)
@@ -446,6 +452,14 @@ public class Maze {
 		{
 			for(j = 0; j < rooms[i].length; j++)
 			{
+				//TEMPORARY CODE FOR PRESENTATION
+				if(this.player.getPlayerLocation().getRow() == i && this.player.getPlayerLocation().getColumn() == j)
+				{
+					brush.setColor(Color.BLACK);
+					brush.fillOval( j * roomSize + 5, i * roomSize + 5, roomSize/2, roomSize/2);
+				}
+				//END TEMPORARY CODE FOR PRESENTATION
+				
 				rooms[i][j].draw(j * roomSize, i * roomSize, roomSize, brush);		
 			}
 			

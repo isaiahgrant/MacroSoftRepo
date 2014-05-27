@@ -48,7 +48,7 @@ public class MazeBuilder
 		{
 			for(int j = 0; j < this.newRooms.length; j++)
 			{
-				if(j!=0)//if not in top row
+				if(i!=0)//if not in top row
 				{
 					door1 = this.newRooms[i-1][j].getSouthDoor();
 				}
@@ -72,7 +72,7 @@ public class MazeBuilder
 				{
 					door3 = new NullDoor();
 				}
-				if(i!=0)//if not in far left column
+				if(j!=0)//if not in far left column
 				{
 					door4 = this.newRooms[i][j-1].getEastDoor();
 				}

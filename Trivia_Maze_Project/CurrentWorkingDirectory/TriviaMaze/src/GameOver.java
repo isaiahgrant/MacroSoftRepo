@@ -28,16 +28,21 @@ public class GameOver implements GamePortion, ActionListener
 	
 	private JFrame window;
 	
-	public GameOver(int width, int height, Player player, ActionListener listener)
+	public GameOver(int width, int height, Player player, boolean playerWon, ActionListener listener)
 	{
-
-		
 		this.setUpTextOutput();
 		this.setUpButtons(listener);
 		this.setUpPlayerStatistics(player);
 		this.setUpWindow(width, height);
 		
-		drawWinningArt();
+		if(playerWon)
+		{
+			drawWinningArt();
+		}
+		else
+		{
+			drawLosingArt();
+		}
 
 	}
 	
@@ -154,7 +159,32 @@ public class GameOver implements GamePortion, ActionListener
 	
 	public void drawLosingArt()
 	{
+		//Good lord...Try to find a better solution
+		new Thread( new Runnable()
+		{
+				public void run()
+				{
+					try
+					{
+						asciiOutput.append("          .-\"\"\"\"\"\"-.\n"); Thread.sleep(200);
+				        asciiOutput.append("        .'          '\n");Thread.sleep(200); 
+				        asciiOutput.append("       /   O      O \\ \n");Thread.sleep(200); 
+				        asciiOutput.append("      :           `    :\n");Thread.sleep(200); 
+				        asciiOutput.append("      |                |\n");Thread.sleep(200);
+				        asciiOutput.append("      :    .------.    :\n");Thread.sleep(200);
+				        asciiOutput.append("       \\  '        '  /\n");Thread.sleep(200);
+				        asciiOutput.append("        '.          .'\n");Thread.sleep(200);
+				        asciiOutput.append("          '-......-'\n");Thread.sleep(200);
+					}
+					catch(Exception error)
+					{
+						System.out.println("Thread sleep error");
+					}
+				}
+								
+		}
 		
+		).start();
 	}
 	
 	@Override 

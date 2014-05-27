@@ -48,10 +48,15 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 	private JButton endGame;
 	//END DEBUGING MATERIAL
 	
+	private ActionListener gameOverListener;
+	private boolean playerWon;
+	
 	public GameGUI(int width, int height, Difficulty difficulty, ActionListener listener)
 	{
 		super();
 
+		this.gameOverListener = listener;
+		
 		int canvasWidth = width;
 		int canvasHeight = (height * 2 / 3) - 10; //TODO Get rid of these magic numbers, make sizing proper
 		
@@ -72,7 +77,9 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		//END DEBUGING MATERIAL
 		
 		this.draw();
-		currentState = GameState.GETTING_MOVEMENT_INPUT;
+		
+		this.playerWon = false;
+		currentState = GameState.GETTING_MOVEMENT_INPUT;	
 	}
 	
 	private void setUpCanvas(int width, int height)
@@ -206,9 +213,17 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 			if(this.gameMaze.isValidMove(direction))
 			{
 				String question = this.gameMaze.getQuestion(direction);
-				this.setOutputText(question);
 				
-				this.currentState = GameState.GETTING_QUESTION_ANSWER;
+				if(!question.equals(""))
+				{
+					this.setOutputText(question);
+					
+					this.currentState = GameState.GETTING_QUESTION_ANSWER;
+				}
+				else
+				{
+					this.gameMaze.movePlayer();
+				}
 			}
 			else
 			{
@@ -221,6 +236,11 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		}
 		
 		this.draw();
+		
+		if(this.gameEnded())
+		{
+			this.processGameEnded();
+		}
 	}
 	
 	//Processes answering a question
@@ -248,6 +268,11 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 		}
 		
 		this.draw();
+		
+		if(this.gameEnded())
+		{
+			this.processGameEnded();
+		}
 	}
 	
 	private void setOutputText(String message)
@@ -269,6 +294,26 @@ public class GameGUI extends Game implements ActionListener, GamePortion
 	public Player getPlayer()
 	{
 		return this.gameMaze.getPlayer();
+	}
+	
+	private boolean gameEnded()
+	{
+		return this.gameFinished() || !this.gameWinnable();
+	}
+	
+	private void processGameEnded()
+	{
+		if(this.gameFinished())
+		{
+			this.playerWon = true;
+		} //Default is false
+		
+		this.gameOverListener.actionPerformed(new ActionEvent(this, 0, "endGame"));
+	}
+	
+	public boolean getPlayerWon()
+	{
+		return this.playerWon;
 	}
 	
 	@Override
