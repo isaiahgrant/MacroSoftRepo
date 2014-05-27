@@ -24,7 +24,7 @@ mc-Sports and Hobbies-What color blazer is presented to the Masters golf winner?
 tf-History-A 2009 study found Cocaine on 90% of U.S. currency bills-a
 tf-Places-Djibouti is the capital of Djibouti.-a
 mc-Entertainment-What is the name of the group of islanders Ben Linus is the leader of in the TV show Lost?-d-The Sentinelese-The Outsiders-Kanaka Maoli-The Others
-mc-Events-How many total candles do you need to light a menorah properly for the entire eight nights of Hanukkah?-a-44-72-44-64
+mc-Events-How many total candles do you need to light a menorah properly for the entire eight nights of Hanukkah?-a-44-72-32-64
 mc-The Arts-What is a bird in the hand worth?-c-A parasite in the intestines.-A fish in your pasta.-Two in the bush.-A night in Las Vegas.
 mc-Nature and Technology-What did Elisha Otis first install in a New York City department store in 1857?-d-A salt water taffy shop.-An espresso machine.-A water fountain.-An elevator.
 mc-Sports and Hobbies-What best selling computer game spawned the sequel Riven in 1997?-b-Raven-Myst-Age of Empires-Blade Runner
