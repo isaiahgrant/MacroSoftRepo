@@ -36,7 +36,7 @@ public class GameDriver implements ActionListener
 		else if( this.currentGamePart.getClass().getSimpleName().equals("NewGame") )
 		{
 			//Get player name and difficulty from NewGameGUI here
-			this.currentGamePart = new Game(DEFAULT_WIDTH,DEFAULT_HEIGHT, "Sven", Difficulty.MODERATE, this);
+			this.currentGamePart = new Game(DEFAULT_WIDTH,DEFAULT_HEIGHT, "Sven", Difficulty.EASY, this);
 		}
 		else if(this.currentGamePart.getClass().getSimpleName().equals("Game"))
 		{

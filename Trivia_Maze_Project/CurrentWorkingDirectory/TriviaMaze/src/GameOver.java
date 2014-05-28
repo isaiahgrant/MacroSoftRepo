@@ -9,9 +9,15 @@ import java.awt.*;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.io.File;
 
 public class GameOver implements GamePortion, ActionListener
 {
+	private static final String WINNING_ASCII_ART_FILENAME = "winningASCIIArt.txt";
+	private static final String LOSING_ASCII_ART_FILENAME = "losingASCIIArt.txt";
+
 	private JTextArea asciiOutput;
 	
 	private JLabel playerName;
@@ -50,7 +56,9 @@ public class GameOver implements GamePortion, ActionListener
 	{
 		this.asciiOutput = new JTextArea(15, 40);
 		
-		Font outputFont = new Font("Arial", Font.PLAIN, 20);
+		//Note: font type is important, otherwise
+		//ASCII art may look skewed. Size does not affect skewness.
+		Font outputFont = new Font("Courier New", Font.PLAIN, 20);
 
 		this.asciiOutput.setFont(outputFont);
 	}
@@ -123,68 +131,20 @@ public class GameOver implements GamePortion, ActionListener
 	
 	public void drawWinningArt()
 	{	
-		//Good lord...Try to find a better solution
-		new Thread( new Runnable()
-		{
-				
-				public void run()
-				{
-					try
-					{
-						asciiOutput.append(".-..-\"\"``\"\"-..-.\n"); Thread.sleep(200);
-				        asciiOutput.append("|(`\\`'----'`/`)|\n");Thread.sleep(200); 
-				        asciiOutput.append(" \\\\ ;:.    ; //\n");Thread.sleep(200); 
-				        asciiOutput.append("  \\\\|%.    |//\n");Thread.sleep(200); 
-				        asciiOutput.append("   )|%:    |(\n");Thread.sleep(200);
-				        asciiOutput.append(" ((,|%.    |,))\n");Thread.sleep(200);
-				        asciiOutput.append("  ' -\\::.   /-'\n");Thread.sleep(200);
-				        asciiOutput.append("      '::..'\n");Thread.sleep(200);
-				        asciiOutput.append("        }{\n");Thread.sleep(200);
-				        asciiOutput.append("       {__} \n");Thread.sleep(200);
-				        asciiOutput.append("      /    \\\n");Thread.sleep(200);
-				        asciiOutput.append("     |`----'|\n");Thread.sleep(200);
-				        asciiOutput.append("     | [#1] |\n");Thread.sleep(200);
-				        asciiOutput.append("     '.____.'\n");   Thread.sleep(200);
-					}
-					catch(Exception error)
-					{
-						System.out.println("Thread sleep error");
-					}
-				}
-								
-		}
-		
-		).start();
+		String asciiArt = TextAnimation.getTextFileAsString(WINNING_ASCII_ART_FILENAME);
+		this.drawASCIIArt(asciiArt);
 	}
 	
 	public void drawLosingArt()
 	{
-		//Good lord...Try to find a better solution
-		new Thread( new Runnable()
-		{
-				public void run()
-				{
-					try
-					{
-						asciiOutput.append("          .-\"\"\"\"\"\"-.\n"); Thread.sleep(200);
-				        asciiOutput.append("        .'          '\n");Thread.sleep(200); 
-				        asciiOutput.append("       /   O      O \\ \n");Thread.sleep(200); 
-				        asciiOutput.append("      :           `    :\n");Thread.sleep(200); 
-				        asciiOutput.append("      |                |\n");Thread.sleep(200);
-				        asciiOutput.append("      :    .------.    :\n");Thread.sleep(200);
-				        asciiOutput.append("       \\  '        '  /\n");Thread.sleep(200);
-				        asciiOutput.append("        '.          .'\n");Thread.sleep(200);
-				        asciiOutput.append("          '-......-'\n");Thread.sleep(200);
-					}
-					catch(Exception error)
-					{
-						System.out.println("Thread sleep error");
-					}
-				}
-								
-		}
-		
-		).start();
+		String asciiArt = TextAnimation.getTextFileAsString(LOSING_ASCII_ART_FILENAME);
+		this.drawASCIIArt(asciiArt);
+	}
+	
+	public void drawASCIIArt(String art)
+	{
+		Thread outputThread = new Thread(new TextAnimation(art, this.asciiOutput));
+		outputThread.start();
 	}
 	
 	@Override 
@@ -208,4 +168,5 @@ public class GameOver implements GamePortion, ActionListener
 		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
 		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
 	}
+
 }
