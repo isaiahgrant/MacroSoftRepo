@@ -132,7 +132,6 @@ public class GameOver implements GamePortion, ActionListener
 		//endtemp
 		
 		this.window.setSize( new Dimension(width, height) );
-		this.window.setLocation(50, 50); //Reconfigure to be as centered as possible
 		this.window.setVisible(true);
 	}
 	

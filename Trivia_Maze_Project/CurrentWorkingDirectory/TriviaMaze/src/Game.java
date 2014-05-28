@@ -154,7 +154,6 @@ public class Game implements ActionListener, GamePortion
 		window.add(this.directionButtons, BorderLayout.EAST);
 		
 		this.window.setSize( new Dimension(width, height) );
-		this.window.setLocation(50, 50); //Reconfigure to be as centered as possible
 		window.setVisible(true);
 	}
 	

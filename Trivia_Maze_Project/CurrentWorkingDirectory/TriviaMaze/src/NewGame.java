@@ -42,7 +42,6 @@ public class NewGame implements GamePortion
 		this.window.add(this.launchGame, BorderLayout.NORTH);
 		
 		this.window.setSize( new Dimension(width, height) );
-		this.window.setLocation(50, 50); //Reconfigure to be as centered as possible
 		this.window.setVisible(true);
 	}
 	
