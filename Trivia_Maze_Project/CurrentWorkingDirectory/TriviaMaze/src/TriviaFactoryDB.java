@@ -52,7 +52,7 @@ public class TriviaFactoryDB
 		TriviaItem temp = null;
 		Integer tempRnd;
 		
-		if(usedRows.size() == this.maxRows)
+		if(usedRows.size() == maxRows)
 		{
 			return new MultiChoice();
 		}
