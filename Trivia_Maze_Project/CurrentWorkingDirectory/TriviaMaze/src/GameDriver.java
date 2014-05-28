@@ -21,6 +21,7 @@ public class GameDriver implements ActionListener
 	public GameDriver()
 	{
 		this.currentGamePart = new Introduction(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
+		this.currentGamePart.centerOnScreen();
 	}
 	
 	@Override
@@ -48,6 +49,11 @@ public class GameDriver implements ActionListener
 		else if(this.currentGamePart.getClass().getSimpleName().equals("GameOver"))
 		{
 			this.currentGamePart = new NewGame(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
+		}
+		
+		if(this.currentGamePart != null)
+		{
+			this.currentGamePart.centerOnScreen();
 		}
 	}
 }

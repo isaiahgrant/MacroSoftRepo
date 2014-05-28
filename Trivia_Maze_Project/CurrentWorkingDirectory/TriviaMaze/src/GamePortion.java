@@ -12,5 +12,6 @@ public interface GamePortion
 {
 	//Do all clean up here, 
 	//including closing the JFrame (window)
-	public abstract void close();
+	public void close();
+	public void centerOnScreen();
 }

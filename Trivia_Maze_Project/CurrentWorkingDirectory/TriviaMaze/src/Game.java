@@ -326,4 +326,11 @@ public class Game implements ActionListener, GamePortion
 	{
 		this.window.dispose();
 	}
+	
+	@Override
+	public void centerOnScreen()
+	{
+		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
+		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
+	}
 }

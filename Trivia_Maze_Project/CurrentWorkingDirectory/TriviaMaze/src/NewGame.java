@@ -7,6 +7,7 @@
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -49,5 +50,12 @@ public class NewGame implements GamePortion
 	public void close()
 	{
 		this.window.dispose();
+	}
+	
+	@Override
+	public void centerOnScreen()
+	{
+		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
+		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
 	}
 }

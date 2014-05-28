@@ -201,4 +201,11 @@ public class GameOver implements GamePortion, ActionListener
 			this.close();
 		}
 	}
+	
+	@Override
+	public void centerOnScreen()
+	{
+		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
+		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
+	}
 }

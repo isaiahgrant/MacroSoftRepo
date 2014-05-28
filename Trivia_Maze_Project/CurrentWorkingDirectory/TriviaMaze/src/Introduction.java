@@ -66,7 +66,7 @@ public class Introduction implements ActionListener, GamePortion
 		this.window.add(imageLabel, BorderLayout.NORTH);
 		
 		this.window.setSize( new Dimension(width, height) );
-		this.window.setLocation(50, 50); //Reconfigure to be as centered as possible
+		
 		this.window.setVisible(true);
 	}
 	
@@ -96,5 +96,12 @@ public class Introduction implements ActionListener, GamePortion
 	public void close()
 	{
 		this.window.dispose();
+	}
+	
+	@Override
+	public void centerOnScreen()
+	{
+		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
+		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
 	}
 }
