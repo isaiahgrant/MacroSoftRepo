@@ -348,7 +348,6 @@ public class Maze {
 			{
 				question = currentRoom.getWestDoor().getTriviaItem().askQuestion();		
 			}
-				System.out.println(question);
 		}
 		catch(Exception e)
 		{
