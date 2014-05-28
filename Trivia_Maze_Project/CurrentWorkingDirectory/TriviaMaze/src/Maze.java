@@ -40,7 +40,15 @@ public class Maze {
 		this.current_Door = null;
 
 		this.entrance = new Coordinates(0,0);
-		this.exit = new Coordinates(newRooms.length-1, newRooms[newRooms.length -1].length-1);
+		
+		//Making the exit Random, could easily work with making the entrance random as well.
+		this.exit = new Coordinates((int)(Math.random() * newRooms.length-1), (int)(Math.random() * newRooms.length[0].length-1))
+		
+		while(this.exit.getColumn() + this.exit.getRow() < newRooms.length())
+		{
+			this.exit = new Coordinates((int)(Math.random() * newRooms.length-1), (int)(Math.random() * newRooms.length[0].length-1));
+			//this.exit = new Coordinates(newRooms.length-1, newRooms[newRooms.length -1].length-1);
+		}
 		
 		this.currentPlayerDirection = null;
 		
