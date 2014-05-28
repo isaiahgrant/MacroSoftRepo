@@ -72,33 +72,51 @@ public class Door
 		
 		if(direction == Direction.RIGHT)
 		{
+			if(!this.isAttempted)
+			{
+				brush.setColor(Color.black);
+				brush.fillRect(x, y, doorThickness, doorWidth);
+			}
+			
+			if(this.isAttempted && !this.isLocked)
+			{
+				brush.setColor(Color.green);
+				brush.fillRect(x, y, doorThickness, doorWidth);
+			}
+									
 			if(this.isAttempted && this.isLocked)
 			{
 				brush.setColor(Color.red);
 				brush.fillRect(x, y, doorThickness, doorWidth);
 			}
 			
-			else
-			{
-				brush.setColor(Color.black);
-				brush.fillRect(x, y, doorThickness, doorWidth);
-			}
+			
 		}		
 		
 		if(direction == Direction.DOWN)
 		{
-			if(this.isAttempted && this.isLocked)
-			{
-				brush.setColor(Color.red);
-				brush.fillRect(x, y, doorWidth,doorThickness);
-			}
-			
-			else
+			if(!this.isAttempted)
 			{
 				brush.setColor(Color.black);
 				brush.fillRect(x, y, doorWidth,doorThickness);
 			}
+			if(this.isAttempted && !this.isLocked)
+			{
+				brush.setColor(Color.green);
+				brush.fillRect(x, y, doorWidth,doorThickness);
+			}			
+			
+			if(this.isAttempted && this.isLocked)
+			{
+				brush.setColor(Color.red);
+				brush.fillRect(x, y, doorWidth,doorThickness);
+			}			
+			
+			
+			
 		}
+		
 	}
+	
 
 }
