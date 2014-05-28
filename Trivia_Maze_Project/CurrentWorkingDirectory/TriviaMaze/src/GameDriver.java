@@ -20,7 +20,7 @@ public class GameDriver implements ActionListener
 	
 	public GameDriver()
 	{
-		this.currentGamePart = new IntroductionGUI(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
+		this.currentGamePart = new Introduction(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
 	}
 	
 	@Override
@@ -28,26 +28,26 @@ public class GameDriver implements ActionListener
 	{
 		this.currentGamePart.close();
 		
-		if( this.currentGamePart.getClass().getSimpleName().equals("IntroductionGUI") )
+		if( this.currentGamePart.getClass().getSimpleName().equals("Introduction") )
 		{
-			this.currentGamePart = new NewGameGUI(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
+			this.currentGamePart = new NewGame(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
 		}
-		else if( this.currentGamePart.getClass().getSimpleName().equals("NewGameGUI") )
+		else if( this.currentGamePart.getClass().getSimpleName().equals("NewGame") )
 		{
 			//Get player name and difficulty from NewGameGUI here
-			this.currentGamePart = new GameGUI(DEFAULT_WIDTH,DEFAULT_HEIGHT, Difficulty.EASY, this);
+			this.currentGamePart = new Game(DEFAULT_WIDTH,DEFAULT_HEIGHT, "Sven", Difficulty.MODERATE, this);
 		}
-		else if(this.currentGamePart.getClass().getSimpleName().equals("GameGUI"))
+		else if(this.currentGamePart.getClass().getSimpleName().equals("Game"))
 		{
-			Player gamePlayer = ((GameGUI)this.currentGamePart).getPlayer();
-			boolean playerWon =   ((GameGUI)this.currentGamePart).getPlayerWon();
+			Player gamePlayer = ((Game)this.currentGamePart).getPlayer();
+			boolean playerWon =   ((Game)this.currentGamePart).getPlayerWon();
 			
 			this.currentGamePart = new GameOver(DEFAULT_WIDTH,DEFAULT_HEIGHT, gamePlayer,
 												playerWon, this);
 		}
 		else if(this.currentGamePart.getClass().getSimpleName().equals("GameOver"))
 		{
-			this.currentGamePart = new NewGameGUI(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
+			this.currentGamePart = new NewGame(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
 		}
 	}
 }

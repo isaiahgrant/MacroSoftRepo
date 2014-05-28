@@ -19,7 +19,7 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
-public class IntroductionGUI implements ActionListener, GamePortion
+public class Introduction implements ActionListener, GamePortion
 {
 	private BufferedImage mainPicture;
 	private JButton newGame; 
@@ -28,7 +28,7 @@ public class IntroductionGUI implements ActionListener, GamePortion
 	
 	private JFrame window;
 	
-	public IntroductionGUI(int width, int height, ActionListener endIntro)
+	public Introduction(int width, int height, ActionListener endIntro)
 	{
 		this.newGame = new JButton("Start New Game");
 		this.newGame.addActionListener(endIntro);

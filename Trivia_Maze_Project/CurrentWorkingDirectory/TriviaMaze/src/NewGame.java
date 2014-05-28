@@ -11,7 +11,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class NewGameGUI implements GamePortion
+public class NewGame implements GamePortion
 {
 	private JLabel nameLabel;
 	private JLabel difficultyLabel;
@@ -22,7 +22,7 @@ public class NewGameGUI implements GamePortion
 	
 	private JFrame window;
 	
-	public NewGameGUI(int width, int height, ActionListener endNewGame)
+	public NewGame(int width, int height, ActionListener endNewGame)
 	{	
 		this.nameLabel = new JLabel("Name");
 		
