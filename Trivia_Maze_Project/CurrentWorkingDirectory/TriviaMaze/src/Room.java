@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 /*
  * Developed By: Isaiah Grant
@@ -69,21 +70,40 @@ public class Room
 		this.westDoor = door;
 	}
 	
-	public void draw(int x, int y, int roomSize, Graphics brush)
+	public void draw(int x, int y, int roomSize, Graphics brush, BufferedImage roomFloor, BufferedImage horizontalDoorClosed)
 	{
 		int doorThickness = 4;
-		brush.setColor(Color.blue);
-		brush.drawRect(x, y, roomSize, roomSize);
+		//brush.setColor(Color.blue);
+		//brush.draw(x, y, roomSize, roomSize);
+		brush.drawImage(roomFloor, x, y, null);
+		
+//		if(!this.eastDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
+//		{
+//			this.eastDoor.draw(x + (roomSize - (doorThickness / 2)), y + (roomSize / 4), roomSize, Direction.RIGHT, brush, horizontalDoorClosed);
+//		}
+//		
+//		if(!this.southDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
+//		{
+//			this.southDoor.draw(x + (roomSize / 4), y + (roomSize - (doorThickness / 2)), roomSize, Direction.DOWN, brush, horizontalDoorClosed);
+//		}
+		
+	}
+	
+	public void drawDoors(int x, int y, int roomSize, Graphics brush, BufferedImage horizontalDoorClosed, BufferedImage verticalDoorClosed)
+	{
+		int doorThickness = 10;
 		
 		if(!this.eastDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
 		{
-			this.eastDoor.draw(x + (roomSize - (doorThickness / 2)), y + (roomSize / 4), roomSize, Direction.RIGHT, brush);
+			brush.drawImage(verticalDoorClosed, x + (roomSize - (doorThickness / 2)), y + (roomSize / 3), null);
 		}
 		
 		if(!this.southDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
 		{
-			this.southDoor.draw(x + (roomSize / 4), y + (roomSize - (doorThickness / 2)), roomSize, Direction.DOWN, brush);
+			//this.southDoor.draw(x + (roomSize / 3), y + (roomSize - (doorThickness / 2)), roomSize, Direction.DOWN, brush, horizontalDoorClosed);
+			brush.drawImage(horizontalDoorClosed, x + (roomSize / 3), y + (roomSize - (doorThickness / 2)), null);
 		}
-		
+
 	}
+	
 }

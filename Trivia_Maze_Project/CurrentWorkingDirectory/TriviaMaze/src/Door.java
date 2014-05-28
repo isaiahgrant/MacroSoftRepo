@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 /*
  * Developed By: Isaiah Grant
@@ -65,7 +66,7 @@ public class Door
 	}
 	
 	
-	public void draw(int x, int y, int roomSize, Direction direction, Graphics brush)
+	public void draw(int x, int y, int roomSize, Direction direction, Graphics brush, BufferedImage horizontalDoorClosed)
 	{
 		int doorThickness = 4;
 		int doorWidth = roomSize / 2;
@@ -76,6 +77,7 @@ public class Door
 			{
 				brush.setColor(Color.black);
 				brush.fillRect(x, y, doorThickness, doorWidth);
+				brush.drawImage(horizontalDoorClosed, x, y, null);
 			}
 			
 			if(this.isAttempted && !this.isLocked)
@@ -98,7 +100,9 @@ public class Door
 			if(!this.isAttempted)
 			{
 				brush.setColor(Color.black);
-				brush.fillRect(x, y, doorWidth,doorThickness);
+				//brush.fillRect(x, y, doorWidth,doorThickness);
+				brush.drawImage(horizontalDoorClosed, x, y, null);
+
 			}
 			if(this.isAttempted && !this.isLocked)
 			{

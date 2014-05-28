@@ -1,5 +1,13 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  * @author ajohnston
@@ -12,6 +20,10 @@ public class Maze {
 
 	private Room[][] rooms;
 	private int[][] simpleMaze; //Only used in isWinnable() method.
+	private BufferedImage roomFloor;
+	private BufferedImage horizontalDoorClosed;
+	private BufferedImage verticalDoorClosed;
+	private BufferedImage playerIcon;
 	
 	private Coordinates entrance;
 	private Coordinates exit;
@@ -34,6 +46,18 @@ public class Maze {
 		this.player = p1;
 		
 		simpleMaze = new int[this.rooms.length][this.rooms.length];
+		
+		try
+		{
+			roomFloor = ImageIO.read(new File("./roomFloor.jpg"));
+			horizontalDoorClosed = ImageIO.read(new File("./horizontalDoorClosed.jpg"));
+			verticalDoorClosed = ImageIO.read(new File("./verticalDoorClosed.jpg"));
+			playerIcon = ImageIO.read(new File("./playerIcon.jpg"));
+		}
+		catch(IOException e)
+		{
+			JOptionPane.showConfirmDialog(null, "Floor template failed to load.");
+		}
 	}
 	
 	Room[][] generateMaze()
@@ -448,21 +472,33 @@ public class Maze {
 		roomSize = 60;
 		
 		
+		
 		for(i = 0; i < rooms.length; i++)
 		{
 			for(j = 0; j < rooms[i].length; j++)
 			{
+				rooms[i][j].draw(j * roomSize, i * roomSize, roomSize, brush, roomFloor, horizontalDoorClosed);
 				//TEMPORARY CODE FOR PRESENTATION
 				if(this.player.getPlayerLocation().getRow() == i && this.player.getPlayerLocation().getColumn() == j)
 				{
 					brush.setColor(Color.BLACK);
-					brush.fillOval( j * roomSize + 5, i * roomSize + 5, roomSize/2, roomSize/2);
+					brush.fillOval( j * roomSize + 15, i * roomSize + 15, roomSize/2, roomSize/2);
+					brush.drawImage(playerIcon, j * roomSize + 15, i * roomSize + 15, null);
 				}
 				//END TEMPORARY CODE FOR PRESENTATION
 				
-				rooms[i][j].draw(j * roomSize, i * roomSize, roomSize, brush);		
+						
 			}
 			
+		}
+		
+		for(i = 0; i < rooms.length; i++)
+		{
+			for(j = 0; j < rooms[i].length; j++)
+			{
+				
+				rooms[i][j].drawDoors(j * roomSize, i * roomSize, roomSize, brush, horizontalDoorClosed, verticalDoorClosed);
+			}
 		}
 		
 	}//END draw
