@@ -11,7 +11,7 @@ public class TriviaMazeDriver
 		TriviaFactoryDB factory = new TriviaFactoryDB();
 		
 
-		for(i = 0; i < 26; i++)
+		for(i = 0; i < 100; i++)
 		{
 			temp = factory.getTriviaItem();
 			System.out.println(temp.askQuestion());
