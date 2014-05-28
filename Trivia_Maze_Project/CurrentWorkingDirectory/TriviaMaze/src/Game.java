@@ -102,6 +102,7 @@ public class Game implements ActionListener, GamePortion
 	{	
 		this.outputArea = new JTextArea(7, 30);
 		this.outputArea.setBackground(Color.WHITE);
+		this.outputArea.setEditable(false);
 		
 		this.inputArea = new JTextField(16);
 		this.inputArea.setBackground(Color.WHITE);

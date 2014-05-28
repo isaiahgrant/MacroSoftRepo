@@ -19,6 +19,8 @@ public class GameOver implements GamePortion, ActionListener
 	private static final String LOSING_ASCII_ART_FILENAME = "losingASCIIArt.txt";
 
 	private JTextArea asciiOutput;
+	private JPanel asciiOutputContainer;
+	
 	
 	private JLabel playerName;
 	private JLabel playerQuestionsAnsweredCorrectly;
@@ -54,13 +56,18 @@ public class GameOver implements GamePortion, ActionListener
 	
 	public void setUpTextOutput()
 	{
-		this.asciiOutput = new JTextArea(15, 40);
+		this.asciiOutput = new JTextArea(15, 30);
+		this.asciiOutput.setEditable(false);
 		
 		//Note: font type is important, otherwise
 		//ASCII art may look skewed. Size does not affect skewness.
 		Font outputFont = new Font("Courier New", Font.PLAIN, 20);
-
 		this.asciiOutput.setFont(outputFont);
+		
+		FlowLayout outputHolder = new FlowLayout();
+		this.asciiOutputContainer = new JPanel(outputHolder);
+		
+		this.asciiOutputContainer.add(this.asciiOutput);
 	}
 	
 	public void setUpButtons(ActionListener listener)
@@ -111,7 +118,7 @@ public class GameOver implements GamePortion, ActionListener
 		
 
 		
-		this.window.add(this.asciiOutput, BorderLayout.NORTH);
+		this.window.add(this.asciiOutputContainer, BorderLayout.NORTH);
 		
 		
 		//temp
