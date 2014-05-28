@@ -50,8 +50,15 @@ public class Game implements ActionListener, GamePortion
 		
 		this.gameOverListener = listener;
 		
+		//TODO change these so that they reflect
+		//the maximum possibly dimensions of the maze
+		//Need constants for room width/height and include doors too
+		//Make this a separate method
+		//Also make canvas width/height be at least the
+		//size of its container
+		
 		int canvasWidth = width;
-		int canvasHeight = (height * 2 / 3) - 10; //TODO Get rid of these magic numbers, make sizing proper
+		int canvasHeight = height + Maze.MAX_HEIGHT * 40;//(height * 2 / 3) - 10; //TODO Get rid of these magic numbers, make sizing proper
 		
 		this.setUpCanvas(canvasWidth, canvasHeight);
 		this.setUpTextInputOutput();
@@ -138,7 +145,10 @@ public class Game implements ActionListener, GamePortion
 		window.setLayout(new BorderLayout());
 		window.setResizable(true); //TODO implement resize functionality
 		
-		window.add(this.canvas, BorderLayout.NORTH);
+		JScrollPane canvasHolder = new JScrollPane(this.canvas);
+		canvasHolder.setPreferredSize(new Dimension(width, 2*height/3 - 10));
+		
+		window.add(canvasHolder, BorderLayout.NORTH);
 		window.add(this.inputOutput, BorderLayout.WEST);
 		window.add(this.directionButtons, BorderLayout.EAST);
 		

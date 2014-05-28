@@ -18,6 +18,11 @@ import javax.swing.JOptionPane;
  */
 public class Maze {
 
+	//These constants determine the maximum dimensions of the maze
+	//In the number of rooms 
+	public static final int MAX_WIDTH = 11;
+	public static final int MAX_HEIGHT = 11;
+	
 	private Room[][] rooms;
 	private int[][] simpleMaze; //Only used in isWinnable() method.
 	private BufferedImage roomFloor;
