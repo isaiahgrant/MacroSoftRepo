@@ -89,19 +89,42 @@ public class Room
 		
 	}
 	
-	public void drawDoors(int x, int y, int roomSize, Graphics brush, BufferedImage horizontalDoorClosed, BufferedImage verticalDoorClosed)
+	public void drawDoors(int x, int y, int roomSize, Graphics brush, RoomTextures roomTextures)
 	{
 		int doorThickness = 10;
 		
+		//Vertical Door Positioning
 		if(!this.eastDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
 		{
-			brush.drawImage(verticalDoorClosed, x + (roomSize - (doorThickness / 2)), y + (roomSize / 3), null);
+			brush.drawImage(roomTextures.getVerticalDoorClosed(), x + (roomSize - (doorThickness / 2)), y + (roomSize / 3), null);
 		}
 		
+		if(!this.eastDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor") && this.eastDoor.isAttempted && !this.eastDoor.isLocked)
+		{
+			brush.drawImage(roomTextures.getVerticalDoorOpen(), (x + roomSize) - 15,  y + 10, null);
+		}
+		
+		if(!this.eastDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor") && this.eastDoor.isAttempted && this.eastDoor.isLocked)
+		{
+			brush.drawImage(roomTextures.getVerticalLocked(), (x + roomSize) - 12,  y + 10, null);
+		}
+		
+		
+		//Horizontal Door positioning
 		if(!this.southDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
 		{
 			//this.southDoor.draw(x + (roomSize / 3), y + (roomSize - (doorThickness / 2)), roomSize, Direction.DOWN, brush, horizontalDoorClosed);
-			brush.drawImage(horizontalDoorClosed, x + (roomSize / 3), y + (roomSize - (doorThickness / 2)), null);
+			brush.drawImage(roomTextures.getHorizontalDoorClosed(), x + (roomSize / 3), y + (roomSize - (doorThickness / 2)), null);
+		}
+		
+		if(!this.southDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor") && this.southDoor.isAttempted && !this.southDoor.isLocked)
+		{
+			brush.drawImage(roomTextures.getHorizontalDoorOpen(), x + 10, y + (roomSize - 15), null);
+		}
+		
+		if(!this.southDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor") && this.southDoor.isAttempted && this.southDoor.isLocked)
+		{
+			brush.drawImage(roomTextures.getHorizontalLocked(), x + 10, y + (roomSize - 12), null);
 		}
 
 	}

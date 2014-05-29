@@ -18,17 +18,11 @@ import javax.swing.JOptionPane;
  */
 public class Maze {
 
-	//These constants determine the maximum dimensions of the maze
-	//In the number of rooms 
-	public static final int MAX_WIDTH = 11;
-	public static final int MAX_HEIGHT = 11;
-	
 	private Room[][] rooms;
 	private int[][] simpleMaze; //Only used in isWinnable() method.
-	private BufferedImage roomFloor;
-	private BufferedImage horizontalDoorClosed;
-	private BufferedImage verticalDoorClosed;
-	private BufferedImage playerIcon;
+	private final int roomSize = 60;
+	
+	private RoomTextures roomTextures;
 	
 	private Coordinates entrance;
 	private Coordinates exit;
@@ -52,17 +46,21 @@ public class Maze {
 		
 		simpleMaze = new int[this.rooms.length][this.rooms.length];
 		
-		try
-		{
-			roomFloor = ImageIO.read(new File("./roomFloor.jpg"));
-			horizontalDoorClosed = ImageIO.read(new File("./horizontalDoorClosed.jpg"));
-			verticalDoorClosed = ImageIO.read(new File("./verticalDoorClosed.jpg"));
-			playerIcon = ImageIO.read(new File("./playerIcon.jpg"));
-		}
-		catch(IOException e)
-		{
-			JOptionPane.showConfirmDialog(null, "Floor template failed to load.");
-		}
+		this.roomTextures = new RoomTextures();
+		
+//		try
+//		{
+//			roomFloor = ImageIO.read(new File("./roomFloor.jpg"));
+//			horizontalDoorClosed = ImageIO.read(new File("./horizontalDoorClosed.jpg"));
+//			horizontalDoorOpen = ImageIO.read(new File("./horizontalDoorOpen.jpg"));
+//			verticalDoorClosed = ImageIO.read(new File("./verticalDoorClosed.jpg"));
+//			verticalDoorOpen = ImageIO.read(new File("./verticalDoorOpen.jpg"));
+//			playerIcon = ImageIO.read(new File("./playerIcon.jpg"));
+//		}
+//		catch(IOException e)
+//		{
+//			JOptionPane.showConfirmDialog(null, "Floor template failed to load.");
+//		}
 	}
 	
 	Room[][] generateMaze()
@@ -348,6 +346,7 @@ public class Maze {
 			{
 				question = currentRoom.getWestDoor().getTriviaItem().askQuestion();		
 			}
+				System.out.println(question);
 		}
 		catch(Exception e)
 		{
@@ -481,17 +480,12 @@ public class Maze {
 		{
 			for(j = 0; j < rooms[i].length; j++)
 			{
-				rooms[i][j].draw(j * roomSize, i * roomSize, roomSize, brush, roomFloor, horizontalDoorClosed);
-				//TEMPORARY CODE FOR PRESENTATION
+				brush.drawImage(roomTextures.getRoomFloor(), j * roomSize, i * roomSize, null);
 				if(this.player.getPlayerLocation().getRow() == i && this.player.getPlayerLocation().getColumn() == j)
 				{
-					brush.setColor(Color.BLACK);
-					brush.fillOval( j * roomSize + 15, i * roomSize + 15, roomSize/2, roomSize/2);
-					brush.drawImage(playerIcon, j * roomSize + 15, i * roomSize + 15, null);
+					brush.drawImage(roomTextures.getPlayerIcon(), j * roomSize + 15, i * roomSize + 15, null);
 				}
-				//END TEMPORARY CODE FOR PRESENTATION
-				
-						
+										
 			}
 			
 		}
@@ -501,7 +495,7 @@ public class Maze {
 			for(j = 0; j < rooms[i].length; j++)
 			{
 				
-				rooms[i][j].drawDoors(j * roomSize, i * roomSize, roomSize, brush, horizontalDoorClosed, verticalDoorClosed);
+				rooms[i][j].drawDoors(j * roomSize, i * roomSize, roomSize, brush, roomTextures);
 			}
 		}
 		
