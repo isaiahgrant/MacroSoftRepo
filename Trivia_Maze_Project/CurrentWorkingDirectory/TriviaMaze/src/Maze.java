@@ -20,7 +20,9 @@ public class Maze {
 
 	private Room[][] rooms;
 	private int[][] simpleMaze; //Only used in isWinnable() method.
-	private final int roomSize = 60;
+	public static final int MAX_WIDTH = 11;
+	public static final int MAX_HEIGHT = 11;
+	public static final int ROOM_SIZE = 60;
 	
 	private RoomTextures roomTextures;
 	
@@ -471,8 +473,8 @@ public class Maze {
 	
 	public void draw(Graphics brush)
 	{
-		int i, j, roomSize;
-		roomSize = 60;
+		int i, j;
+		//roomSize = 60;
 		
 		
 		
@@ -480,10 +482,10 @@ public class Maze {
 		{
 			for(j = 0; j < rooms[i].length; j++)
 			{
-				brush.drawImage(roomTextures.getRoomFloor(), j * roomSize, i * roomSize, null);
+				brush.drawImage(roomTextures.getRoomFloor(), j * ROOM_SIZE, i * ROOM_SIZE, null);
 				if(this.player.getPlayerLocation().getRow() == i && this.player.getPlayerLocation().getColumn() == j)
 				{
-					brush.drawImage(roomTextures.getPlayerIcon(), j * roomSize + 15, i * roomSize + 15, null);
+					brush.drawImage(roomTextures.getPlayerIcon(), j * ROOM_SIZE + 15, i * ROOM_SIZE + 15, null);
 				}
 										
 			}
@@ -495,7 +497,7 @@ public class Maze {
 			for(j = 0; j < rooms[i].length; j++)
 			{
 				
-				rooms[i][j].drawDoors(j * roomSize, i * roomSize, roomSize, brush, roomTextures);
+				rooms[i][j].drawDoors(j * ROOM_SIZE, i * ROOM_SIZE, ROOM_SIZE, brush, roomTextures);
 			}
 		}
 		
