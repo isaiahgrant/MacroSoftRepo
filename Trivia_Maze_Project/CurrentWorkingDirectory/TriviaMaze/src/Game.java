@@ -30,12 +30,12 @@ public class Game implements ActionListener, GamePortion
 	private JButton westButton;
 	
 	private JPanel directionButtons;
+	private JPanel directionButtonsSouth;
 	
 	private GameState currentState;
 	
 	
 	//DEBUGING MATERIAL
-	private JButton drawASCIIMaze;
 	private JButton endGame;
 	//END DEBUGING MATERIAL
 	
@@ -58,7 +58,7 @@ public class Game implements ActionListener, GamePortion
 		//size of its container
 		
 		int canvasWidth = width;
-		int canvasHeight = height + Maze.MAX_HEIGHT * 40;//(height * 2 / 3) - 10; //TODO Get rid of these magic numbers, make sizing proper
+		int canvasHeight = height + Maze.MAX_HEIGHT * 20;//(height * 2 / 3) - 10; //TODO Get rid of these magic numbers, make sizing proper
 		
 		this.setUpCanvas(canvasWidth, canvasHeight);
 		this.setUpTextInputOutput();
@@ -67,10 +67,6 @@ public class Game implements ActionListener, GamePortion
 		//this.drawSomething();
 		
 		//DEBUGING MATERIAL
-		drawASCIIMaze = new JButton("Draw ASCII Maze");
-		drawASCIIMaze.addActionListener(this);
-		this.window.add(drawASCIIMaze, BorderLayout.CENTER);
-		
 		endGame = new JButton("End Game");
 		endGame.addActionListener(listener);
 		this.window.add(endGame, BorderLayout.SOUTH);
@@ -130,12 +126,24 @@ public class Game implements ActionListener, GamePortion
 		this.westButton = new JButton("W");
 		this.westButton.addActionListener(this);
 		
-		this.directionButtons = new JPanel(new BorderLayout());
+		JPanel northButtonWrapper = new JPanel(new FlowLayout());
+		JPanel eastButtonWrapper = new JPanel(new FlowLayout());
+		JPanel southButtonWrapper = new JPanel(new FlowLayout());
+		JPanel westButtonWrapper = new JPanel(new FlowLayout());
+
+		northButtonWrapper.add(this.northButton);
+		eastButtonWrapper.add(this.eastButton);
+		southButtonWrapper.add(this.southButton);
+		westButtonWrapper.add(this.westButton);
 		
-		this.directionButtons.add(this.northButton, BorderLayout.NORTH);
-		this.directionButtons.add(this.eastButton, BorderLayout.EAST);
-		this.directionButtons.add(this.southButton, BorderLayout.SOUTH);
-		this.directionButtons.add(this.westButton, BorderLayout.WEST);
+		this.directionButtons = new JPanel(new BorderLayout());
+		this.directionButtonsSouth = new JPanel(new BorderLayout());
+		
+		this.directionButtons.add(northButtonWrapper, BorderLayout.NORTH);
+		this.directionButtons.add(eastButtonWrapper, BorderLayout.EAST);
+		this.directionButtons.add(westButtonWrapper, BorderLayout.WEST);
+		
+		this.directionButtonsSouth.add(southButtonWrapper, BorderLayout.NORTH);	
 	}
 	
 	private void setUpWindow(int width, int height)
@@ -151,7 +159,13 @@ public class Game implements ActionListener, GamePortion
 		
 		window.add(canvasHolder, BorderLayout.NORTH);
 		window.add(this.inputOutput, BorderLayout.WEST);
-		window.add(this.directionButtons, BorderLayout.EAST);
+		
+		JPanel directionButtonsContainer = new JPanel(new BorderLayout());
+		
+		directionButtonsContainer.add(this.directionButtons, BorderLayout.NORTH);
+		directionButtonsContainer.add(this.directionButtonsSouth, BorderLayout.CENTER);
+		
+		window.add(directionButtonsContainer, BorderLayout.EAST);
 		
 		this.window.setSize( new Dimension(width, height) );
 		window.setVisible(true);
@@ -197,13 +211,6 @@ public class Game implements ActionListener, GamePortion
 		{
 			this.processInput();
 		}
-		
-		//DEBUGING MATERIAL
-		else if(event.getSource() == this.drawASCIIMaze)
-		{
-			this.setOutputText(this.gameMaze.drawMazeDebug());
-		}	
-		//END DEBUGING MATERIAL
 	}
 	
 	
