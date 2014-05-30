@@ -494,6 +494,11 @@ public class Maze {
 				{
 					brush.drawImage(roomTextures.getPlayerIcon(), j * ROOM_SIZE + 15, i * ROOM_SIZE + 15, null);
 				}
+				
+				if(this.exit.getRow() == i && this.exit.getColumn() == j)
+				{
+					brush.drawImage(roomTextures.getExitIcon(), j * ROOM_SIZE + 20, i * ROOM_SIZE + 20, null);
+				}	
 										
 			}
 			

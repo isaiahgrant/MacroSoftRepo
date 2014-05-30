@@ -15,20 +15,22 @@ public class RoomTextures
 	private BufferedImage verticalDoorOpen;
 	private BufferedImage horizontalLocked;
 	private BufferedImage verticalLocked;
+	private BufferedImage exitIcon;
 	private BufferedImage playerIcon;
 	
 	public RoomTextures()
 	{
 		try
 		{
-			this.roomFloor = ImageIO.read(new File("./roomFloor.jpg"));
-			this.horizontalDoorClosed = ImageIO.read(new File("./horizontalDoorClosed.jpg"));
-			this.horizontalDoorOpen = ImageIO.read(new File("./horizontalDoorOpen.jpg"));
-			this.verticalDoorClosed = ImageIO.read(new File("./verticalDoorClosed.jpg"));
-			this.verticalDoorOpen = ImageIO.read(new File("./verticalDoorOpen.jpg"));
-			this.horizontalLocked = ImageIO.read(new File("./horizontalLocked.jpg"));
-			this.verticalLocked = ImageIO.read(new File("./verticalLocked.jpg"));;
-			this.playerIcon = ImageIO.read(new File("./playerIcon.jpg"));
+			this.roomFloor = ImageIO.read(new File("./images/roomFloor.jpg"));
+			this.horizontalDoorClosed = ImageIO.read(new File("./images/horizontalDoorClosed.jpg"));
+			this.horizontalDoorOpen = ImageIO.read(new File("./images/horizontalDoorOpen.jpg"));
+			this.verticalDoorClosed = ImageIO.read(new File("./images/verticalDoorClosed.jpg"));
+			this.verticalDoorOpen = ImageIO.read(new File("./images/verticalDoorOpen.jpg"));
+			this.horizontalLocked = ImageIO.read(new File("./images/horizontalLocked.jpg"));
+			this.verticalLocked = ImageIO.read(new File("./images/verticalLocked.jpg"));
+			this.exitIcon = ImageIO.read(new File("./images/exitIcon.png"));
+			this.playerIcon = ImageIO.read(new File("./images/playerIcon.png"));
 		}
 		catch(IOException e)
 		{
@@ -36,6 +38,7 @@ public class RoomTextures
 		}
 	}
 
+	
 	public BufferedImage getRoomFloor() 
 	{
 		return roomFloor;
@@ -69,6 +72,11 @@ public class RoomTextures
 	public BufferedImage getVerticalLocked() 
 	{
 		return verticalLocked;
+	}
+	
+	public BufferedImage getExitIcon() 
+	{
+		return exitIcon;
 	}
 
 	public BufferedImage getPlayerIcon() 
