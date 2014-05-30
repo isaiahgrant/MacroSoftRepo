@@ -24,6 +24,8 @@ public class Game implements ActionListener, GamePortion
 	private JPanel inputOutput;
 	private JButton submitAnswer;
 	
+	private QuestionPrompt questionPrompt;
+	
 	private JButton northButton;
 	private JButton eastButton;
 	private JButton southButton;
@@ -78,9 +80,11 @@ public class Game implements ActionListener, GamePortion
 		
 		this.draw();
 		
+		
+		this.questionPrompt = new QuestionPrompt("", "", this);
+		this.questionPrompt.setVisible(false);
 		this.playerWon = false;
 		currentState = GameState.GETTING_MOVEMENT_INPUT;	
-		//this.question = new QuestionPrompt("What???", "mc", this);
 	}
 	
 	private void setUpCanvas(int width, int height)
@@ -195,7 +199,7 @@ public class Game implements ActionListener, GamePortion
 	}
 
 	public void actionPerformed(ActionEvent event)
-	{
+	{				
 		if(event.getSource() == this.northButton)
 		{
 			this.processInput(Direction.UP);
@@ -214,11 +218,12 @@ public class Game implements ActionListener, GamePortion
 		}
 		else if(event.getSource() == this.submitAnswer)
 		{
-			this.processInput();
+			//this.processInput();
 		}
-		else if(event.getClass().getSimpleName().equals(QuestionPrompt.class.getSimpleName()))
+		
+		else if(event.getActionCommand().equals("questionPromptAnswer"))
 		{
-			//TODO
+			this.processQuestion( this.questionPrompt.getAnswer() );
 		}
 	}
 	
@@ -231,10 +236,12 @@ public class Game implements ActionListener, GamePortion
 			if(this.gameMaze.isValidMove(direction))
 			{
 				String question = this.gameMaze.getQuestion(direction);
+				String questionType = this.gameMaze.getCurrentQuestionType();
 				
 				if(!question.equals(""))
 				{
-					this.setOutputText(question);
+					this.questionPrompt.setQuestion(question, questionType);
+					this.questionPrompt.setVisible(true);
 					
 					this.currentState = GameState.GETTING_QUESTION_ANSWER;
 				}
@@ -262,23 +269,15 @@ public class Game implements ActionListener, GamePortion
 	}
 	
 	//Processes answering a question
-	public void processInput()
+	public void processQuestion(String answer)
 	{
 		if(this.currentState == GameState.GETTING_QUESTION_ANSWER)
-		{
-			String answer = this.getAnswerToQuestion();
-			
-			if(this.gameMaze.isValidAnswer(answer))
-			{
-				this.gameMaze.processAnswer(answer);
-				this.clearInputOutputText();
-				this.currentState = GameState.GETTING_MOVEMENT_INPUT;
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "That is not a valid answer.");
-			}
-			
+		{	
+			this.gameMaze.processAnswer(answer);
+			this.clearInputOutputText();
+			this.currentState = GameState.GETTING_MOVEMENT_INPUT;
+			this.questionPrompt.clearScreen();
+			this.questionPrompt.setVisible(false);
 		}
 		else
 		{
@@ -350,6 +349,7 @@ public class Game implements ActionListener, GamePortion
 	@Override
 	public void close() 
 	{
+		this.questionPrompt.close();
 		this.window.dispose();
 	}
 	

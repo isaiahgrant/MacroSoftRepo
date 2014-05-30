@@ -37,6 +37,7 @@ public class QuestionPrompt implements ActionListener
 		this.submitAnswer.addActionListener(this);
 		
 		this.window = new JFrame("Question");
+		this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.window.setLayout(new BorderLayout());
 		
 		
@@ -45,7 +46,7 @@ public class QuestionPrompt implements ActionListener
 		this.window.add(submitAnswer, BorderLayout.SOUTH);
 		
 		this.window.pack();
-		this.window.setVisible(true);
+		this.centerOnScreen();
 	}
 	
 	public String getAnswer()
@@ -74,14 +75,14 @@ public class QuestionPrompt implements ActionListener
 			}
 			//End debugging code
 			
-			else if(this.questionType == TriviaItem.TYPE_MULTIPLE_CHOICE)
+			else if(this.questionType.equals( TriviaItem.TYPE_MULTIPLE_CHOICE ) )
 			{
 				validAnswer = answer.equalsIgnoreCase("a") || 
 						   			  answer.equalsIgnoreCase("b") ||
 						   			  answer.equalsIgnoreCase("c") ||
 						   			  answer.equalsIgnoreCase("d");
 			} 
-			else if(this.questionType == TriviaItem.TYPE_TRUE_FALSE)
+			else if(this.questionType.equals( TriviaItem.TYPE_TRUE_FALSE ) )
 			{
 				validAnswer = answer.equalsIgnoreCase("a") || 
 			   			  answer.equalsIgnoreCase("b");				
@@ -89,13 +90,38 @@ public class QuestionPrompt implements ActionListener
 			
 			if(validAnswer)
 			{
-				this.parentListener.actionPerformed(new ActionEvent(this, 0, "got answer"));
+				this.parentListener.actionPerformed(new ActionEvent(this, 0, "questionPromptAnswer"));
 			}
 			else
 			{
 				JOptionPane.showMessageDialog(null, "That is not a valid answer.");
 			}
 		}
+	}
+	
+	public void setQuestion(String question, String questionType)
+	{
+		this.questionType = questionType;
+		this.outputArea.setText(question);
+		this.window.pack();
+		this.centerOnScreen();
+	}
+	
+	public void setVisible(boolean visible)
+	{
+		this.window.setVisible(visible);
+	}
+	
+	public void clearScreen()
+	{
+		this.inputArea.setText("");
+		this.outputArea.setText("");
+	}
+	
+	public void centerOnScreen()
+	{
+		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
+		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
 	}
 }
 
