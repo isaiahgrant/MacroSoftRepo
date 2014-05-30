@@ -507,4 +507,9 @@ public class Maze {
 	{
 		return this.player;
 	}
+	
+	public String getCurrentQuestionType()
+	{
+		return this.current_Door.getTriviaItem().getType();
+	}
 }

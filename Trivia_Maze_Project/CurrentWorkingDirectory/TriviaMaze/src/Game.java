@@ -39,6 +39,10 @@ public class Game implements ActionListener, GamePortion
 	private JButton endGame;
 	//END DEBUGING MATERIAL
 	
+	//TEMP CODE
+	private QuestionPrompt question;
+	//END TEMP CODE
+
 	private ActionListener gameOverListener;
 	private boolean playerWon;
 	
@@ -76,6 +80,7 @@ public class Game implements ActionListener, GamePortion
 		
 		this.playerWon = false;
 		currentState = GameState.GETTING_MOVEMENT_INPUT;	
+		//this.question = new QuestionPrompt("What???", "mc", this);
 	}
 	
 	private void setUpCanvas(int width, int height)
@@ -210,6 +215,10 @@ public class Game implements ActionListener, GamePortion
 		else if(event.getSource() == this.submitAnswer)
 		{
 			this.processInput();
+		}
+		else if(event.getClass().getSimpleName().equals(QuestionPrompt.class.getSimpleName()))
+		{
+			//TODO
 		}
 	}
 	

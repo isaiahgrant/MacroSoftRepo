@@ -1,6 +1,9 @@
 
 public abstract class TriviaItem 
 {
+	public static final String TYPE_MULTIPLE_CHOICE = "mc";
+	public static final String TYPE_TRUE_FALSE = "tf";
+	
 	private String type;
 	private String category;
 	private String trivia;
