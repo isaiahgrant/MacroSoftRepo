@@ -17,24 +17,36 @@ public class RoomTextures
 	private BufferedImage verticalLocked;
 	private BufferedImage exitIcon;
 	private BufferedImage playerIcon;
+	private static final String path = "./images/";
+	private static final String ext = ".png";
 	
-	public RoomTextures()
+	
+	/*
+	 *Acceptable userIcon inputs
+	 *marioIcon
+	 *doomIcon
+	 *kirbyIcon
+	 *pikachuIcon
+	 *samusIcon
+	 *linkIcon
+	*/
+	public RoomTextures(String userIcon)
 	{
 		try
 		{
-			this.roomFloor = ImageIO.read(new File("./images/roomFloor.jpg"));
-			this.horizontalDoorClosed = ImageIO.read(new File("./images/horizontalDoorClosed.jpg"));
-			this.horizontalDoorOpen = ImageIO.read(new File("./images/horizontalDoorOpen.jpg"));
-			this.verticalDoorClosed = ImageIO.read(new File("./images/verticalDoorClosed.jpg"));
-			this.verticalDoorOpen = ImageIO.read(new File("./images/verticalDoorOpen.jpg"));
-			this.horizontalLocked = ImageIO.read(new File("./images/horizontalLocked.jpg"));
-			this.verticalLocked = ImageIO.read(new File("./images/verticalLocked.jpg"));
-			this.exitIcon = ImageIO.read(new File("./images/exitIcon.png"));
-			this.playerIcon = ImageIO.read(new File("./images/playerIcon.png"));
+			this.roomFloor = ImageIO.read(new File(path + "roomFloor.jpg"));
+			this.horizontalDoorClosed = ImageIO.read(new File(path + "horizontalDoorClosed.jpg"));
+			this.horizontalDoorOpen = ImageIO.read(new File(path + "horizontalDoorOpen.jpg"));
+			this.verticalDoorClosed = ImageIO.read(new File(path + "verticalDoorClosed.jpg"));
+			this.verticalDoorOpen = ImageIO.read(new File(path + "verticalDoorOpen.jpg"));
+			this.horizontalLocked = ImageIO.read(new File(path + "horizontalLocked.jpg"));
+			this.verticalLocked = ImageIO.read(new File(path + "verticalLocked.jpg"));
+			this.exitIcon = ImageIO.read(new File(path + "exitIcon.png"));
+			this.playerIcon = ImageIO.read(new File(path + userIcon + ext));
 		}
 		catch(IOException e)
 		{
-			JOptionPane.showConfirmDialog(null, "Floor template failed to load.");
+			JOptionPane.showConfirmDialog(null, "Texture failed to load.");
 		}
 	}
 
