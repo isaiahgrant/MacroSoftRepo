@@ -28,6 +28,9 @@ public class QuestionPrompt implements ActionListener
 		this.outputArea = new JTextArea(7, 30);
 		this.outputArea.setBackground(Color.WHITE);
 		this.outputArea.setEditable(false);
+		Font outputFont = new Font("Arial", Font.PLAIN, 16 );
+		this.outputArea.setFont(outputFont);
+		
 		this.outputArea.setText(question);
 		
 		this.inputArea = new JTextField(16);
