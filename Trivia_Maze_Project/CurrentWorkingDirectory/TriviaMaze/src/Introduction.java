@@ -21,6 +21,7 @@ import java.io.IOException;
 
 public class Introduction implements ActionListener, GamePortion
 {
+	private static final int BUTTON_SPACING_HORIZONTAL = 50;
 	private BufferedImage mainPicture;
 	private JButton newGame; 
 	private JButton loadGame; //If there is time.
@@ -36,10 +37,14 @@ public class Introduction implements ActionListener, GamePortion
 		this.loadGame = new JButton("Load Game");
 		this.loadGame.addActionListener(this);
 		
-		this.help = new JButton("Help");
+		this.help = new JButton("How to Play");
 		this.help.addActionListener(this);
 		
-		JPanel buttonContainer = new JPanel(new FlowLayout());
+		
+		FlowLayout buttonContainerLayout = new FlowLayout();
+		buttonContainerLayout.setHgap(BUTTON_SPACING_HORIZONTAL);
+		JPanel buttonContainer = new JPanel(buttonContainerLayout);
+		
 		
 		buttonContainer.add(this.newGame);
 		buttonContainer.add(this.loadGame);
