@@ -20,8 +20,8 @@ public class Maze {
 
 	private Room[][] rooms;
 	private int[][] simpleMaze; //Only used in isWinnable() method.
-	public static final int MAX_WIDTH = 11;
-	public static final int MAX_HEIGHT = 11;
+	public static final int MAX_WIDTH = 10;
+	public static final int MAX_HEIGHT = 10;
 	public static final int ROOM_SIZE = 60;
 	
 	
@@ -511,5 +511,15 @@ public class Maze {
 	public String getCurrentQuestionType()
 	{
 		return this.current_Door.getTriviaItem().getType();
+	}
+	
+	public static int getMazeWidthInPixels()
+	{
+		return MAX_WIDTH * ROOM_SIZE;
+	}
+	
+	public static int getMazeHeightInPixels()
+	{
+		return MAX_HEIGHT * ROOM_SIZE;
 	}
 }

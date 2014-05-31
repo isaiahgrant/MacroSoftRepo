@@ -19,11 +19,6 @@ public class Game implements ActionListener, GamePortion
 	private JPanel canvas;
 	private Graphics brush;
 	
-	private JTextArea outputArea;
-	private JTextField inputArea;
-	private JPanel inputOutput;
-	private JButton submitAnswer;
-	
 	private QuestionPrompt questionPrompt;
 	
 	private JButton northButton;
@@ -33,6 +28,8 @@ public class Game implements ActionListener, GamePortion
 	
 	private JPanel directionButtons;
 	private JPanel directionButtonsSouth;
+	
+	private JPanel controlsAndInformation;
 	
 	private GameState currentState;
 	
@@ -63,20 +60,22 @@ public class Game implements ActionListener, GamePortion
 		//Also make canvas width/height be at least the
 		//size of its container
 		
-		int canvasWidth = width;
-		int canvasHeight = height + Maze.MAX_HEIGHT * 20;//(height * 2 / 3) - 10; //TODO Get rid of these magic numbers, make sizing proper
-		
-		this.setUpCanvas(canvasWidth, canvasHeight);
-		this.setUpTextInputOutput();
-		this.setUpInputButtons();
-		this.setUpWindow(width, height);
-		//this.drawSomething();
+		int canvasWidth = Maze.getMazeWidthInPixels() + Maze.ROOM_SIZE;
+		int canvasHeight = Maze.getMazeHeightInPixels();
 		
 		//DEBUGING MATERIAL
 		endGame = new JButton("End Game");
 		endGame.addActionListener(listener);
-		this.window.add(endGame, BorderLayout.SOUTH);
+//		this.window.add(endGame, BorderLayout.SOUTH);
 		//END DEBUGING MATERIAL
+		
+		this.setUpCanvas(canvasWidth, canvasHeight);
+		this.setUpInputButtons();
+		this.setUpControlsAndInformation();
+		this.setUpWindow(width, height);
+		//this.drawSomething();
+		
+
 		
 		this.draw();
 		
@@ -97,32 +96,17 @@ public class Game implements ActionListener, GamePortion
 		//Set up label and panel to hold image
 		JLabel imageHolder = new JLabel();
 		imageHolder.setIcon(new ImageIcon(drawingImage) );
-		canvas = new JPanel(new FlowLayout() );
+		
+		FlowLayout canvasLayout = new FlowLayout();
+		canvasLayout.setHgap(0);
+		canvasLayout.setVgap(0);
+		
+		canvas = new JPanel(canvasLayout );
 		canvas.setBackground(Color.WHITE);
-		canvas.setPreferredSize(new Dimension(width, height));
+		//canvas.setPreferredSize(new Dimension(width, height));
 		canvas.add(imageHolder);
 	}
-	
-	private void setUpTextInputOutput()
-	{	
-		this.outputArea = new JTextArea(7, 30);
-		this.outputArea.setBackground(Color.WHITE);
-		this.outputArea.setEditable(false);
-		
-		this.inputArea = new JTextField(16);
-		this.inputArea.setBackground(Color.WHITE);
-		
-		this.submitAnswer = new JButton("Submit Answer");
-		this.submitAnswer.addActionListener(this);
-		
-		this.inputOutput = new JPanel(new BorderLayout());
-		this.inputOutput.add(outputArea, BorderLayout.NORTH);
-		this.inputOutput.add(inputArea, BorderLayout.CENTER);
-		this.inputOutput.add(submitAnswer, BorderLayout.SOUTH);
-		
 
-		//this.inputOutput.setPreferredSize(new Dimension(150, 160));
-	}
 	
 	private void setUpInputButtons()
 	{
@@ -155,26 +139,38 @@ public class Game implements ActionListener, GamePortion
 		this.directionButtonsSouth.add(southButtonWrapper, BorderLayout.NORTH);	
 	}
 	
-	private void setUpWindow(int width, int height)
+	private void setUpControlsAndInformation()
 	{
-		window = new JFrame("Trivia Maze");
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		window.setLayout(new BorderLayout());
-		window.setResizable(true); //TODO implement resize functionality
-		
-		JScrollPane canvasHolder = new JScrollPane(this.canvas);
-		canvasHolder.setPreferredSize(new Dimension(width, 2*height/3 - 10));
-		
-		window.add(canvasHolder, BorderLayout.NORTH);
-		window.add(this.inputOutput, BorderLayout.WEST);
+		this.controlsAndInformation = new JPanel(new BorderLayout());
 		
 		JPanel directionButtonsContainer = new JPanel(new BorderLayout());
 		
 		directionButtonsContainer.add(this.directionButtons, BorderLayout.NORTH);
 		directionButtonsContainer.add(this.directionButtonsSouth, BorderLayout.CENTER);
 		
-		window.add(directionButtonsContainer, BorderLayout.EAST);
+		this.controlsAndInformation.add(directionButtonsContainer, BorderLayout.NORTH);
+		this.controlsAndInformation.add(this.endGame, BorderLayout.SOUTH);
+	}
+	
+	private void setUpWindow(int width, int height)
+	{
+		window = new JFrame("Trivia Maze");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		BorderLayout windowLayout = new BorderLayout();
+		windowLayout.setHgap(0);
+		windowLayout.setVgap(0);
+		
+		
+		window.setLayout(new BorderLayout());
+		
+		
+		
+		window.setResizable(true); //TODO implement resize functionality
+		
+		window.add(this.canvas, BorderLayout.WEST);
+		
+		window.add(this.controlsAndInformation, BorderLayout.EAST);
 		
 		this.window.setSize( new Dimension(width, height) );
 		window.setVisible(true);
@@ -192,7 +188,7 @@ public class Game implements ActionListener, GamePortion
 	{
 		//Need to figure out inheritance hierarchy - obviously 
 		//there is no draw(Graphics pen method in the ASCII version)
-		this.brush.setColor(Color.CYAN);
+		this.brush.setColor(Color.BLACK);
 		this.brush.fillRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
 		this.gameMaze.draw(this.brush);
 		this.canvas.repaint();
@@ -216,11 +212,7 @@ public class Game implements ActionListener, GamePortion
 		{
 			this.processInput(Direction.LEFT);
 		}
-		else if(event.getSource() == this.submitAnswer)
-		{
-			//this.processInput();
-		}
-		
+
 		else if(event.getActionCommand().equals("questionPromptAnswer"))
 		{
 			this.processQuestion( this.questionPrompt.getAnswer() );
@@ -274,7 +266,6 @@ public class Game implements ActionListener, GamePortion
 		if(this.currentState == GameState.GETTING_QUESTION_ANSWER)
 		{	
 			this.gameMaze.processAnswer(answer);
-			this.clearInputOutputText();
 			this.currentState = GameState.GETTING_MOVEMENT_INPUT;
 			this.questionPrompt.clearScreen();
 			this.questionPrompt.setVisible(false);
@@ -290,22 +281,6 @@ public class Game implements ActionListener, GamePortion
 		{
 			this.processGameEnded();
 		}
-	}
-	
-	private void setOutputText(String message)
-	{
-		this.outputArea.setText(message);
-	}
-	
-	private String getAnswerToQuestion()
-	{
-		return this.inputArea.getText();
-	}
-	
-	private void clearInputOutputText()
-	{
-		this.outputArea.setText("");
-		this.inputArea.setText("");
 	}
 	
 	public Player getPlayer()
