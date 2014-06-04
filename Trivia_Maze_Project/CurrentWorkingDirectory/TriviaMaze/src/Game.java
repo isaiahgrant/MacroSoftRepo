@@ -60,7 +60,7 @@ public class Game implements ActionListener, GamePortion
 		//Also make canvas width/height be at least the
 		//size of its container
 		
-		int canvasWidth = Maze.getMazeWidthInPixels() + Maze.ROOM_SIZE;
+		int canvasWidth = Maze.getMazeWidthInPixels();
 		int canvasHeight = Maze.getMazeHeightInPixels();
 		
 		//DEBUGING MATERIAL
@@ -91,7 +91,6 @@ public class Game implements ActionListener, GamePortion
 		BufferedImage drawingImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		this.brush = drawingImage.getGraphics();
 		this.brush.setColor(Color.BLACK);
-		
 		
 		//Set up label and panel to hold image
 		JLabel imageHolder = new JLabel();

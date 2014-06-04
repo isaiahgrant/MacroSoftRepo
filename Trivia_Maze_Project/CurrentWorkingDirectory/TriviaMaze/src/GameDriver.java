@@ -8,8 +8,10 @@ import java.awt.event.*;
 
 public class GameDriver implements ActionListener
 {
-	public static final int DEFAULT_WIDTH = 800;
-	public static final int DEFAULT_HEIGHT = 650;
+	//Make the screen width as big as the maximum sized maze and room for GUI buttons on right
+	public static final int DEFAULT_WIDTH = Maze.getMazeWidthInPixels()  + 140;
+	//Make the screen height as big as the maximum sized maze and the window borders
+	public static final int DEFAULT_HEIGHT = Maze.getMazeHeightInPixels() + 38; 
 	
 	public static void main(String[] args)
 	{
@@ -36,7 +38,7 @@ public class GameDriver implements ActionListener
 		else if( this.currentGamePart.getClass().getSimpleName().equals("NewGame") )
 		{
 			//Get player name and difficulty from NewGameGUI here
-			this.currentGamePart = new Game(DEFAULT_WIDTH,DEFAULT_HEIGHT, "Sven", Difficulty.EASY, this);
+			this.currentGamePart = new Game(DEFAULT_WIDTH,DEFAULT_HEIGHT, "Sven", Difficulty.EXTREME, this);
 		}
 		else if(this.currentGamePart.getClass().getSimpleName().equals("Game"))
 		{
