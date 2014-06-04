@@ -13,17 +13,9 @@ public class Room
 	public Room()
 	{
 		this.northDoor = new Door();
-		this.southDoor = new Door();
 		this.eastDoor = new Door();
+		this.southDoor = new Door();
 		this.westDoor = new Door();
-	}
-	
-	public Room(Door nDoor, Door sDoor, Door eDoor, Door wDoor)
-	{
-		this.northDoor = nDoor;
-		this.eastDoor = eDoor;
-		this.southDoor = sDoor;
-		this.westDoor = wDoor;
 	}
 	
 	public Door getNorthDoor()
