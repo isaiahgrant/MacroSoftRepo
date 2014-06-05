@@ -16,7 +16,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class NewGame implements GamePortion
+public class NewGame extends GamePortion
 {
 	private JLabel nameLabel;
 	private JLabel difficultyLabel;
@@ -24,8 +24,6 @@ public class NewGame implements GamePortion
 	private JTextField nameField;
 	
 	private JButton launchGame;
-	
-	private JFrame window;
 	
 	private Difficulty chosenDifficulty;
 	private String chosenName = "Player";
@@ -73,19 +71,6 @@ public class NewGame implements GamePortion
 		
 		this.window.setSize( new Dimension(width, height) );
 		this.window.setVisible(true);
-	}
-	
-	@Override
-	public void close()
-	{
-		this.window.dispose();
-	}
-	
-	@Override
-	public void centerOnScreen()
-	{
-		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
-		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
 	}
 	
 	public Difficulty getDifficulty()

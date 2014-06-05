@@ -19,16 +19,14 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
-public class Introduction implements ActionListener, GamePortion
+public class Introduction extends GamePortion implements ActionListener
 {
 	private static final int BUTTON_SPACING_HORIZONTAL = 50;
 	private BufferedImage mainPicture;
 	private JButton newGame; 
 	private JButton loadGame; //If there is time.
 	private JButton help;
-	
-	private JFrame window;
-	
+		
 	public Introduction(int width, int height, ActionListener endIntro)
 	{
 		this.newGame = new JButton("Start New Game");
@@ -97,16 +95,4 @@ public class Introduction implements ActionListener, GamePortion
 		}
 	}
 	
-	@Override
-	public void close()
-	{
-		this.window.dispose();
-	}
-	
-	@Override
-	public void centerOnScreen()
-	{
-		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
-		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
-	}
 }

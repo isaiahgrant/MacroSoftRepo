@@ -6,12 +6,24 @@
 //Possibly need to rename this. Sounds funky.
 
 
+import java.awt.Point;
 import java.awt.event.*;
 
-public interface GamePortion 
+import javax.swing.JFrame;
+
+public abstract class GamePortion 
 {
+	protected JFrame window;
 	//Do all clean up here, 
 	//including closing the JFrame (window)
-	public void close();
-	public void centerOnScreen();
+	public void close()
+	{
+		this.window.dispose();
+	}
+	
+	public void centerOnScreen()
+	{
+		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
+		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 	
+	}
 }

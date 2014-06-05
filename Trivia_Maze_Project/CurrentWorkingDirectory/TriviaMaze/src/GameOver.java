@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.File;
 
-public class GameOver implements GamePortion, ActionListener
+public class GameOver extends GamePortion implements ActionListener
 {
 	private static final String WINNING_ASCII_ART_FILENAME = "winningASCIIArt.txt";
 	private static final String LOSING_ASCII_ART_FILENAME = "losingASCIIArt.txt";
@@ -33,8 +33,6 @@ public class GameOver implements GamePortion, ActionListener
 	private JButton quitButton;
 	
 	private JPanel buttons;
-	
-	private JFrame window;
 	
 	public GameOver(int width, int height, Player player, boolean playerWon, ActionListener listener)
 	{
@@ -153,12 +151,6 @@ public class GameOver implements GamePortion, ActionListener
 		outputThread.start();
 	}
 	
-	@Override 
-	public void close()
-	{
-		this.window.dispose();
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent event)
 	{
@@ -167,12 +159,4 @@ public class GameOver implements GamePortion, ActionListener
 			this.close();
 		}
 	}
-	
-	@Override
-	public void centerOnScreen()
-	{
-		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
-		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
-	}
-
 }

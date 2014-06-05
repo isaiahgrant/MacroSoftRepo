@@ -10,12 +10,11 @@ import javax.swing.*;
 
 //TODO - dynamic sizing of components.
 
-public class Game implements ActionListener, GamePortion
+public class Game extends GamePortion implements ActionListener
 {
 	private Maze gameMaze;
 	private MazeBuilder mazeBuilder;
 	
-	private JFrame window;
 	private JPanel canvas;
 	private Graphics brush;
 	
