@@ -128,20 +128,6 @@ public class Maze {
 		this.currentPlayerDirection = direction;
 		
 		return true;
-		
-		
-		/*int x = this.player.getPlayerLocation().getColumn();
-		int y = this.player.getPlayerLocation().getRow();
-		Room curRoom = this.rooms[x][y];
-		if(direct.equals(Direction.LEFT) && curRoom.getWestDoor().isLocked())
-			;
-		else if(x == 2 && direct.equals(Direction.RIGHT))
-			return false;
-		else if(y == 0 && direct.equals(Direction.UP))
-			return false;
-		else if(y == 2 && direct.equals(Direction.DOWN))
-			return false;
-		return true;*/
 	}
 	
 	boolean isValidAnswer(String answer)
@@ -203,119 +189,7 @@ public class Maze {
 			this.player.getPlayerLocation().increaseColumnByOne();		
 	}
 	
-	boolean isSolvable()
-	{
-		return true;
-	}
-	
-	//thinking doing this with an array would be easier and also less prone to errors.
-	void drawMaze()
-	{
-		int i, j;
 		
-		for(i = 0; i < rooms.length; i++)
-		{
-			for(j = 0; j < rooms[i].length; j++)
-			{
-				if(i == 0)
-				{
-					System.out.print(" ___ ");
-				}
-			}
-			
-			System.out.println();
-			
-			for(j = 0; j < rooms[i].length; j++)
-			{
-				if(this.player.getPlayerLocation().getRow() == i && this.player.getPlayerLocation().getColumn() == j)//prints player location
-				{
-					System.out.print("|" + "_P_" + "|");
-				}
-				
-				else if(i == rooms.length - 1 && j == rooms[i].length - 1)//prints exit location
-				{
-					System.out.print("|" + "_X_" + "|");
-				}
-				
-				else
-				{
-					System.out.print("|" + "___" + "|");
-				}
-			}
-		}
-
-		System.out.println();
-	}
-	
-	//DEBUGING MATERIAL
-	String drawMazeDebug()
-	{
-		int i, j;
-		
-		String result = "";
-		
-		for(i = 0; i < rooms.length; i++)
-		{
-			for(j = 0; j < rooms[i].length; j++)
-			{
-				if(i == 0)
-				{
-					result += " ___ ";
-				}
-			}
-			
-			result += "\n";
-			
-			for(j = 0; j < rooms[i].length; j++)
-			{
-				if(this.player.getPlayerLocation().getRow() == i && this.player.getPlayerLocation().getColumn() == j)//prints player location
-				{
-					result += "|" + "_P_" + "|";
-				}
-				
-				else if(i == rooms.length - 1 && j == rooms[i].length - 1)//prints exit location
-				{
-					result += "|" + "_X_" + "|";
-				}
-				
-				else
-				{
-					result +="|" + "___" + "|";
-				}
-			}
-		}
-
-		result += "\n";
-		
-		return result;
-	}
-	//END DEBUGING MATERIAL
-	
-	//this is my implementation with an array
-	void drawMazeArray()
-	{
-		char[][] mazeAra = new char[3][3];
-		for(int i = 0; i < 3; i++)
-		{
-			for(int j = 0; j < 3; j++)
-				mazeAra[i][j] = '.';
-		}
-		mazeAra[0][0] = 'E';
-		mazeAra[3][3] = 'X';
-		mazeAra[this.player.getPlayerLocation().getColumn()][this.player.getPlayerLocation().getRow()] = 'P';
-		
-		System.out.println(". . . . . . . . . . .");
-		for(int i = 0; i < 3; i ++)
-		{
-			System.out.print(".");
-			for(int j = 0; j < 3; j++)
-			{
-				System.out.print(" " + mazeAra[i][j] + " .");
-			}
-			System.out.println("\n. . . . . . . . . . .");
-		}
-	}
-	
 	public boolean isPlayerAtExit()
 	{
 		return this.player.getPlayerLocation().equals(this.exit);
@@ -371,7 +245,6 @@ public class Maze {
 		//Mark room as visited
 		this.simpleMaze[row][column] = 3;
 		
-		//TODO Need to modify this to include Exit coordinate
 		//Are we at the exit?
 		if( row == this.exit.getRow() && column == this.exit.getColumn() )
 		{
@@ -469,9 +342,6 @@ public class Maze {
 	public void draw(Graphics brush)
 	{
 		int i, j;
-		//roomSize = 60;
-		
-		
 		
 		for(i = 0; i < rooms.length; i++)
 		{
