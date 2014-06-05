@@ -12,6 +12,7 @@ import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.File;
+import java.text.DecimalFormat;
 
 public class GameOver extends GamePortion implements ActionListener
 {
@@ -96,7 +97,12 @@ public class GameOver extends GamePortion implements ActionListener
 		
 		double correctQuestionPercentage = (double)player.getQuestionsAnsweredCorrectly() / (double)player.getTotalQuestionsAnswered();
 		
-		this.playerCorrectPercentage = new JLabel("Player Correct: " + correctQuestionPercentage  + " of the time");
+		DecimalFormat twoDecimalPlaces = new DecimalFormat("#.##");
+		
+		twoDecimalPlaces.setMinimumFractionDigits(2);
+		twoDecimalPlaces.setMaximumFractionDigits(2);
+		
+		this.playerCorrectPercentage = new JLabel("Player Correct: " + twoDecimalPlaces.format(correctQuestionPercentage)  + "% of the time");
 		
 		this.playerStatistics = new JPanel(new GridLayout(5, 1));
 		
