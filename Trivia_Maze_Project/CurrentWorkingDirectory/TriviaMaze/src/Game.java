@@ -44,11 +44,12 @@ public class Game extends GamePortion implements ActionListener
 	private ActionListener gameOverListener;
 	private boolean playerWon;
 	
-	public Game(int width, int height, String playerName, Difficulty difficulty, ActionListener listener)
+	public Game(int width, int height, String playerName, Difficulty difficulty, String playerIcon, ActionListener listener)
 	{
 
 		this.mazeBuilder = new MazeBuilder(playerName, difficulty);
 		this.gameMaze = this.mazeBuilder.getNewMaze();
+		this.gameMaze.setIcon(playerIcon);
 		
 		this.gameOverListener = listener;
 		
@@ -317,19 +318,5 @@ public class Game extends GamePortion implements ActionListener
 	public boolean gameWinnable()
 	{
 		return this.gameMaze.isWinnable();
-	}
-	
-	@Override
-	public void close() 
-	{
-		this.questionPrompt.close();
-		this.window.dispose();
-	}
-	
-	@Override
-	public void centerOnScreen()
-	{
-		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
-		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
 	}
 }

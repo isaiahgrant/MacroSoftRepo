@@ -383,4 +383,9 @@ public class Maze {
 	{
 		return MAX_HEIGHT * ROOM_SIZE;
 	}
+	
+	public void setIcon(String icon)
+	{
+		this.roomTextures = new RoomTextures(icon);
+	}
 }

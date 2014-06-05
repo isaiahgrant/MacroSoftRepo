@@ -12,6 +12,9 @@ public class GameDriver implements ActionListener
 	public static final int DEFAULT_WIDTH = Maze.getMazeWidthInPixels()  + 140;
 	//Make the screen height as big as the maximum sized maze and the window borders
 	public static final int DEFAULT_HEIGHT = Maze.getMazeHeightInPixels() + 38; 
+	//NewGame window sizes
+	public static final int DEFAULT_NEWGAME_WIDTH = 420;
+	public static final int DEFAULT_NEWGAME_HEIGHT = 200;	
 	
 	public static void main(String[] args)
 	{
@@ -33,13 +36,14 @@ public class GameDriver implements ActionListener
 		
 		if( this.currentGamePart.getClass().getSimpleName().equals("Introduction") )
 		{
-			this.currentGamePart = new NewGame(550,80, this);
+			this.currentGamePart = new NewGame(DEFAULT_NEWGAME_WIDTH, DEFAULT_NEWGAME_HEIGHT, this);
 		}
 		else if( this.currentGamePart.getClass().getSimpleName().equals("NewGame") )
 		{
 			String pname = ((NewGame)this.currentGamePart).getPName();
 			Difficulty theDiff = ((NewGame)this.currentGamePart).getDifficulty();
-			this.currentGamePart = new Game(DEFAULT_WIDTH,DEFAULT_HEIGHT, pname, theDiff, this);
+			String pIcon = ((NewGame)this.currentGamePart).getIcon();
+			this.currentGamePart = new Game(DEFAULT_WIDTH,DEFAULT_HEIGHT, pname, theDiff, pIcon, this);
 		}
 		else if(this.currentGamePart.getClass().getSimpleName().equals("Game"))
 		{
@@ -51,8 +55,7 @@ public class GameDriver implements ActionListener
 		}
 		else if(this.currentGamePart.getClass().getSimpleName().equals("GameOver"))
 		{
-			this.currentGamePart = new NewGame(DEFAULT_WIDTH,DEFAULT_HEIGHT, this);
-		}
+			this.currentGamePart = new NewGame(DEFAULT_NEWGAME_WIDTH,DEFAULT_NEWGAME_HEIGHT, this);		}
 		
 		if(this.currentGamePart != null)
 		{

@@ -47,7 +47,7 @@ public class Introduction extends GamePortion implements ActionListener
 		JLabel imageLabel = new JLabel();
 		try
 		{
-			buffImage = ImageIO.read(new File("./labyrinth.jpg"));
+			buffImage = ImageIO.read(new File("./images/labyrinth.jpg"));
 			imageLabel = new JLabel(new ImageIcon(buffImage));
 		}
 		catch(IOException e)
