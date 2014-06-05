@@ -1,3 +1,8 @@
+/*
+ * Written by Alex Staeheli 5/6/2014
+ * Obsolete.  We are using Database Driven TriviaFactory
+ * in the final version.
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
@@ -24,6 +29,10 @@ public class TriviaFactory
 	}//end EVC
 	
 	
+	/*
+	 * Reads in a line from the file, parses the input, and constructs 
+	 * an appropriately typed TriviaItem object and returns it.
+	 */
 	public TriviaItem getTriviaItem()
 	{
 		String input;
@@ -37,8 +46,8 @@ public class TriviaFactory
 			{
 				return new MultiChoice();
 			}
-			tokens = input.split("-");
 			
+			tokens = input.split("-");
 			if(tokens[0].equalsIgnoreCase("mc"))
 			{
 				temp = new MultiChoice(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7]);
@@ -52,16 +61,19 @@ public class TriviaFactory
 		{
 			System.out.println("Reached the end of data entries.  Generating TriviaItems with default values");
 			temp = new MultiChoice();
-		}
-		
+		}		
 		
 		return temp;
 	}//end getTriviaItem
 	
 	
+	/*
+	 * Closes the open file.
+	 */
 	public void closeFactory()
 	{
 		fin.close();
 	}//end closeFactory
+
 	
-}
+}//end TriviaFactory
