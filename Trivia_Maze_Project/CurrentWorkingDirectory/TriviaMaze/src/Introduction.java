@@ -22,18 +22,13 @@ import java.io.IOException;
 public class Introduction extends GamePortion implements ActionListener
 {
 	private static final int BUTTON_SPACING_HORIZONTAL = 50;
-	private BufferedImage mainPicture;
 	private JButton newGame; 
-	private JButton loadGame; //If there is time.
 	private JButton help;
 		
 	public Introduction(int width, int height, ActionListener endIntro)
 	{
 		this.newGame = new JButton("Start New Game");
 		this.newGame.addActionListener(endIntro);
-		
-		this.loadGame = new JButton("Load Game");
-		this.loadGame.addActionListener(this);
 		
 		this.help = new JButton("How to Play");
 		this.help.addActionListener(this);
@@ -45,7 +40,6 @@ public class Introduction extends GamePortion implements ActionListener
 		
 		
 		buttonContainer.add(this.newGame);
-		buttonContainer.add(this.loadGame);
 		buttonContainer.add(this.help);
 		
 		//Set up Labyrinth Image
@@ -76,11 +70,7 @@ public class Introduction extends GamePortion implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent event)
 	{
-		if(event.getSource() == loadGame)
-		{
-			JOptionPane.showMessageDialog(null, "Not yet implemented");
-		}
-		else if(event.getSource() == help)
+		if(event.getSource() == help)
 		{
 			JOptionPane.showMessageDialog(null, "**!Welcome to Macrosoft's Trivial Trivia Maze!**\n\n"+
 												"To begin you may select 'Start New Game'.\n" +
