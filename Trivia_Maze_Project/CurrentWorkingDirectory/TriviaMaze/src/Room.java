@@ -69,25 +69,7 @@ public class Room
 		this.westDoor = door;
 	}
 	
-	public void draw(int x, int y, int roomSize, Graphics brush, BufferedImage roomFloor, BufferedImage horizontalDoorClosed)
-	{
-		int doorThickness = 4;
-		//brush.setColor(Color.blue);
-		//brush.draw(x, y, roomSize, roomSize);
-		brush.drawImage(roomFloor, x, y, null);
-		
-//		if(!this.eastDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
-//		{
-//			this.eastDoor.draw(x + (roomSize - (doorThickness / 2)), y + (roomSize / 4), roomSize, Direction.RIGHT, brush, horizontalDoorClosed);
-//		}
-//		
-//		if(!this.southDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
-//		{
-//			this.southDoor.draw(x + (roomSize / 4), y + (roomSize - (doorThickness / 2)), roomSize, Direction.DOWN, brush, horizontalDoorClosed);
-//		}
-		
-	}
-	
+
 	public void drawDoors(int x, int y, int roomSize, Graphics brush, RoomTextures roomTextures)
 	{
 		int doorThickness = 10;
@@ -97,7 +79,7 @@ public class Room
 		{
 			brush.drawImage(roomTextures.getVerticalDoorClosed(), x + (roomSize - (doorThickness / 2)), y + (roomSize / 3), null);
 		}
-		
+				
 		if(!this.eastDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor") && this.eastDoor.isAttempted && !this.eastDoor.isLocked)
 		{
 			brush.drawImage(roomTextures.getVerticalDoorOpen(), (x + roomSize) - 15,  y + 10, null);
@@ -112,7 +94,6 @@ public class Room
 		//Horizontal Door positioning
 		if(!this.southDoor.getClass().getSimpleName().equalsIgnoreCase("NullDoor"))
 		{
-			//this.southDoor.draw(x + (roomSize / 3), y + (roomSize - (doorThickness / 2)), roomSize, Direction.DOWN, brush, horizontalDoorClosed);
 			brush.drawImage(roomTextures.getHorizontalDoorClosed(), x + (roomSize / 3), y + (roomSize - (doorThickness / 2)), null);
 		}
 		
@@ -126,6 +107,7 @@ public class Room
 			brush.drawImage(roomTextures.getHorizontalLocked(), x + 10, y + (roomSize - 12), null);
 		}
 
-	}
+	}//end drawDoors
 	
-}
+	
+}//end Room
