@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class QuestionPrompt implements ActionListener
+public class QuestionPrompt extends GamePortion implements ActionListener
 {
 	private JTextArea outputArea;
 	private JTextField inputArea;
@@ -16,8 +16,6 @@ public class QuestionPrompt implements ActionListener
 	private String questionType;
 	
 	ActionListener parentListener;
-	
-	private JFrame window;
 	
 	public QuestionPrompt(String question, String questionType, ActionListener listener)
 	{
@@ -40,6 +38,7 @@ public class QuestionPrompt implements ActionListener
 		this.submitAnswer.addActionListener(this);
 		
 		this.window = new JFrame("Question");
+		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.window.setLayout(new BorderLayout());
 		
@@ -55,11 +54,6 @@ public class QuestionPrompt implements ActionListener
 	public String getAnswer()
 	{
 		return this.inputArea.getText();
-	}
-	
-	public void close()
-	{
-		this.window.dispose();
 	}
 	
 	@Override
@@ -119,12 +113,6 @@ public class QuestionPrompt implements ActionListener
 	{
 		this.inputArea.setText("");
 		this.outputArea.setText("");
-	}
-	
-	public void centerOnScreen()
-	{
-		Point origin = MonitorScreen.getOrigin(this.window.getWidth(), this.window.getHeight());
-		this.window.setLocation((int)origin.getX(), (int)origin.getY()); 
 	}
 }
 

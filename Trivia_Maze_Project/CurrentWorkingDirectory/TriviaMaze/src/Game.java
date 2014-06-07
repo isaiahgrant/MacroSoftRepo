@@ -8,8 +8,6 @@ import java.awt.image.BufferedImage;
 import java.awt.event.*;
 import javax.swing.*;
 
-//TODO - dynamic sizing of components.
-
 public class Game extends GamePortion implements ActionListener
 {
 	private Maze gameMaze;
