@@ -38,7 +38,6 @@ public class QuestionPrompt extends GamePortion implements ActionListener
 		this.submitAnswer.addActionListener(this);
 		
 		this.window = new JFrame("Question");
-		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.window.setLayout(new BorderLayout());
 		
@@ -49,6 +48,7 @@ public class QuestionPrompt extends GamePortion implements ActionListener
 		
 		this.window.pack();
 		this.centerOnScreen();
+		this.window.toFront();
 	}
 	
 	public String getAnswer()
@@ -102,6 +102,8 @@ public class QuestionPrompt extends GamePortion implements ActionListener
 		this.outputArea.setText(question);
 		this.window.pack();
 		this.centerOnScreen();
+		this.window.toFront();
+		this.inputArea.requestFocus();
 	}
 	
 	public void setVisible(boolean visible)
