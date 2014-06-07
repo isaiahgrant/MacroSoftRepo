@@ -46,9 +46,10 @@ public class QuestionPrompt extends GamePortion implements ActionListener
 		this.window.add(inputArea, BorderLayout.CENTER);
 		this.window.add(submitAnswer, BorderLayout.SOUTH);
 		
+		this.window.setAlwaysOnTop(true);
+		
 		this.window.pack();
-		this.centerOnScreen();
-		this.window.toFront();
+		this.centerOnScreen();		
 	}
 	
 	public String getAnswer()
@@ -91,7 +92,9 @@ public class QuestionPrompt extends GamePortion implements ActionListener
 			}
 			else
 			{
-				JOptionPane.showMessageDialog(null, "That is not a valid answer.");
+				this.inputArea.setText("Invalid Answer.");
+				this.inputArea.setSelectionStart(0);
+				this.inputArea.requestFocus();
 			}
 		}
 	}
@@ -102,7 +105,6 @@ public class QuestionPrompt extends GamePortion implements ActionListener
 		this.outputArea.setText(question);
 		this.window.pack();
 		this.centerOnScreen();
-		this.window.toFront();
 		this.inputArea.requestFocus();
 	}
 	

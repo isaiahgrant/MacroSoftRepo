@@ -6,6 +6,7 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class Game extends GamePortion implements ActionListener
@@ -34,10 +35,6 @@ public class Game extends GamePortion implements ActionListener
 	//DEBUGING MATERIAL
 	private JButton endGame;
 	//END DEBUGING MATERIAL
-	
-	//TEMP CODE
-	private QuestionPrompt question;
-	//END TEMP CODE
 
 	private ActionListener gameOverListener;
 	private boolean playerWon;
@@ -67,6 +64,9 @@ public class Game extends GamePortion implements ActionListener
 //		this.window.add(endGame, BorderLayout.SOUTH);
 		//END DEBUGING MATERIAL
 		
+		this.questionPrompt = new QuestionPrompt("", "", this);
+		this.questionPrompt.setVisible(false);
+		
 		this.setUpCanvas(canvasWidth, canvasHeight);
 		this.setUpInputButtons();
 		this.setUpControlsAndInformation();
@@ -78,8 +78,7 @@ public class Game extends GamePortion implements ActionListener
 		this.draw();
 		
 		
-		this.questionPrompt = new QuestionPrompt("", "", this);
-		this.questionPrompt.setVisible(false);
+
 		this.playerWon = false;
 		currentState = GameState.GETTING_MOVEMENT_INPUT;	
 	}
@@ -162,7 +161,6 @@ public class Game extends GamePortion implements ActionListener
 		window.setLayout(new BorderLayout());
 		
 		
-		
 		window.setResizable(true); //TODO implement resize functionality
 		
 		window.add(this.canvas, BorderLayout.WEST);
@@ -170,6 +168,7 @@ public class Game extends GamePortion implements ActionListener
 		window.add(this.controlsAndInformation, BorderLayout.EAST);
 		
 		this.window.setSize( new Dimension(width, height) );
+		
 		window.setVisible(true);
 	}
 	
