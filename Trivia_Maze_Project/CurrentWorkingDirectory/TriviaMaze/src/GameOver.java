@@ -95,7 +95,12 @@ public class GameOver extends GamePortion implements ActionListener
 		this.playerQuestionsAnsweredCorrectly = new JLabel("Questions Answered Correctly:" + player.getQuestionsAnsweredCorrectly());
 		this.playerTotalQuestionsAnswered = new JLabel("Total Questions Answered:" + player.getTotalQuestionsAnswered());
 		
-		double correctQuestionPercentage = (double)player.getQuestionsAnsweredCorrectly() / (double)player.getTotalQuestionsAnswered();
+		double correctQuestionPercentage = 0.0;
+		
+		if(player.getTotalQuestionsAnswered() != 0)
+		{
+			correctQuestionPercentage = (double)player.getQuestionsAnsweredCorrectly() / (double)player.getTotalQuestionsAnswered();
+		}
 		
 		DecimalFormat twoDecimalPlaces = new DecimalFormat("#.##");
 		
