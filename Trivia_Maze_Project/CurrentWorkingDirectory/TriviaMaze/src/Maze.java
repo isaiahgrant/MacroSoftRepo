@@ -149,7 +149,9 @@ public class Maze {
 				answer.equalsIgnoreCase("abba"); //abba is for debugging	
 	}
 	
-	void processAnswer(String answer)
+	//changed to return boolean for displaying labels in Game class.
+	//Had to move "this.curentPlayerDirection = null;" inside the if/else so that it surely executes, as it was unreachable.
+	boolean processAnswer(String answer)
 	{
 		this.player.increaseTotalQuestionsAnsweredByOne();
 		
@@ -159,13 +161,20 @@ public class Maze {
 			this.current_Door.unlockDoor();
 			
 			movePlayer();
+			
+			this.currentPlayerDirection = null;
+			
+			return true;
 		}
 		else
 		{
 			this.current_Door.lockDoor();
+			
+			this.currentPlayerDirection = null;
+			
+			return false;
 		}
-		
-		this.currentPlayerDirection = null;
+
 	}
 	
 	void movePlayer()

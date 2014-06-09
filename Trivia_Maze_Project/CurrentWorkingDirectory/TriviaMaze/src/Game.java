@@ -24,6 +24,15 @@ public class Game extends GamePortion implements ActionListener
 	private JButton southButton;
 	private JButton westButton;
 	
+	//Austin Johnston
+	//Labels used for correct/wrong notice and player stats
+	private JLabel wrongNotice;
+	private JLabel correctNotice;
+	private JLabel playerNameLabel;
+	private JLabel correctAnswersLabel;
+	private JLabel totalAnswersLabel;
+	private JLabel correctPercentageLabel;
+	
 	private JPanel directionButtons;
 	private JPanel directionButtonsSouth;
 	
@@ -139,13 +148,52 @@ public class Game extends GamePortion implements ActionListener
 	{
 		this.controlsAndInformation = new JPanel(new BorderLayout());
 		
+		//added GridLayout for displaying correct/wrong and player stats.
+		JPanel rightWrongAndPlayerStats = new JPanel(new GridLayout(6, 1));
+		
 		JPanel directionButtonsContainer = new JPanel(new BorderLayout());
 		
 		directionButtonsContainer.add(this.directionButtons, BorderLayout.NORTH);
 		directionButtonsContainer.add(this.directionButtonsSouth, BorderLayout.CENTER);
 		
+		//Start Austin's added code.
+		//Sets up labels for displaying correct/wrong and player stats.
+		this.wrongNotice = new JLabel("Wrong!");
+		this.wrongNotice.setVisible(false);
+		this.wrongNotice.setForeground(Color.RED);
+		
+		this.correctNotice = new JLabel("Correct!");
+		this.correctNotice.setVisible(false);
+		this.correctNotice.setForeground(Color.BLUE);
+		
+		this.playerNameLabel = new JLabel("Player Name: " + this.gameMaze.getPlayer().getName());
+		this.playerNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		this.correctAnswersLabel = new JLabel("Correct Answers: 0");
+		this.correctAnswersLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		this.totalAnswersLabel = new JLabel("Total Answered: 0");
+		this.totalAnswersLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		this.correctPercentageLabel = new JLabel("Percentage: 100%");
+		this.correctPercentageLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		
+		
+		rightWrongAndPlayerStats.add(this.wrongNotice);
+		rightWrongAndPlayerStats.add(this.correctNotice);
+		rightWrongAndPlayerStats.add(this.playerNameLabel);
+		rightWrongAndPlayerStats.add(this.correctAnswersLabel);
+		rightWrongAndPlayerStats.add(this.totalAnswersLabel);
+		rightWrongAndPlayerStats.add(this.correctPercentageLabel);
+		//end Austin's added code.
+		
 		this.controlsAndInformation.add(directionButtonsContainer, BorderLayout.NORTH);
 		this.controlsAndInformation.add(this.endGame, BorderLayout.SOUTH);
+		
+		//added the GridLayout to the center of the layout used for endGame and buttons.
+		this.controlsAndInformation.add(rightWrongAndPlayerStats, BorderLayout.CENTER);
+		
 	}
 	
 	private void setUpWindow(int width, int height)
@@ -220,7 +268,12 @@ public class Game extends GamePortion implements ActionListener
 	public void processInput(Direction direction)
 	{
 		if(this.currentState == GameState.GETTING_MOVEMENT_INPUT)
-		{
+		{	
+			//Austin Johnston
+			//added to remove the "Wrong!" and "Correct!" when the player tries to move.
+			this.correctNotice.setVisible(false);
+			this.wrongNotice.setVisible(false);
+			
 			if(this.gameMaze.isValidMove(direction))
 			{
 				String question = this.gameMaze.getQuestion(direction);
@@ -257,11 +310,27 @@ public class Game extends GamePortion implements ActionListener
 	}
 	
 	//Processes answering a question
+	//Austin Johnston
+	//Added if/else to check if the answer is correct, making visible the right label
+	//Also updated the added player stats each time a question is answered.
 	public void processQuestion(String answer)
 	{
 		if(this.currentState == GameState.GETTING_QUESTION_ANSWER)
 		{	
-			this.gameMaze.processAnswer(answer);
+			if(this.gameMaze.processAnswer(answer))
+			{
+				this.correctNotice.setVisible(true);
+				this.correctAnswersLabel.setText("Correct Answers: " + this.gameMaze.getPlayer().getQuestionsAnsweredCorrectly());
+			}
+			else
+			{
+				this.wrongNotice.setVisible(true);
+			}
+			
+			this.totalAnswersLabel.setText("Total Answered: " + this.gameMaze.getPlayer().getTotalQuestionsAnswered());
+			this.correctPercentageLabel.setText("Percentage: " + ((int)((double)this.gameMaze.getPlayer().getQuestionsAnsweredCorrectly()/(double)this.gameMaze.getPlayer().getTotalQuestionsAnswered()*100)) + "%");
+			//end Austin's added code
+			
 			this.currentState = GameState.GETTING_MOVEMENT_INPUT;
 			this.questionPrompt.clearScreen();
 			this.questionPrompt.setVisible(false);
