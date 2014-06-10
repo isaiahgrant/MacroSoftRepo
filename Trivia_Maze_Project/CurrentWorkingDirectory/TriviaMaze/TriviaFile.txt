@@ -108,3 +108,23 @@ tf-Damehood is the female equivalent of knighthood-a
 mc-Nature and Technology-How many muscles are there in an elephant's trunk?-a-40,000-400-4,000-5,543
 mc-The Arts-Who was William Shakespeare's wife?-b-Elizabeth Cantebury-Anne Hathaway-Ann Bolin-Catherine Rosova
 tf-Events-The snake is usually the highlight of a Chinese New Year's parade-b
+mc-Places-Which is farthest east?-d-Reno-Fresno-San Jose-Los Angeles
+mc-Events-On what river did Captain Chesley B. Sullenberger safely land an Airbus A320 with 155 people on board?-c-Snake River-The Potomac-Hudson River-Columbia River
+mc-The Arts-What 1990s Tom Hanks movie was the first film since 1939 to win a Best Picture Oscar and rank tops at the box office?-d-The Green Mile-Apollo 13-Toy Story-Forrest Gump
+mc-Nature and Technology-What is the only bird that can fly backward?-a-Hummingbird-Sparrow-Kite-Kestrel
+tf-Sports and Hobbies-The length of one lap in an official Olympic swimming pool is 150 meters.-b
+mc-Places-What island nation is the native home of the ring-tailed lemur?-b-Taiwan-Madagascar-New Zealand-Cuba
+tf-Entertainment-Mark Paul Gosselaar plays the roll of Dawson on the TV show Dawsons Creek.-b
+mc-The Arts-Of the 88 keys on a piano, how many are black-a-36-44-58-40
+mc-Places-What percentage of the worlds population lives north of the equator?-d-50-70-80-90
+tf-Entertainment-Matt Damon lost over 40 pounds to look the part of a heroin addict in Courage Under Fire-.a
+mc-Events-How many U.S. presidents have been divorced?-a-1-2-4-7
+tf-Sports and Hobbies-The color of the 1 ball in a standard pool set is the color orange.-b
+tf-Places-Heinekin beer originated in the Netherlands.-a
+mc-Entertainment-How many crew members go into space in Apollo 13?-b-5-3-7-4
+mc-Events-Where was the first YouTube video filmed?-d-Bathroom-County Fair-Weird Al Yankovic-Zoo
+mc-Nature and Technology-A tropical storm becomes a hurricane when surface winds reach what speed?-a-74 mph-54 mph-90 mph-100 mph
+tf-Places-The city Leningrad was renamed as St. Petersburg after a 55 percent vote by the electorate.-a
+tf-Entertainment-Lydia needs to call the name "Beetlejuice" 4 times in order to summon him.-b
+mc-Nature and Technology-What is the maximum length of a total solar eclipse?-a-7.5 minutes-27.5 minutes-12.2 minutes-17.5 minutes
+mc-Sports and Hobbies-About how many miles does a professional soccer player usually run during a game, on average?-c-15-20-6-3
