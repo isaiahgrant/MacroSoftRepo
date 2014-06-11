@@ -164,6 +164,7 @@ public class GameOver extends GamePortion implements ActionListener
 		if(event.getSource() == this.quitButton)
 		{
 			this.close();
+			System.exit(0);
 		}
 	}
 }

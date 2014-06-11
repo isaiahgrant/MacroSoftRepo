@@ -55,7 +55,8 @@ public class GameDriver implements ActionListener
 		}
 		else if(this.currentGamePart.getClass().getSimpleName().equals("GameOver"))
 		{
-			this.currentGamePart = new NewGame(DEFAULT_NEWGAME_WIDTH,DEFAULT_NEWGAME_HEIGHT, this);		}
+			this.currentGamePart = new NewGame(DEFAULT_NEWGAME_WIDTH,DEFAULT_NEWGAME_HEIGHT, this);		
+		}
 		
 		if(this.currentGamePart != null)
 		{

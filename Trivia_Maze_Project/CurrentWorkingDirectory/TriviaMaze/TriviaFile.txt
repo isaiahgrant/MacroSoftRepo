@@ -137,7 +137,7 @@ mc-Nature and Technology-What mammal has the longest pregnancy?-c-Squirrel-Rabbi
 mc-Entertainment-How many instruments accompany someone singing a cappela?-d-5-3-1-0
 tf-Geography-Shiva is the Hindu God known as "the Destroyer"-a
 tf-Nature and Technology-Mosquitos kill more people than any other nonhuman creature-a
-tf-Events-Skype was originally called "Sky peer-to-peer".-a
+tf-Events-Skype was originally called Sky peer-to-peer-a
 tf-Places-The Bronx got its name from the Dutch word for "Broken Land".-b
 tf-Events-Brownie, Chocolate, and Flash were all part of the debut of the childrens toy line "My Little Pony".-b
 mc-Nature and Technology-What can you hear from five miles away?-d-A dogs bark-A monkeys shriek-The sound of one hand clapping-A lions roar
