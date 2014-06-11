@@ -101,13 +101,13 @@ mc-Places-What is the first foreign country you would reach if you head due sout
 mc-Entertainment-Who did Han Solo call an "old smoothie"?-c-Luke Skywalker-Jabba the Hutt-Lando Calrissian-Obi Wan
 mc-The Arts-Who was the Roman demigod best known for his strength?-d-Mars-Theseus-Jupiter-Hercules
 mc-Entertainment-In Marvel Comics, who has an assistant named Pepper Potts?-a-Iron Man-Ice Man-Batman-Spiderman
-tf-Lake Michigan is the largest in Central America-b
+tf-Geography-Lake Michigan is the largest in Central America-b
 mc-Nature and Technology-How many times does the average heart beat each day?-b-10,000-100,000-50,000-1,000,000
-mc-Entertainment-What is the name of Mario's brother?-d-Yoshi-Wario-Peach-Luigi
-tf-Damehood is the female equivalent of knighthood-a
-mc-Nature and Technology-How many muscles are there in an elephant's trunk?-a-40,000-400-4,000-5,543
-mc-The Arts-Who was William Shakespeare's wife?-b-Elizabeth Cantebury-Anne Hathaway-Ann Bolin-Catherine Rosova
-tf-Events-The snake is usually the highlight of a Chinese New Year's parade-b
+mc-Entertainment-What is the name of Mario''s brother?-d-Yoshi-Wario-Peach-Luigi
+tf-Events-Damehood is the female equivalent of knighthood-a
+mc-Nature and Technology-How many muscles are there in an elephant''s trunk?-a-40,000-400-4,000-5,543
+mc-The Arts-Who was William Shakespeare''s wife?-b-Elizabeth Cantebury-Anne Hathaway-Ann Bolin-Catherine Rosova
+tf-Events-The snake is usually the highlight of a Chinese New Year''s parade-b
 mc-Places-Which is farthest east?-d-Reno-Fresno-San Jose-Los Angeles
 mc-Events-On what river did Captain Chesley B. Sullenberger safely land an Airbus A320 with 155 people on board?-c-Snake River-The Potomac-Hudson River-Columbia River
 mc-The Arts-What 1990s Tom Hanks movie was the first film since 1939 to win a Best Picture Oscar and rank tops at the box office?-d-The Green Mile-Apollo 13-Toy Story-Forrest Gump
@@ -136,8 +136,8 @@ mc-Entertainment-In which superhero franchise has Ryan Reynolds not starred?-b-G
 mc-Nature and Technology-What mammal has the longest pregnancy?-c-Squirrel-Rabbit-Elephant-Koala
 mc-Entertainment-How many instruments accompany someone singing a cappela?-d-5-3-1-0
 tf-Geography-Shiva is the Hindu God known as "the Destroyer"-a
-tf-Mosquitos kill more people than any other nonhuman creature-a
-tf-Skype was originally called "Sky peer-to-peer".-a
+tf-Nature and Technology-Mosquitos kill more people than any other nonhuman creature-a
+tf-Events-Skype was originally called "Sky peer-to-peer".-a
 tf-Places-The Bronx got its name from the Dutch word for "Broken Land".-b
 tf-Events-Brownie, Chocolate, and Flash were all part of the debut of the childrens toy line "My Little Pony".-b
 mc-Nature and Technology-What can you hear from five miles away?-d-A dogs bark-A monkeys shriek-The sound of one hand clapping-A lions roar
