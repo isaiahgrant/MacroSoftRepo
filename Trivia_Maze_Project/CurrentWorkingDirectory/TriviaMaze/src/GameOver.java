@@ -100,14 +100,10 @@ public class GameOver extends GamePortion implements ActionListener
 		if(player.getTotalQuestionsAnswered() != 0)
 		{
 			correctQuestionPercentage = (double)player.getQuestionsAnsweredCorrectly() / (double)player.getTotalQuestionsAnswered();
+			correctQuestionPercentage *= 100;
 		}
 		
-		DecimalFormat twoDecimalPlaces = new DecimalFormat("#.##");
-		
-		twoDecimalPlaces.setMinimumFractionDigits(2);
-		twoDecimalPlaces.setMaximumFractionDigits(2);
-		
-		this.playerCorrectPercentage = new JLabel("Player Correct: " + twoDecimalPlaces.format(correctQuestionPercentage)  + "% of the time");
+		this.playerCorrectPercentage = new JLabel("Player Correct: " + (int)correctQuestionPercentage  + "% of the time");
 		
 		this.playerStatistics = new JPanel(new GridLayout(5, 1));
 		
