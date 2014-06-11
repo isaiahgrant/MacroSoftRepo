@@ -138,3 +138,23 @@ mc-Entertainment-How many instruments accompany someone singing a cappela?-d-5-3
 tf-Geography-Shiva is the Hindu God known as "the Destroyer"-a
 tf-Mosquitos kill more people than any other nonhuman creature-a
 tf-Skype was originally called "Sky peer-to-peer".-a
+tf-Places-The Bronx got its name from the Dutch word for "Broken Land".-b
+tf-Events-Brownie, Chocolate, and Flash were all part of the debut of the childrens toy line "My Little Pony".-b
+mc-Nature and Technology-What can you hear from five miles away?-d-A dogs bark-A monkeys shriek-The sound of one hand clapping-A lions roar
+tf-Sports and Hobbies-The light brown foam on the top of a properly brewed espresso is called crema.-a
+tf-Places-Saturn has a storm system called the Great Red Spot.-b
+tf-Entertainment-Puck Man was the original name of the video game Pac Man.-a
+mc-Entertainment-What was the first Steven Spielberg flick to gross over $200 million?-b-Raiders of the Lost Ark-Jaws-E.T.-Close Encounters of the Third Kind
+mc-Nature and Technology-How far can a red kangaroo bound in a single leap-c-15-40-25-10
+tf-The Arts-Krumping is a scrapbooking term.-b
+mc-Nature and Technology-When a white tailed deer sticks its tail up it means what?-c-It is ready to fight-It is ready to mate-It senses danger-It senses food
+mc-The Arts-What suit is the Queen in Alices Adventures in Wonderland?-a-Hearts-Spades-Clubs-Diamonds
+mc-Events-In which century did the English Civil War take place?-a-17th-18th-19th-21st
+tf-Nature and Technology-By the time you are 25 years old your heart will have beaten approximately one billion times-a
+mc-Places-Which continent is home to the worlds largest desert?-b-Africa-Antarctica-Asia-South America
+tf-Places-Utah is the only state with a capital city, Salt Lake City with three words in its name.-a
+mc-Sports and Hobbies-Technically, what is the only ingredient you need to make caramel?-c-Butter-Vanilla-Sugar-Cream
+mc-Sports and Hobbies-What is the other name for the card game Patience-d-Memory-Whist-Prudence-Solitaire
+mc-Places-What Asian country leads the world in average life expectancy for women?-a-Hong Kong-Taiwan-Japan-South Korea
+mc-Nature and Technology-About how many minutes does it take sunlight to reach Earth-c-80-25-8-18
+mc-The Arts-Who of these is not a member of the Fantastic Four-b-Mister Fantastic-Mole Man-The Invisible Woman-Mole Man
