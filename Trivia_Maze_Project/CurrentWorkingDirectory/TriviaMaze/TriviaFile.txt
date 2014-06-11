@@ -128,3 +128,13 @@ tf-Places-The city Leningrad was renamed as St. Petersburg after a 55 percent vo
 tf-Entertainment-Lydia needs to call the name "Beetlejuice" 4 times in order to summon him.-b
 mc-Nature and Technology-What is the maximum length of a total solar eclipse?-a-7.5 minutes-27.5 minutes-12.2 minutes-17.5 minutes
 mc-Sports and Hobbies-About how many miles does a professional soccer player usually run during a game, on average?-c-15-20-6-3
+mc-Entertainment-Which word is not found in the Harry Potter series?-d-Quaffle-Quirrel-Weasle-Quokka
+tf-Nature and Technology-Bronze is not on the periodic table-a
+mc-Sports and Hobbies-What is a perfect score in bowling?-b-100-300-500-50
+mc-Sports and Hobbies-The first Atari console, released in 1977, retailed for how much?-c-$49-$99-$199-$250
+mc-Entertainment-In which superhero franchise has Ryan Reynolds not starred?-b-Green Lantern-Captain America-x-men-Blade
+mc-Nature and Technology-What mammal has the longest pregnancy?-c-Squirrel-Rabbit-Elephant-Koala
+mc-Entertainment-How many instruments accompany someone singing a cappela?-d-5-3-1-0
+tf-Geography-Shiva is the Hindu God known as "the Destroyer"-a
+tf-Mosquitos kill more people than any other nonhuman creature-a
+tf-Skype was originally called "Sky peer-to-peer".-a
