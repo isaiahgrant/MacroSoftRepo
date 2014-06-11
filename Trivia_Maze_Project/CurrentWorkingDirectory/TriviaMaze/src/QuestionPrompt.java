@@ -40,7 +40,7 @@ public class QuestionPrompt extends GamePortion implements ActionListener
 		this.window = new JFrame("Question");
 		this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.window.setLayout(new BorderLayout());
-		
+		this.window.getRootPane().setDefaultButton(this.submitAnswer);
 		
 		this.window.add(outputArea, BorderLayout.NORTH);
 		this.window.add(inputArea, BorderLayout.CENTER);
