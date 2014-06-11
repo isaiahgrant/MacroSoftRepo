@@ -113,7 +113,7 @@ mc-Events-On what river did Captain Chesley B. Sullenberger safely land an Airbu
 mc-The Arts-What 1990s Tom Hanks movie was the first film since 1939 to win a Best Picture Oscar and rank tops at the box office?-d-The Green Mile-Apollo 13-Toy Story-Forrest Gump
 mc-Nature and Technology-What is the only bird that can fly backward?-a-Hummingbird-Sparrow-Kite-Kestrel
 tf-Sports and Hobbies-The length of one lap in an official Olympic swimming pool is 150 meters.-b
-mc-Places-What island nation is the native home of the ring-tailed lemur?-b-Taiwan-Madagascar-New Zealand-Cuba
+mc-Places-What island nation is the native home of the ring tailed lemur?-b-Taiwan-Madagascar-New Zealand-Cuba
 tf-Entertainment-Mark Paul Gosselaar plays the roll of Dawson on the TV show Dawsons Creek.-b
 mc-The Arts-Of the 88 keys on a piano, how many are black-a-36-44-58-40
 mc-Places-What percentage of the worlds population lives north of the equator?-d-50-70-80-90
