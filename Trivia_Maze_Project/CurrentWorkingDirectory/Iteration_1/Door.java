@@ -2,14 +2,13 @@
  * Developed By: Isaiah Grant
  * The purpose of this class is to allow access to a given triviaItem
  * It will also provide an interface to allow a user to check if this door is locked / unlocked
- * NOTE: Since the trivia item factory is contained within the Game / Maze Builder I have provided
- * the interface to allow setting the trivia Item that is defaulted to TrueFalse DVC
+ * and to lock / unlock the door setting isAttempted and isLocked accordingly.
  */
 public class Door 
 {
-	private boolean isAttempted;
-	private boolean isLocked;
-	private TriviaItem triviaItem;
+	protected boolean isAttempted;
+	protected boolean isLocked;
+	protected TriviaItem triviaItem;
 	
 	public Door()
 	{
@@ -18,14 +17,16 @@ public class Door
 		this.triviaItem = new TrueFalse();
 	}
 	
-	public boolean isLocked()
+	public Door(TriviaItem trivia)
 	{
-		return this.isLocked;
+		this.isAttempted = false;
+		this.isLocked = false;
+		this.triviaItem = trivia;
 	}
 	
-	public boolean isAttempted()
+	public boolean isLocked()
 	{
-		return this.isAttempted;
+		return isAttempted && this.isLocked;
 	}
 	
 	public void lockDoor()

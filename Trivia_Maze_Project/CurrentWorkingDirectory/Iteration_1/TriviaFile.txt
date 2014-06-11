@@ -6,7 +6,7 @@ tf-Sports and Hobbies-The video game Tetris was bundled with the Atari 2600 upon
 tf-The Arts-Grouchy Templeton from Charlottes Web was a rat-a
 mc-The Arts-Where does the Muffin Man live, according to the song?-b-Duby Road-Drury Lane-Division Street-Cupcake Place
 mc-Sports and Hobbies-What NBA franchise was known as the Bullets from 1964 to 1997?-c-Rockets-Sonics-Wizards-Spurs
-tf-The Arts-"The" is the most-used word in written English-a
+tf-The Arts-"The" is the most used word in written English-a
 mc-Sports and Hobbies-About how long would it take you to walk one lap around the Indy 500 track?-a-1 hour-30 minutes-3 hours-8 hours
 mc-Science and Nature-Where are the three teeniest bones in the human body?-c-pinkie finger-baby toe-ear-nose
 tf-Geography-Rhode Island is the only U.S. state that borders only one other state-b

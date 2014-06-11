@@ -1,4 +1,4 @@
-import java.io.File;
+
 
 
 public class TriviaMazeDriver 
@@ -8,19 +8,19 @@ public class TriviaMazeDriver
 	{
 		int i;
 		TriviaItem temp = null;
-		TriviaFactory factory = null;
-				
+		TriviaFactoryDB factory = new TriviaFactoryDB();
 		
-		factory = new TriviaFactory(new File("TriviaFile.txt"));
-		for(i = 0; i < 15; i++)
+
+		for(i = 0; i < 26; i++)
 		{
 			temp = factory.getTriviaItem();
-			System.out.print(temp.AskQuestion());
+			System.out.println(temp.askQuestion());
 			System.out.println();
 		}
 		
-		
 		factory.closeFactory();
+		
+		
 	}
 
 }
