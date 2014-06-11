@@ -32,15 +32,7 @@ public class Maze {
 		this.current_Door = null;
 
 		this.entrance = new Coordinates(0,0);
-		this.exit = new Coordinates(newRooms.length-1, newRooms[newRooms.length -1].length-1);
-	
-		//Making the exit Random, could easily work with making the entrance random as well.
-		this.exit = new Coordinates((int)(Math.random() * newRooms.length-1), (int)(Math.random() * newRooms.length-1));
-		
-		while( (this.exit.getColumn() + this.exit.getRow() + 2) < (newRooms.length * 1.5) )
-		{
-			this.exit = new Coordinates((int)(Math.random() * newRooms.length), (int)(Math.random() * newRooms.length));
-		}
+		this.exit = this.randomlyPlaceExit();
 		
 		this.currentPlayerDirection = null;
 		
@@ -49,7 +41,6 @@ public class Maze {
 		simpleMaze = new int[this.rooms.length][this.rooms.length];
 		
 		this.roomTextures = new RoomTextures("pikachuIcon");
-		
 	}
 	
 	Room[][] generateMaze()
@@ -396,5 +387,20 @@ public class Maze {
 	public void setIcon(String icon)
 	{
 		this.roomTextures = new RoomTextures(icon);
+	}
+	
+	private Coordinates randomlyPlaceExit()
+	{
+		Coordinates randomExit = new Coordinates(this.rooms.length-1, this.rooms[this.rooms.length -1].length-1);
+		
+		//Making the exit Random, could easily work with making the entrance random as well.
+		randomExit = new Coordinates((int)(Math.random() * this.rooms.length-1), (int)(Math.random() * this.rooms.length-1));
+		
+		while( (randomExit.getColumn() + randomExit.getRow() + 2) < (this.rooms.length * 1.5) )
+		{
+			randomExit = new Coordinates((int)(Math.random() * this.rooms.length), (int)(Math.random() * this.rooms.length));
+		}
+		
+		return randomExit;
 	}
 }
