@@ -39,11 +39,6 @@ public class Game extends GamePortion implements ActionListener
 	private JPanel controlsAndInformation;
 	
 	private GameState currentState;
-	
-	
-	//DEBUGING MATERIAL
-	private JButton endGame;
-	//END DEBUGING MATERIAL
 
 	private ActionListener gameOverListener;
 	private boolean playerWon;
@@ -66,12 +61,6 @@ public class Game extends GamePortion implements ActionListener
 		
 		int canvasWidth = Maze.getMazeWidthInPixels();
 		int canvasHeight = Maze.getMazeHeightInPixels();
-		
-		//DEBUGING MATERIAL
-		endGame = new JButton("End Game");
-		endGame.addActionListener(listener);
-//		this.window.add(endGame, BorderLayout.SOUTH);
-		//END DEBUGING MATERIAL
 		
 		this.questionPrompt = new QuestionPrompt("", "", this);
 		this.questionPrompt.setVisible(false);
@@ -189,7 +178,6 @@ public class Game extends GamePortion implements ActionListener
 		//end Austin's added code.
 		
 		this.controlsAndInformation.add(directionButtonsContainer, BorderLayout.NORTH);
-		this.controlsAndInformation.add(this.endGame, BorderLayout.SOUTH);
 		
 		//added the GridLayout to the center of the layout used for endGame and buttons.
 		this.controlsAndInformation.add(rightWrongAndPlayerStats, BorderLayout.CENTER);
@@ -220,18 +208,8 @@ public class Game extends GamePortion implements ActionListener
 		window.setVisible(true);
 	}
 	
-	private void drawSomething()
-	{
-		for(int i = 0; i < 50; i++)
-		{
-			this.brush.drawOval(50 + 2*i, 50+ 3*i, 200, 200);
-		}
-	}
-	
 	public void draw()
 	{
-		//Need to figure out inheritance hierarchy - obviously 
-		//there is no draw(Graphics pen method in the ASCII version)
 		this.brush.setColor(Color.BLACK);
 		this.brush.fillRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
 		this.gameMaze.draw(this.brush);

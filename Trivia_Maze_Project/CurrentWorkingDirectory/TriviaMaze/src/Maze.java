@@ -146,7 +146,7 @@ public class Maze {
 	boolean isCorrectAnswer(String answer)
 	{
 		return this.current_Door.getTriviaItem().getAnswer().equalsIgnoreCase(answer) ||
-				answer.equalsIgnoreCase("abba"); //abba is for debugging	
+				answer.equalsIgnoreCase("abba"); //abba, dabba is for debugging, abba is right, dabba is wrong
 	}
 	
 	//changed to return boolean for displaying labels in Game class.

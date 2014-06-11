@@ -67,7 +67,7 @@ public class QuestionPrompt extends GamePortion implements ActionListener
 			boolean validAnswer = false;
 			
 			//Debugging code
-			if( answer.equalsIgnoreCase("abba") )
+			if( answer.equalsIgnoreCase("abba") || answer.equalsIgnoreCase("dabba") )
 			{
 				validAnswer = true;
 			}
