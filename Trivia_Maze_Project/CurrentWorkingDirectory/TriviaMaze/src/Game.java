@@ -1,16 +1,17 @@
 //Andrey Melnikov
 //Created 5.19.2014
 
-//Extension of Game class that includes a GUI
+//GUI Game class, handles input from the player and its interaction with the maze,
+//popping up a question prompt, and detecting if a game is won/over.
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
 
 public class Game extends GamePortion implements ActionListener, KeyListener
 {
@@ -27,7 +28,6 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 	private JButton southButton;
 	private JButton westButton;
 	
-	//Austin Johnston
 	//Labels used for correct/wrong notice and player stats
 	private JLabel wrongNotice;
 	private JLabel correctNotice;
@@ -47,21 +47,16 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 	private ActionListener gameOverListener;
 	private boolean playerWon;
 	
+	
+	//Initialization of Game. Creates a window of size width/height
+	//Passes player data, difficulty, and player icon to maze
 	public Game(int width, int height, String playerName, Difficulty difficulty, String playerIcon, ActionListener listener)
 	{
-
 		this.mazeBuilder = new MazeBuilder(playerName, difficulty);
 		this.gameMaze = this.mazeBuilder.getNewMaze();
 		this.gameMaze.setIcon(playerIcon);
 		
 		this.gameOverListener = listener;
-		
-		//TODO change these so that they reflect
-		//the maximum possibly dimensions of the maze
-		//Need constants for room width/height and include doors too
-		//Make this a separate method
-		//Also make canvas width/height be at least the
-		//size of its container
 		
 		int canvasWidth = Maze.getMazeWidthInPixels();
 		int canvasHeight = Maze.getMazeHeightInPixels();
@@ -73,18 +68,15 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		this.setUpInputButtons();
 		this.setUpControlsAndInformation();
 		this.setUpWindow(width, height);
-		//this.drawSomething();
 		
-
-		
-		this.draw();
-		
-		
-
 		this.playerWon = false;
 		currentState = GameState.GETTING_MOVEMENT_INPUT;	
+		
+		this.draw();
 	}
 	
+	
+	//Creates a area to draw the maze and its associated graphics
 	private void setUpCanvas(int width, int height)
 	{
 		BufferedImage drawingImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -101,11 +93,12 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		
 		canvas = new JPanel(canvasLayout );
 		canvas.setBackground(Color.WHITE);
-		//canvas.setPreferredSize(new Dimension(width, height));
 		canvas.add(imageHolder);
 	}
 
 	
+	//Creates and initializes the direction buttons (N/S/E/W)
+	//This method adds the proper listeners for keyboard input
 	private void setUpInputButtons()
 	{
 		this.northButton = new JButton("N");
@@ -142,11 +135,15 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		this.directionButtonsSouth.add(southButtonWrapper, BorderLayout.NORTH);	
 	}
 	
+	
+	//Sets up right side of Game GUI
+	//This includes the doorknob picture, the direction buttons
+	//And player statistics as well as an area that indicates if a
+	//player's answer was right/wrong
 	private void setUpControlsAndInformation()
 	{
 		this.controlsAndInformation = new JPanel(new BorderLayout());
 		
-		//added GridLayout for displaying correct/wrong and player stats.
 		JPanel rightWrongAndPlayerStats = new JPanel(new GridLayout(6, 1));
 		JPanel correctAndStatsFlow = new JPanel(new FlowLayout());
 		JPanel doorknobLayout = new JPanel(new FlowLayout());
@@ -156,8 +153,7 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		directionButtonsContainer.add(this.directionButtons, BorderLayout.NORTH);
 		directionButtonsContainer.add(this.directionButtonsSouth, BorderLayout.CENTER);
 		
-		//Start Austin's added code.
-		//Sets up labels for displaying correct/wrong and player stats.
+		//Sets up labels for displaying correct/wrong answer and player stats.
 		this.wrongNotice = new JLabel("Wrong!");
 		this.wrongNotice.setVisible(false);
 		this.wrongNotice.setForeground(Color.RED);
@@ -187,8 +183,6 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 			JOptionPane.showConfirmDialog(null, "The doorknob image could not be loaded.");
 		}
 		
-		
-		
 		rightWrongAndPlayerStats.add(this.wrongNotice);
 		rightWrongAndPlayerStats.add(this.correctNotice);
 		rightWrongAndPlayerStats.add(this.playerNameLabel);
@@ -199,21 +193,17 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		doorknobLayout.add(this.doorknob);
 
 		doorknobLayout.setBackground(Color.BLACK);
-		
-		//end Austin's added code.
-		
+				
 		this.controlsAndInformation.add(directionButtonsContainer, BorderLayout.NORTH);
 
 		this.controlsAndInformation.add(doorknobLayout, BorderLayout.CENTER);
-		//this.controlsAndInformation.add(this.endGame, BorderLayout.SOUTH);
-
 		
-		//added the GridLayout to the center of the layout used for endGame and buttons.
 		correctAndStatsFlow.add(rightWrongAndPlayerStats);
 		this.controlsAndInformation.add(correctAndStatsFlow, BorderLayout.SOUTH);		
 	}
 
 	
+	//Sets up the main window that contains all of the Game components, and their layout
 	private void setUpWindow(int width, int height)
 	{
 		window = new JFrame("Trivia Maze");
@@ -223,11 +213,9 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		windowLayout.setHgap(0);
 		windowLayout.setVgap(0);
 		
-		
 		window.setLayout(new BorderLayout());
 		
-		
-		window.setResizable(true); //TODO implement resize functionality
+		window.setResizable(true);
 		
 		window.add(this.canvas, BorderLayout.WEST);
 		
@@ -237,6 +225,10 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		window.setVisible(true);
 	}
 	
+	
+	//Handles the drawing of the game components
+	//Draws a background for the maze, and the maze itself
+	//Forces a redraw of the canvas after it is finished.
 	public void draw()
 	{
 		this.brush.setColor(Color.BLACK);
@@ -245,6 +237,9 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		this.canvas.repaint();
 	}
 
+	
+	//Handles the N/S/E/W button presses resulting from clicking them
+	//Also handles getting the supplied answer from a QuestionPrompt
 	public void actionPerformed(ActionEvent event)
 	{				
 		if(event.getSource() == this.northButton)
@@ -271,12 +266,13 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 	}
 	
 	
-	//Processes movement
+	//Processes player movement
+	//Activates the QuestionPrompt if the user attempted a new door
+	//Checks if game is over/winnable and reacts accordingly
 	public void processInput(Direction direction)
 	{
 		if(this.currentState == GameState.GETTING_MOVEMENT_INPUT)
 		{	
-			//Austin Johnston
 			//added to remove the "Wrong!" and "Correct!" when the player tries to move.
 			this.correctNotice.setVisible(false);
 			this.wrongNotice.setVisible(false);
@@ -316,10 +312,10 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		}
 	}
 	
-	//Processes answering a question
-	//Austin Johnston
-	//Added if/else to check if the answer is correct, making visible the right label
-	//Also updated the added player stats each time a question is answered.
+	
+	//Gets the player's answer from QuestionPrompt and processes it
+	//If the answer is correct/incorrect, a label will pop up indicating so on the GUI
+	//Updates Player statistics on the Game GUI
 	public void processQuestion(String answer)
 	{
 		if(this.currentState == GameState.GETTING_QUESTION_ANSWER)
@@ -336,7 +332,6 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 			
 			this.totalAnswersLabel.setText("Total Answered: " + this.gameMaze.getPlayer().getTotalQuestionsAnswered());
 			this.correctPercentageLabel.setText("Percentage: " + ((int)((double)this.gameMaze.getPlayer().getQuestionsAnsweredCorrectly()/(double)this.gameMaze.getPlayer().getTotalQuestionsAnswered()*100)) + "%");
-			//end Austin's added code
 			
 			this.currentState = GameState.GETTING_MOVEMENT_INPUT;
 			this.questionPrompt.clearScreen();
@@ -355,31 +350,43 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		}
 	}
 	
+	
+	//Gets the player in the game
 	public Player getPlayer()
 	{
 		return this.gameMaze.getPlayer();
 	}
 	
+	
+	//Returns true if the game has ended
+	//That is, if the game is over or is not winnable anymore
 	private boolean gameEnded()
 	{
 		return this.gameFinished() || !this.gameWinnable();
 	}
 	
+	
+	//Takes appropriate action if the game has ended
+	//Indicates to GameDriver to transition to GameOver GUI
 	private void processGameEnded()
 	{
 		if(this.gameFinished())
 		{
 			this.playerWon = true;
-		} //Default is false
+		} //Default is false, so no need to change it
 		
 		this.gameOverListener.actionPerformed(new ActionEvent(this, 0, "endGame"));
 	}
 	
+	
+	//Returns if the player won or lost - true if won, false if lost
 	public boolean getPlayerWon()
 	{
 		return this.playerWon;
 	}
 	
+	
+	//Returns true if the game has been won, false otherwise
 	public boolean gameFinished()
 	{
 		return this.gameMaze.isPlayerAtExit();
@@ -393,12 +400,18 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		return this.gameMaze.isWinnable();
 	}
 
+	
+	//Method required for KeyListener Interface
+	//Not implemented as it is not needed
 	@Override
 	public void keyPressed(KeyEvent event) 
 	{
 		//Not needed here, but required for KeyListener interface.
 	}
 
+	
+	//Method that detects the presses of keyboard arrow keys
+	//And moves the player accordingly
 	@Override
 	public void keyReleased(KeyEvent event) 
 	{
@@ -420,6 +433,9 @@ public class Game extends GamePortion implements ActionListener, KeyListener
 		}
 	}
 
+	
+	//Method required for KeyListener Interface
+	//Not implemented as it is not needed
 	@Override
 	public void keyTyped(KeyEvent event) 
 	{
