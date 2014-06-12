@@ -6,7 +6,10 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Game extends GamePortion implements ActionListener
@@ -32,6 +35,7 @@ public class Game extends GamePortion implements ActionListener
 	private JLabel correctAnswersLabel;
 	private JLabel totalAnswersLabel;
 	private JLabel correctPercentageLabel;
+	private JLabel doorknob;
 	
 	private JPanel directionButtons;
 	private JPanel directionButtonsSouth;
@@ -139,6 +143,7 @@ public class Game extends GamePortion implements ActionListener
 		
 		//added GridLayout for displaying correct/wrong and player stats.
 		JPanel rightWrongAndPlayerStats = new JPanel(new GridLayout(6, 1));
+		JPanel correctAndStatsFlow = new JPanel(new FlowLayout());
 		
 		JPanel directionButtonsContainer = new JPanel(new BorderLayout());
 		
@@ -167,6 +172,15 @@ public class Game extends GamePortion implements ActionListener
 		this.correctPercentageLabel = new JLabel("Percentage: 100%");
 		this.correctPercentageLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		
+		try
+		{
+			this.doorknob = new JLabel(new ImageIcon(ImageIO.read(new File("./images/talkingDoorknob.jpg"))));
+		}
+		catch(IOException e)
+		{
+			JOptionPane.showConfirmDialog(null, "The doorknob image could not be loaded.");
+		}
+		
 		
 		
 		rightWrongAndPlayerStats.add(this.wrongNotice);
@@ -178,9 +192,12 @@ public class Game extends GamePortion implements ActionListener
 		//end Austin's added code.
 		
 		this.controlsAndInformation.add(directionButtonsContainer, BorderLayout.NORTH);
-		
+		this.controlsAndInformation.add(this.doorknob, BorderLayout.SOUTH);
+		//this.controlsAndInformation.add(this.endGame, BorderLayout.SOUTH);
+
 		//added the GridLayout to the center of the layout used for endGame and buttons.
-		this.controlsAndInformation.add(rightWrongAndPlayerStats, BorderLayout.CENTER);
+		correctAndStatsFlow.add(rightWrongAndPlayerStats);
+		this.controlsAndInformation.add(correctAndStatsFlow, BorderLayout.CENTER);
 		
 	}
 	
