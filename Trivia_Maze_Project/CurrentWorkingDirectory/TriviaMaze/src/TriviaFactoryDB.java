@@ -92,7 +92,7 @@ public class TriviaFactoryDB
 			
 		}catch(Exception e)
 		{
-			System.err.println("There was an erro querying the database.");
+			System.err.println("There was an error querying the database.");
 		}
 		
 		try
@@ -136,7 +136,6 @@ public class TriviaFactoryDB
 			e.printStackTrace();
 		}
 		
-	}//end closeFactory
-	
+	}//end closeFactory	
 	
 }//end TriviaFactoryDB

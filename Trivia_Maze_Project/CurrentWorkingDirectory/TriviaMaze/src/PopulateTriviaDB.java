@@ -1,3 +1,8 @@
+
+/*
+ *Written by Alex Staeheli 5/18/2014
+ *This class deletes the entries in the database and populates it with the contents of TriviaFile.txt 
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -17,9 +22,7 @@ public class PopulateTriviaDB {
 		String input, sql;
 		File in = new File("TriviaFile.txt");
 		String[] tokens = null;
-		Scanner fin = null;
-		
-		
+		Scanner fin = null;		
 		
 		try 
 		{

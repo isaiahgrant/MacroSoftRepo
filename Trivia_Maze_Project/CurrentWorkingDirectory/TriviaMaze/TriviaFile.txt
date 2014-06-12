@@ -137,7 +137,7 @@ mc-Nature and Technology-What mammal has the longest pregnancy?-c-Squirrel-Rabbi
 mc-Entertainment-How many instruments accompany someone singing a cappela?-d-5-3-1-0
 tf-Geography-Shiva is the Hindu God known as "the Destroyer"-a
 tf-Nature and Technology-Mosquitos kill more people than any other nonhuman creature-a
-tf-Events-Skype was originally called Sky peer-to-peer-a
+tf-Events-Skype was originally called "Sky peer to peer".-a
 tf-Places-The Bronx got its name from the Dutch word for "Broken Land".-b
 tf-Events-Brownie, Chocolate, and Flash were all part of the debut of the childrens toy line "My Little Pony".-b
 mc-Nature and Technology-What can you hear from five miles away?-d-A dogs bark-A monkeys shriek-The sound of one hand clapping-A lions roar
@@ -158,3 +158,23 @@ mc-Sports and Hobbies-What is the other name for the card game Patience-d-Memory
 mc-Places-What Asian country leads the world in average life expectancy for women?-a-Hong Kong-Taiwan-Japan-South Korea
 mc-Nature and Technology-About how many minutes does it take sunlight to reach Earth-c-80-25-8-18
 mc-The Arts-Who of these is not a member of the Fantastic Four-b-Mister Fantastic-Mole Man-The Invisible Woman-Mole Man
+tf-Sports and Hobbies-A red flag in auto racing means "Start your engines".-b
+mc-Entertainment-What blonde pop star became a judge on the TV show X Factor in its second season?-d-Christina Aguilera-Miley Cyrus-Gwen Stefani-Britney Spears
+mc-The Arts-A Hulk of what primary color was introduced by Marvel in 2008?-b-Chartreuse-Red-Blue-Yellow
+tf-Nature and Technology-The "CRT" in CRT televisions and computer monitors stands for "Catheter Radeon Tubes".-b
+mc-Sports and Hobbies-How much Monopoly money do you collect for finishing second in a beauty contest?-c-200-50-10-100
+mc-Entertainment-How many teeth does Bugs Bunny have?-a-2-4-24-12
+tf-Places-Baton Rouge, Louisiana is named after the French words for "red stick".-a
+mc-Sports and Hobbies-What do the face cards count for in Gin Rummy-d-4-6-8-10
+mc-Places-What city enjoyed the first subway in the U.S.?-a-Boston-New York-Chicago-Cheney
+mc-Events-If an M&Ms candy were a Roman numeral, what would its value be?-a-2000-200-500-100
+mc-The Arts-In the X Men comics, what nearly indestructible element is fused with Wolverines bones?-b-Mithril-Adamantium-Vibranium-Orichalcum
+mc-Sports and Hobbies-How many strokes make up a quadruple bogey on a par five golf hole?-c-7-8-9-10
+tf-Entertainment-Panda bears are the official "spokes animals" of the "Always" ads by Coca Cola.-b
+tf-Events-500,000 people showed up to watch David Hasselhoff sing at the Berlin Wall.-a
+mc-Nature and Technology-Which of these describes a whale poking its head out of water to take a look around-c-Splerming-Tipping-Spyhopping-Spelunking
+tf-Places-The seaport "Casablanca" is named after the Spanish words for "white port".-b
+mc-Entertainment-What Episode 1 star was six years old when the original Star Wars film was first released?-d-Natalie Portman-Jake Lloyd-Liam Neeson-Ewan McGregor
+tf-Events-Forrest Gump was the first movie to gross more than $1 billion at the box office.-b
+mc-The Arts-Which of the Seven Dwarfs wears glasses?-a-Doc-Grumpy-Bashful-Dopey
+mc-Places-What three letters do 60 percent of all Danish family names end in?-b-ton-sen-ard-dug
