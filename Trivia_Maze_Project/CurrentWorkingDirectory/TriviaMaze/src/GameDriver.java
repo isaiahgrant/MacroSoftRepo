@@ -9,7 +9,7 @@ import java.awt.event.*;
 public class GameDriver implements ActionListener
 {
 	//Make the screen width as big as the maximum sized maze and room for GUI buttons on right
-	public static final int DEFAULT_WIDTH = Maze.getMazeWidthInPixels()  + 140;
+	public static final int DEFAULT_WIDTH = Maze.getMazeWidthInPixels()  + 145;
 	//Make the screen height as big as the maximum sized maze and the window borders
 	public static final int DEFAULT_HEIGHT = Maze.getMazeHeightInPixels() + 38; 
 	//NewGame window sizes

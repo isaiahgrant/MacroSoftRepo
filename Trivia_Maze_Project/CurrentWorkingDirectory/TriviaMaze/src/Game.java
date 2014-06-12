@@ -144,6 +144,7 @@ public class Game extends GamePortion implements ActionListener
 		//added GridLayout for displaying correct/wrong and player stats.
 		JPanel rightWrongAndPlayerStats = new JPanel(new GridLayout(6, 1));
 		JPanel correctAndStatsFlow = new JPanel(new FlowLayout());
+		JPanel doorknobLayout = new JPanel(new FlowLayout());
 		
 		JPanel directionButtonsContainer = new JPanel(new BorderLayout());
 		
@@ -174,7 +175,7 @@ public class Game extends GamePortion implements ActionListener
 		
 		try
 		{
-			this.doorknob = new JLabel(new ImageIcon(ImageIO.read(new File("./images/talkingDoorknob.jpg"))));
+			this.doorknob = new JLabel(new ImageIcon(ImageIO.read(new File("./images/doorknob.png"))));
 		}
 		catch(IOException e)
 		{
@@ -189,17 +190,24 @@ public class Game extends GamePortion implements ActionListener
 		rightWrongAndPlayerStats.add(this.correctAnswersLabel);
 		rightWrongAndPlayerStats.add(this.totalAnswersLabel);
 		rightWrongAndPlayerStats.add(this.correctPercentageLabel);
+		
+		doorknobLayout.add(this.doorknob);
+
+		doorknobLayout.setBackground(Color.BLACK);
+		
 		//end Austin's added code.
 		
 		this.controlsAndInformation.add(directionButtonsContainer, BorderLayout.NORTH);
-		this.controlsAndInformation.add(this.doorknob, BorderLayout.SOUTH);
+
+		this.controlsAndInformation.add(doorknobLayout, BorderLayout.CENTER);
 		//this.controlsAndInformation.add(this.endGame, BorderLayout.SOUTH);
 
+		
 		//added the GridLayout to the center of the layout used for endGame and buttons.
 		correctAndStatsFlow.add(rightWrongAndPlayerStats);
-		this.controlsAndInformation.add(correctAndStatsFlow, BorderLayout.CENTER);
-		
+		this.controlsAndInformation.add(correctAndStatsFlow, BorderLayout.SOUTH);		
 	}
+
 	
 	private void setUpWindow(int width, int height)
 	{
@@ -221,7 +229,6 @@ public class Game extends GamePortion implements ActionListener
 		window.add(this.controlsAndInformation, BorderLayout.EAST);
 		
 		this.window.setSize( new Dimension(width, height) );
-		
 		window.setVisible(true);
 	}
 	
