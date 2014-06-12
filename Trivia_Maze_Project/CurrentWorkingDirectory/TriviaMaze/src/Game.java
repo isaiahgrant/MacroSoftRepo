@@ -12,7 +12,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Game extends GamePortion implements ActionListener
+public class Game extends GamePortion implements ActionListener, KeyListener
 {
 	private Maze gameMaze;
 	private MazeBuilder mazeBuilder;
@@ -117,6 +117,11 @@ public class Game extends GamePortion implements ActionListener
 		this.westButton = new JButton("W");
 		this.westButton.addActionListener(this);
 		
+		this.northButton.addKeyListener(this);
+		this.eastButton.addKeyListener(this);
+		this.westButton.addKeyListener(this);
+		this.southButton.addKeyListener(this);
+		
 		JPanel northButtonWrapper = new JPanel(new FlowLayout());
 		JPanel eastButtonWrapper = new JPanel(new FlowLayout());
 		JPanel southButtonWrapper = new JPanel(new FlowLayout());
@@ -147,7 +152,7 @@ public class Game extends GamePortion implements ActionListener
 		JPanel doorknobLayout = new JPanel(new FlowLayout());
 		
 		JPanel directionButtonsContainer = new JPanel(new BorderLayout());
-		
+				
 		directionButtonsContainer.add(this.directionButtons, BorderLayout.NORTH);
 		directionButtonsContainer.add(this.directionButtonsSouth, BorderLayout.CENTER);
 		
@@ -386,5 +391,38 @@ public class Game extends GamePortion implements ActionListener
 	public boolean gameWinnable()
 	{
 		return this.gameMaze.isWinnable();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent event) 
+	{
+		//Not needed here, but required for KeyListener interface.
+	}
+
+	@Override
+	public void keyReleased(KeyEvent event) 
+	{
+		if(event.getKeyCode() == KeyEvent.VK_UP)
+		{
+			this.processInput(Direction.UP);
+		}
+		else if(event.getKeyCode() == KeyEvent.VK_RIGHT)
+		{
+			this.processInput(Direction.RIGHT);
+		}
+		else if(event.getKeyCode() == KeyEvent.VK_DOWN)
+		{
+			this.processInput(Direction.DOWN);
+		}
+		else if(event.getKeyCode() == KeyEvent.VK_LEFT)
+		{
+			this.processInput(Direction.LEFT);
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent event) 
+	{
+		//Not needed here, but required for KeyListener interface.
 	}
 }
